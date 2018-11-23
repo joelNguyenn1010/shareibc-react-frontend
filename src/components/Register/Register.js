@@ -3,7 +3,7 @@ import './Register.css'
 import { reduxForm, Field } from 'redux-form'
 import {connect } from 'react-redux'
 import * as userActions from '../../store/actions/user-action'
-import { compose } from '../../../../../../Library/Caches/typescript/3.1/node_modules/redux';
+import { compose } from 'redux';
 class Register extends Component {
     state = {
             username: '',
