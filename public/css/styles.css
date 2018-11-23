@@ -1,0 +1,26 @@
+
+
+
+.full-page-img {
+    background-image: url('https://www.w3schools.com/w3css/img_lights.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+#root {
+   height: 100%;
+}
+
+  .top-nav-collapse {
+    background-color: rgb(23, 72, 172); }
+  
+  /* Adding color to the Navbar on mobile */
+  @media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.2); } }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+          .navbar:not(.top-nav-collapse) {
+              background: rgba(0, 0, 0, 0.2)!important;
+          }
+      }

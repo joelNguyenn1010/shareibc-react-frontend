@@ -1,0 +1,10 @@
+.box {
+    position: relative;
+    bottom: 0px;
+
+}
+
+.equal-height {
+    flex: 1;
+    padding: 16px;
+}
