@@ -36,6 +36,9 @@ class Links extends Component {
                 <li className="nav-item">
                     <a className="nav-link waves-effect waves-light" href="/">About us</a>
                 </li>
+                <li className="nav-item">
+                    <NavLink to="/cart" exact className="nav-link waves-effect waves-light">Cart {this.props.cart.length}</NavLink>
+                </li>
                 {this.auth()}
             </React.Fragment>
         )
@@ -46,7 +49,8 @@ class Links extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.userReducer.auth
+        auth: state.userReducer.auth,
+        cart: state.cartReducer.products
     }
 }
 

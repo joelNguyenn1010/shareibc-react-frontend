@@ -13,7 +13,7 @@ class Home extends Component {
             width: '100%'
         }
         return (
-            <div className="Home w-100 h-100">
+            <div className="Home w-100 h-100" >
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">

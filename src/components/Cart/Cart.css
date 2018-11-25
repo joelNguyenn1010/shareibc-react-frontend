@@ -1,0 +1,19 @@
+.details-transform {
+    transform: translate(2%, 0%)!important;   
+}
+@media (min-width: 900px){
+    .details-transform {
+        transform: translate(9%, 0%)!important;   
+    }
+}
+@media (min-width: 720px){
+    .details-transform {
+        transform: translate(5%, 0%)!important;   
+    }
+}
+
+.cart-header{
+    margin-bottom: 3rem;
+    transform: translate(2%, 0%)
+
+}

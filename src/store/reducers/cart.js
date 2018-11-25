@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DELETE_FROM_CART, SET_QUANTITY } from '../actions/cart-action'
+import { ADD_TO_CART, DELETE_FROM_CART, SET_QUANTITY, CLEAR_CART } from '../actions/cart-action'
 import update from 'react-addons-update'
 const initialState = {
     products: [
@@ -8,25 +8,30 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            return checkExisting(state, action)
+            return add_to_cart(state, action)
         case DELETE_FROM_CART:
             return delete_from_cart(state, action)
         case SET_QUANTITY:
             return set_quantity(state, action)
+        case CLEAR_CART:
+            localStorage.removeItem('cart')
+            return {
+                ...state,
+                products: []
+            }
         default:
             return state;
     }
 }
 const set_quantity = ( state, action ) => {
    
-    if(action.payload.quantity < 0) {
+    if(action.payload.quantity <= 0) {
        return delete_from_cart(state, action)
     } else {
-       
         var index;
         var checking = state.products.find((e, pos) => {
             index = pos;
-            return e.item.id == action.payload.id
+            return Number(e.item.id) === Number(action.payload.id)
         })
     
         if(checking) {
@@ -34,9 +39,10 @@ const set_quantity = ( state, action ) => {
             let newCollection = update(state.products,
                         {
                             [index]: {
-                                quantity: {$set: checking.quantity}
+                                quantity: {$set: Number(checking.quantity)}
                             }
                         })
+                        localStorage.setItem('cart', JSON.stringify(newCollection))
                         return {
                             ...state,
                             products: newCollection
@@ -55,12 +61,15 @@ const delete_from_cart = ( state, action ) => {
             return product.item.id != action.payload.id
         }
     );
+    localStorage.setItem('cart', JSON.stringify(updatedArray))
     return {
         ...state,
         products: updatedArray ? updatedArray : []
     }
 }
-const checkExisting = (state, action) => {
+
+
+const add_to_cart = (state, action) => {
     //this is for add the first item in the cart
     var excucute = true
     //this checking if the item is in the state.products by loop through all available 
@@ -68,8 +77,9 @@ const checkExisting = (state, action) => {
         var index;
         var checking = state.products.find((e, pos) => {
             index = pos;
-            return e.item == action.payload.product
+            return Number(e.item.id) === Number(action.payload.product.id)
         })
+        
         if(checking) {
             excucute = false
             checking.quantity++
@@ -79,39 +89,29 @@ const checkExisting = (state, action) => {
                                 quantity: {$set: checking.quantity}
                             }
                         })
+            localStorage.setItem('cart', JSON.stringify(newCollection))
             return {
                 ...state,
                 products: newCollection
             }
         }
-        // for (var i = 0; i < state.products.length; i++) {
-        //     if (state.products[i].item == action.payload.product) {
-        //         excucute = false
-        //         let updateQuantity = state.products[i].quantity + 1
-        //         let newCollection = update(state.products,
-        //         {
-        //             [i]: {
-        //                 quantity: {$set: updateQuantity}
-        //             }
-        //         })
-        //         return {
-        //             ...state,
-        //             products: newCollection
-        //         }
-        //     }
-        // }
-    }
 
+    }
     if(excucute){
-        const add_cart = state.products.concat({
-            item: action.payload.product,
-            quantity: +1
-        });
-        return {
-            ...state,
-            products: add_cart
-        }
+        return add_existing_cart( state, action )
     }
 
+}
+//this + quantity if the item is in the cart
+const add_existing_cart = (state, action) => {
+    const add_cart = state.products.concat({
+        item: action.payload.product,
+        quantity: +1
+    });
+    localStorage.setItem('cart', JSON.stringify(add_cart))
+    return {
+        ...state,
+        products: add_cart
+    }
 }
 export default reducer

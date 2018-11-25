@@ -15,7 +15,7 @@ const product = (props) => {
                     <NavLink to={`/product/${props.id}`}>
                     <div className="card h-100" style={style} >
                         <div className="">
-                            <img className="card-img-top" src={props.img} alt="Can't get image" />
+                            <img className="card-img-top" src={props.img} alt="Error loading" />
 
                         </div>
                         <div className="card-body">

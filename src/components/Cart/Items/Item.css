@@ -1,0 +1,22 @@
+.form-control {
+    display: inline!important;
+}
+
+.card.border-cart {
+    border-radius: 0px;
+    border-top: none;
+    border-bottom: 0.5px solidrgba(226, 222, 222, 0.233)n!important;
+    border-left:none;
+    border-right: none;
+
+}
+
+.form-control {
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+
+}
+
+.img-thumbnail {
+    border: none
+}

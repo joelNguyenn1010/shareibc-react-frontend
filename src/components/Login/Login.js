@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as userActions from '../../store/actions/user-action'
 import './Login.css'
-import { Elements } from 'react-stripe-elements';
-import Checkout from '../Checkout/Checkout'
+import Checkout from '../Checkout/Card/Card'
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -52,9 +51,6 @@ class Login extends Component {
                     <input type="password" onChange={(event) => this.setState({ password: event.target.value })} />
                     <button>Submit</button>
                 </form>
-                <Elements>
-                    <Checkout />
-                </Elements>
             </div>
 
 
