@@ -10,10 +10,7 @@
 }
 
 
-
-
-
-.moveIn {
+.moveInE {
     animation-name: moveInBottom;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
