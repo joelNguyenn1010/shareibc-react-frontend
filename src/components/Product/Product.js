@@ -11,10 +11,9 @@ const product = (props) => {
     return (
         <React.Fragment>
             <section className="mx-auto mt-3 mb-3 ">
-<<<<<<< HEAD
                 <div className="col-lg-3 col-md-4 w-100 h-100">
                     <NavLink to={`/product/${props.id}`}>
-                        <div className="card h-100 card-single equal-height " style={style} >
+                        <div className="card h-100 card-single equal-height" style={style} >
                             <div className="card-thumb">
                                 <img src={props.img} alt="Can't get image" />
                             </div>
@@ -36,27 +35,6 @@ const product = (props) => {
                                     </div>
                             </div>
                         </div>
-=======
-            <div className="col-lg-3 col-md-4 w-100 h-100">
-            <NavLink to={`/product/${props.id}`}>
-                    <div className="card h-100 card-single" style={style} >
-                        <div className="card-thumb">
-                            <img src={props.img} alt="Can't get image" />
-                        </div>
-                        <div className="card-body">
-                            <h3 id="content" className="card-title">Name: {props.name}</h3>
-                            <h6 className="card-subtitle text-muted">Company: {props.company}</h6>
-                            <hr />
-                            <div class="pull-left card-info">
-                                <p className="card-text">Price: {props.price}</p>
-                                <p className="card-text">Value: {props.value}</p>
-                            </div>
-                            <div class="pull-right card-cart">
-                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                    </div>
->>>>>>> 6174f380516d565d5e6f0f86c0fc7a8effdf6e0e
                     </NavLink>
                 </div>
                 {/* <div className="col-lg-3 col-md-4 w-100 h-100 ">

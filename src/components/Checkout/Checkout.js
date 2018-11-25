@@ -41,7 +41,7 @@ class Checkout extends Component {
         "status": 1,
         "token": token.id
       }
-      console.log(this.state.details)
+      console.log(details)
       await axios.post("http://127.0.0.1:8000/api/order/create/", details)
         .then(res => {
           if (res.status === 200) {
