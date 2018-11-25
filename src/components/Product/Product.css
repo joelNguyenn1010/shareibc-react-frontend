@@ -31,6 +31,7 @@
     visibility: visible;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+<<<<<<< HEAD
 
 .card.card-single .card-body {
     padding-top: unset;
@@ -59,3 +60,29 @@
 .equal-height {
     flex: 1;
 }
+=======
+
+.card.card-single .card-body {
+    padding-top: unset;
+}
+
+.card.card-single .card-body .card-info {
+    width: 80%;
+}
+
+.card.card-single .card-body .card-info p {
+    font-size: 16px;
+    line-height: 0.5rem;
+    font-weight: 400;
+}
+
+.card.card-single .card-body .card-cart{
+    width: 20%;
+}
+
+.card.card-single .card-body .card-cart a i{
+    color: #747373;
+    font-size: 2rem;
+    font-weight: 400;
+}
+>>>>>>> 6174f380516d565d5e6f0f86c0fc7a8effdf6e0e
