@@ -65,31 +65,6 @@ class Products extends Component {
 
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-                        {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
-
-
                     </div>
                 </div>
             </React.Fragment>
