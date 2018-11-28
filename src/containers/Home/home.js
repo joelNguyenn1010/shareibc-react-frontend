@@ -6,7 +6,7 @@ import "./Home.css"
 class Home extends Component {
     render() {
         const style = {
-            backgroundImage: "url('http://127.0.0.1:8000/media/background/sydney_5.jpg')",
+            backgroundImage: "url('http://138.197.12.138/media/background/sydney_5.jpg')",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: '100%',

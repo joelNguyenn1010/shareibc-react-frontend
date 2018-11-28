@@ -17,3 +17,62 @@
     transform: translate(2%, 0%)
 
 }
+
+
+/* ------------- */
+
+
+/* The button in the header */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    /* make animation smoothier */
+    transition: all .2s;
+    position: relative;
+    color: white!important;
+}
+/* make animation when hover */
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px)
+    rgba(42, 94, 225, 0.79)!important;
+}
+
+.btn-white {
+    background-color: rgba(42, 94, 225, 0.79)!important;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+ 
+    /* CSS transitions allows you to change property values smoothly (from one value to another), over a given duration.  */
+    transition: all .4s;
+}
+
+
+
+
+.btn-animated {
+         /* Apply animation property */
+         animation-name: moveInBottom;
+         animation-duration: 0.5s;
+         animation-timing-function: ease-out;
+         animation-fill-mode: backwards;
+}
+/* make hover effect when hover */

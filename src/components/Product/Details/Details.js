@@ -8,7 +8,7 @@ class Details extends Component {
         mess: ''
     }
     componentDidMount(){
-        axios.get(`http://127.0.0.1:8000/api/product/${this.props.match.params.id}`)
+        axios.get(`http://138.197.12.138/api/product/${this.props.match.params.id}/`)
         .then(res => {
             this.setState({product: res.data})
         })

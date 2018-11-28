@@ -8,6 +8,7 @@ import axios from 'axios'
 import Catalogies from '../../components/Catalogies/Catalogies'
 import { connect } from 'react-redux'
 import './Products.css'
+import Carousel from '../../components/Carousel/Carousel'
 class Products extends Component {
 
     state = {
@@ -23,7 +24,7 @@ class Products extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/product/')
+        axios.get('http://138.197.12.138/api/product/')
             .then(res => {
                 this.setState({ products: res.data })
             })
@@ -34,7 +35,7 @@ class Products extends Component {
 
     }
     onSearch = (key) => {
-        axios.get(`http://127.0.0.1:8000/api/product/?p=${key}`)
+        axios.get(`http://138.197.12.138/?p=${key}`)
             .then(res => {
                 this.setState({ products: res.data })
             })
@@ -60,7 +61,9 @@ class Products extends Component {
         return (
             <React.Fragment>
                 {/* Product page */}
+                <Carousel />
                 <div className="container">
+  
                 <Catalogies onSearch={this.onSearch} />
 
                     <div className="row col-container d-flex justify-content-center animated fadeIn">

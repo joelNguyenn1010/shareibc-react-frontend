@@ -20,8 +20,8 @@ class Main extends Component {
 
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/products" exact component={AsyncProducts} />
                     <Container>
-                        <Route path="/products" exact component={AsyncProducts} />
                         <Route path='/login' exact component={AsyncAuthentication} />
                         <Route path='/register' exact component={AsyncRegister} />
                         <Route path='/logout' exact component={Logout} />

@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import './Checkout.css'
 import axios from 'axios'
 import { Elements } from 'react-stripe-elements';
 import Card from './Card/Card'
 import { clear_all_cart } from '../../store/actions/cart-action'
 import * as DETAILS from './Type'
+import ShippingDetail from './ShippingDetails/ShippingDetails';
 class Checkout extends Component {
   constructor(props) {
     super(props)
   }
   state = {
+    cardStatus: true,
     products: [],
     token: '',
     mess: '',
@@ -22,9 +25,17 @@ class Checkout extends Component {
       email: ''
     }
   }
+  onClickButton() {
+    // console.log('[onClick]')
+    // this.setState({cardStatus: false})
+  }
+
+  isFormValid = () => {
+ 
+  }
 
   getToken = async (token) => {
-    console.log(this.state.details)
+    this.setState({cardStatus: false})
     if (token) {
       var oldState = []
       this.props.cart.map(e => {
@@ -42,7 +53,7 @@ class Checkout extends Component {
         "token": token.id
       }
       console.log(details)
-      await axios.post("http://127.0.0.1:8000/api/order/create/", details)
+      await axios.post("http://138.197.12.138/api/order/create/", details)
         .then(res => {
           if (res.status === 200) {
             this.props.clear_all_cart()
@@ -80,42 +91,59 @@ class Checkout extends Component {
         details.last_name = e.target.value
         break;
       case DETAILS.POSTCODE:
-        details.postcode = Number(e.target.value)
+        let postcode = Number(e.target.value)
+        details.postcode = postcode === 0 ? null : postcode
         break;
       default:
         break;
     }
-    this.setState({ details })
+  
+    this.setState({ 
+      details
+     }, () => {} )
   }
 
   render() {
-
     return (
       <div className="container">
-        <h1>{this.state.mess}</h1>
-        <div className="row">
+        <form onSubmit={(e) => {
+          e.preventDefault()
+      
+        }
+          }>
+          <h1>{this.state.mess}</h1>
+          <div className="row">
+            <div className="card col-lg-8 mr-3 mt-4 mx-auto">
+              <div class="row mt-1">
+                <div class="col-md-12">
+                  <ul class="stepper stepper-vertical">         
+                        <ShippingDetail
+                          onChangeInput={this.onChangeInput} />
+               
+                    <li class="active">
+                      <a className="m-0" href="#!">
+                        <span class="circle">2</span>
+                        <span class="label">Payment</span>
+                      </a>
 
-          <div className="card col-lg-8 mr-3 mt-4 mx-auto">
-            <div className='card-body'>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <input className="form-control" placeholder="Address" onChange={e => this.onChangeInput(DETAILS.ADDRESS, e)} required />
-                <input className="form-control" placeholder="City" onChange={(e) => this.onChangeInput(DETAILS.CITY, e)} required />
-                <input className="form-control" type="email" placeholder="Email" onChange={(e) => this.onChangeInput(DETAILS.EMAIL, e)} required />
-                <input className="form-control" placeholder="First Name" onChange={(e) => this.onChangeInput(DETAILS.FIRSTNAME, e)} required />
-                <input className="form-control" placeholder="Last Name" onChange={(e) => this.onChangeInput(DETAILS.LASTNAME, e)} required />
-                <input className="form-control" type="number" placeholder="Postcode" onChange={(e) => this.onChangeInput(DETAILS.POSTCODE, e)} required />
-                <Elements>
-                  <Card
-                    products={this.state.products}
-                    setToken={this.getToken} />
-                </Elements>
-              </form>
+                      <div class="card-body step-content w-custom">
+                        <Elements>
+                          <Card
+                            products={this.state.products}
+                            setToken={this.getToken}
+                            cardStatus={this.state.cardStatus} 
+                            onClickButton={this.onClickButton}/>
+                        </Elements>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="card col-lg-3 mt-4">
             </div>
           </div>
-          <div className="card col-lg-3 mt-4">
-
-          </div>
-        </div>
+        </form>
       </div>
     );
   }
