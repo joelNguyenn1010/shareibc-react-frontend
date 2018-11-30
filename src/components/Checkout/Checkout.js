@@ -12,7 +12,7 @@ class Checkout extends Component {
     super(props)
   }
   state = {
-    cardStatus: true,
+    cardStatus: false,
     products: [],
     token: '',
     mess: '',
@@ -53,7 +53,7 @@ class Checkout extends Component {
         "token": token.id
       }
       console.log(details)
-      await axios.post("http://138.197.12.138/api/order/create/", details)
+      await axios.post("http://127.0.0.1:8000/api/order/create/", details)
         .then(res => {
           if (res.status === 200) {
             this.props.clear_all_cart()

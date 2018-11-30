@@ -35,7 +35,7 @@ class Products extends Component {
 
     }
     onSearch = (key) => {
-        axios.get(`http://138.197.12.138/?p=${key}`)
+        axios.get(`http://138.197.12.138/api/product/?p=${key}`)
             .then(res => {
                 this.setState({ products: res.data })
             })
@@ -62,10 +62,9 @@ class Products extends Component {
             <React.Fragment>
                 {/* Product page */}
                 <Carousel />
-                <div className="container">
-  
                 <Catalogies onSearch={this.onSearch} />
 
+                <div className="container">
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
                     </div>
