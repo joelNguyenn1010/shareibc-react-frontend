@@ -1,11 +1,12 @@
 import { ADD_TO_CART, DELETE_FROM_CART, SET_QUANTITY, CLEAR_CART } from '../actions/cart-action'
 import update from 'react-addons-update'
 const initialState = {
-    products: [
-    ]
+    products: [],
+    totalPrice: 0
 }
 
 const reducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_TO_CART:
             return add_to_cart(state, action)
@@ -17,37 +18,57 @@ const reducer = (state = initialState, action) => {
             localStorage.removeItem('cart')
             return {
                 ...state,
-                products: []
+                products: [],
+                totalPrice: 0
             }
         default:
             return state;
+
     }
 }
-const set_quantity = ( state, action ) => {
-   
-    if(action.payload.quantity <= 0) {
-       return delete_from_cart(state, action)
+
+const set_total_price = (state, action) => {
+
+    var totalPrice = 0
+    state.products.map(product => {
+        totalPrice += product.item.price * product.quantity
+    })
+    return totalPrice
+}
+
+
+const set_quantity = (state, action) => {
+    if (action.payload.quantity <= 0) {
+        return delete_from_cart(state, action)
     } else {
         var index;
-        var checking = state.products.find((e, pos) => {
+        var productInCart = state.products.find((e, pos) => {
             index = pos;
             return Number(e.item.id) === Number(action.payload.id)
         })
-    
-        if(checking) {
-            checking.quantity = action.payload.quantity
+
+        if (productInCart) {
+            productInCart.quantity = action.payload.quantity
             let newCollection = update(state.products,
-                        {
-                            [index]: {
-                                quantity: {$set: Number(checking.quantity)}
-                            }
-                        })
-                        localStorage.setItem('cart', JSON.stringify(newCollection))
-                        return {
-                            ...state,
-                            products: newCollection
-                        }
-         
+                {
+                    [index]: {
+                        quantity: { $set: Number(productInCart.quantity) },
+                        subtotal: { $set: Number(productInCart.quantity*productInCart.item.price) }
+                    }
+
+                })
+            let totalPrice = 0
+            newCollection.map(product => {
+                totalPrice += product.subtotal 
+            })
+            let newState = {
+                ...state,
+                products: newCollection,
+                totalPrice: Number(parseFloat(totalPrice).toFixed(2))
+            }
+            localStorage.setItem('cart', JSON.stringify(newState))
+            return newState
+
         }
         return {
             ...state,
@@ -55,7 +76,7 @@ const set_quantity = ( state, action ) => {
     }
 }
 
-const delete_from_cart = ( state, action ) => {
+const delete_from_cart = (state, action) => {
     const updatedArray = state.products.filter(
         (product) => {
             return product.item.id != action.payload.id
@@ -79,26 +100,16 @@ const add_to_cart = (state, action) => {
             index = pos;
             return Number(e.item.id) === Number(action.payload.product.id)
         })
-        
-        if(checking) {
+        if (checking) {
             excucute = false
-            checking.quantity++
-            let newCollection = update(state.products,
-                        {
-                            [index]: {
-                                quantity: {$set: checking.quantity}
-                            }
-                        })
-            localStorage.setItem('cart', JSON.stringify(newCollection))
-            return {
+            let test = {
                 ...state,
-                products: newCollection
             }
+            return test
         }
-
     }
-    if(excucute){
-        return add_existing_cart( state, action )
+    if (excucute) {
+        return add_existing_cart(state, action)
     }
 
 }
@@ -106,12 +117,17 @@ const add_to_cart = (state, action) => {
 const add_existing_cart = (state, action) => {
     const add_cart = state.products.concat({
         item: action.payload.product,
-        quantity: +1
+        quantity: 1,
+        subtotal: Number(action.payload.product.price)
     });
-    localStorage.setItem('cart', JSON.stringify(add_cart))
-    return {
+    console.log(add_cart)
+    // let total = Number(add_cart.item.price) * Number(add_cart.quantity)
+    let newState = {
         ...state,
-        products: add_cart
+        products: add_cart,
+        totalPrice: 0
     }
+    localStorage.setItem('cart', JSON.stringify(newState))
+    return newState
 }
 export default reducer

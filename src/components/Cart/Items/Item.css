@@ -16,11 +16,34 @@
     box-shadow: none!important;
 
 }
-
+.text-danger{
+    display: block!important;
+}
 .img-thumbnail {
     border: none
 }
 
 ul {
     list-style-type: none;
+}
+
+ul li {
+    display: inline;
+}
+
+.equal-margin {
+    margin-top: 0.85rem;
+}
+
+.position {
+    position: absolute;
+    transform: translate(-15.5%, 50%);
+}
+.p-custom {
+    padding-left: 1.2rem;
+}
+
+.btn-position {
+    margin-top: 5rem;
+
 }

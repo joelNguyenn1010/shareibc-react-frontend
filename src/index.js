@@ -15,7 +15,16 @@ const rootReducer = combineReducers({
     cartReducer,
     form: formReducer,
 })
-var cart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
+var cart = {
+  products: [],
+  totalPrice: 0
+}
+// JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
+
+if(JSON.parse(localStorage.getItem('cart'))){
+    cart = JSON.parse(localStorage.getItem('cart'))
+}
+
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
@@ -32,7 +41,7 @@ const enhancer = composeEnhancers(
 const store = createStore(rootReducer, { 
   userReducer: { auth: localStorage.getItem('token')},
   cartReducer: {
-    products: cart
+    ...cart
   }
 } ,enhancer)
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
