@@ -5,13 +5,14 @@ import asyncComponents from './../hoc/asyncComponents'
 import { Route, Switch } from 'react-router-dom'
 import Logout from '../../components/Logout/Logout'
 import Details from '../../components/Product/Details/Details.js'
+import Footer from '../../components/Footer/Footer'
 import Container from './Container'
 import './Main.css'
 const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Checkout'));
 const AsyncProducts = asyncComponents(() => import('./../ProductsContainer/Products'));
 const AsyncAuthentication = asyncComponents(() => import('./../../components/Login/Login'));
 const AsyncRegister = asyncComponents(() => import('./../../components/Register/Register'));
-const AsyncAboutUs = asyncComponents(() =>import('../AboutUs/AboutUs'))
+const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'))
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'))
 class Main extends Component {
     render() {
@@ -26,13 +27,13 @@ class Main extends Component {
                         <Route path='/login' exact component={AsyncAuthentication} />
                         <Route path='/register' exact component={AsyncRegister} />
                         <Route path='/logout' exact component={Logout} />
-                        <Route path='/about-us' component={AsyncAboutUs} />
+                        <Route path='/contact-us' component={AsyncContactUs} />
                         <Route path='/cart' exact component={AsyncCart} />
                         <Route path='/product/:id' exact component={Details} />
                         <Route path='/checkout' exact component={AsyncCheckout} />
                     </Container>
                 </Switch>
-
+                <Footer />
             </div>
         )
     }

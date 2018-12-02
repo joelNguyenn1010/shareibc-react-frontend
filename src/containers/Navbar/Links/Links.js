@@ -34,7 +34,7 @@ class Links extends Component {
                     <NavLink to="/products" exact className="nav-link waves-effect waves-light">Products</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link waves-effect waves-light" to="/about-us">About us</NavLink>
+                    <NavLink className="nav-link waves-effect waves-light" to="/contact-us">Contact us</NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/cart" exact className="nav-link waves-effect waves-light">Cart {this.props.cart.length}</NavLink>

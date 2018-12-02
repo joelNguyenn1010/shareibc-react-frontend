@@ -30,8 +30,8 @@ class Checkout extends Component {
         <button disabled={this.props.cardStatus} className="btn btn-primary btn-sm ml-0 mt-5" onClick={() =>
           {
             this.submit()
-          
-          }}>Pay</button>
+            this.props.onClickButton()
+          }}>Place Order</button>
 
 
 

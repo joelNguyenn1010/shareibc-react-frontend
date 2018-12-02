@@ -82,11 +82,20 @@ const delete_from_cart = (state, action) => {
             return product.item.id != action.payload.id
         }
     );
-    localStorage.setItem('cart', JSON.stringify(updatedArray))
-    return {
+    let totalPrice = 0
+    updatedArray.map(product => {
+        totalPrice += product.subtotal 
+    })
+
+
+    let newState = {
         ...state,
-        products: updatedArray ? updatedArray : []
+        products: updatedArray ? updatedArray : [],
+        totalPrice
     }
+
+    localStorage.setItem('cart', JSON.stringify(newState))
+    return newState
 }
 
 
@@ -120,12 +129,15 @@ const add_existing_cart = (state, action) => {
         quantity: 1,
         subtotal: Number(action.payload.product.price)
     });
-    console.log(add_cart)
+    let totalPrice = 0
+    add_cart.map(product => {
+        totalPrice += product.subtotal 
+    })
     // let total = Number(add_cart.item.price) * Number(add_cart.quantity)
     let newState = {
         ...state,
         products: add_cart,
-        totalPrice: 0
+        totalPrice:  Number(parseFloat(totalPrice).toFixed(2))
     }
     localStorage.setItem('cart', JSON.stringify(newState))
     return newState
