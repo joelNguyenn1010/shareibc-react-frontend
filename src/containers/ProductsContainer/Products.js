@@ -12,14 +12,7 @@ import Carousel from '../../components/Carousel/Carousel'
 class Products extends Component {
 
     state = {
-        products: [{
-            id: 1,
-            name: 'Hotel',
-            company: 'Apple',
-            price: 12.99,
-            value: 1000.99,
-            img: 'https://pix10.agoda.net/hotelImages/489/489266/489266_17032920250052009110.jpg?s=1024x768'
-        }]
+        products: []
 
     }
 
@@ -46,6 +39,7 @@ class Products extends Component {
     handlePay = () => {
         axios.post()
     }
+    
     render() {
         const allProduct = this.state.products.map(product => {
             return (<Product
@@ -64,7 +58,7 @@ class Products extends Component {
                 <Carousel />
                 <Catalogies onSearch={this.onSearch} />
 
-                <div className="container">
+                <div className="container mb-5">
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         {allProduct.length === 0 ? <h1>Can't find any products</h1> : allProduct}
                     </div>

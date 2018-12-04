@@ -7,6 +7,7 @@ import Card from './Card/Card'
 import { clear_all_cart } from '../../store/actions/cart-action'
 import * as DETAILS from './Type'
 import ShippingDetail from './ShippingDetails/ShippingDetails';
+import GeneralInfo from '../Cart/GeneralInfo/GeneralInfo'
 class Checkout extends Component {
   constructor(props) {
     super(props)
@@ -31,11 +32,14 @@ class Checkout extends Component {
   }
 
   isFormValid = () => {
- 
+
   }
 
+
+
+
   getToken = async (token) => {
-    this.setState({cardStatus: false})
+    this.setState({ cardStatus: false })
     if (token) {
       var oldState = []
       this.props.cart.map(e => {
@@ -97,10 +101,10 @@ class Checkout extends Component {
       default:
         break;
     }
-  
-    this.setState({ 
+
+    this.setState({
       details
-     }, () => {} )
+    }, () => { })
   }
 
   render() {
@@ -108,31 +112,30 @@ class Checkout extends Component {
       <div className="container">
         <form onSubmit={(e) => {
           e.preventDefault()
-      
+
         }
-          }>
+        }>
           <h1>{this.state.mess}</h1>
           <div className="row">
             <div className="card col-lg-8 mr-3 mt-4 mx-auto">
-              <div class="row mt-1">
-                <div class="col-md-12">
-                  <ul class="stepper stepper-vertical">         
-                        <ShippingDetail
-                          onChangeInput={this.onChangeInput} />
-               
-                    <li class="active">
+              <div className="row mt-1">
+                <div className="col-md-12">
+                  <ul className="stepper stepper-vertical">
+                    <ShippingDetail
+                      onChangeInput={this.onChangeInput} />
+                    <li className="active">
                       <a className="m-0" href="#!">
-                        <span class="circle">2</span>
-                        <span class="label">Payment</span>
+                        <span className="circle">2</span>
+                        <span className="label">Payment</span>
                       </a>
 
-                      <div class="card-body step-content w-custom">
+                      <div className="card-body step-content w-custom">
                         <Elements>
                           <Card
                             products={this.state.products}
                             setToken={this.getToken}
-                            cardStatus={this.state.cardStatus} 
-                            onClickButton={this.onClickButton}/>
+                            cardStatus={this.state.cardStatus}
+                            onClickButton={this.onClickButton} />
                         </Elements>
                       </div>
                     </li>
@@ -140,7 +143,12 @@ class Checkout extends Component {
                 </div>
               </div>
             </div>
-            <div className="card col-lg-3 mt-4">
+            <div className="col-lg-4 mt-4">
+          
+              <GeneralInfo
+                total={this.props.cart.length}
+                totalprice={this.props.totalPrice}
+              />
             </div>
           </div>
         </form>
@@ -155,7 +163,8 @@ const mapActionsToProps = {
 
 const mapStateToProps = state => (
   {
-    cart: state.cartReducer.products
+    cart: state.cartReducer.products,
+    totalPrice: state.cartReducer.totalPrice
   }
 )
 
