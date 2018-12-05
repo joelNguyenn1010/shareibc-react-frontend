@@ -30,7 +30,7 @@ class Details extends Component {
         )
     }
     componentDidMount() {
-        axios.get(`http://138.197.12.138/api/product/${this.props.match.params.id}`)
+        axios.get(`http://138.197.12.138/api/product/${this.props.match.params.id}/`)
             .then(res => {
                 this.setState({
                     product: res.data,
@@ -88,11 +88,11 @@ class Details extends Component {
                     </div>
                     <div className="buy">
                     {/* Set Quantity */}
-                        <div class="input-group input-group-sm mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text quantity px-2" id="inputGroup-sizing-sm">Quantity</span>
+                        <div className="input-group input-group-sm mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text quantity px-2" id="inputGroup-sizing-sm">Quantity</span>
                             </div>
-                            <input type="number" class="form-control" name="quantity" pattern="[0-9]*" inputmode="numeric" value="1"></input>
+                            <input type="number" className="form-control" name="quantity" pattern="[0-9]*" inputMode="numeric" defaultValue="1" />
                         </div>
                     {/*  */}
                         <a className="buy-button" onClick={this.add_cart}>
@@ -104,7 +104,7 @@ class Details extends Component {
             </div>
         </div>
 
-        
+
         )
     }
 }
