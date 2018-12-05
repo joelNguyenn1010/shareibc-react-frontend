@@ -48,7 +48,7 @@ class Products extends Component {
                 company={product.company}
                 price={product.price}
                 value={product.value}
-                img={product.image}
+                img={product.front_images}
                 id={product.id} />
             )
         })
