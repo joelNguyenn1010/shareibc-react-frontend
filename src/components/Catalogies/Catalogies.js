@@ -2,6 +2,9 @@ import React from 'react'
 import Search from './Search/Search'
 import Menu from './Menu/Menu'
 class Catalogies extends React.Component {
+    onSortPriceLow = (order) =>{
+        
+    }
     render() {
 
         return (
@@ -14,10 +17,10 @@ class Catalogies extends React.Component {
                         <div className="navbar-collapse collapse ml-5" id="navbarSupportedContent1">
 
                             <ul className="navbar-nav mr-auto">
-                                <Menu />
+                                <Menu onSortPriceLow={this.onSortPriceLow} />
                             </ul>
 
-                            <Search onSearch={this.props.onSearch} />
+                            <Search />
                         </div>
                     </div>
                 </nav>

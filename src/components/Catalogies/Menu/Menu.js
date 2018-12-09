@@ -1,16 +1,34 @@
 import React from 'react'
-const Menu = () => {
-    return (
-        <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Sort By</a>
-            <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="#">Price - Lowest</a>
-                <a className="dropdown-item" href="#">Price - Highest</a>
-                <a className="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-    )
+import { connect } from 'react-redux'
+import { apiFilter, on_loader } from '../../../store/actions/products-action'
+import { Type } from './Type'
+class Menu extends React.Component {
+
+    onFilter = (type) => {
+        this.props.on_loader()
+        this.props.apiFilter(type)
+    }
+
+    render() {
+        return (
+            <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Sort By</a>
+                <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a className="dropdown-item" onClick={() => this.onFilter(Type.PRICE_ACS)}>Price - Lowest</a>
+                    <a className="dropdown-item"  onClick={() => this.onFilter(Type.PRICE_DECS)}>Price - Highest</a>
+                    <a className="dropdown-item"  onClick={() => this.onFilter(Type.NAME_ACS)}>Name - A-Z</a>
+                    <a className="dropdown-item"  onClick={() => this.onFilter(Type.NAME_DECS)}>Name - Z-A</a>
+
+                </div>
+            </li>
+        )
+    }
 }
 
-export default Menu
+
+const mapActionToProps = {
+    on_loader,
+    apiFilter
+}
+export default connect(null, mapActionToProps)(Menu)
