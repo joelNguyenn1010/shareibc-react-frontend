@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { apiSearch,on_loader } from '../../../store/actions/products-action'
 class Search extends Component {
     constructor(props){
         super(props)
@@ -9,11 +11,11 @@ class Search extends Component {
     }
 
     handleSubmit(event) {
-        this.props.onSearch(this.state.key)
+        this.props.on_loader()
+        this.props.apiSearch(this.state.key)
         event.preventDefault();
     }
     render() {
-        console.log(this.state.key)
         return (
             
             <React.Fragment>
@@ -28,4 +30,9 @@ class Search extends Component {
         )
     }
 }
-export default Search
+
+const mapActionToProps = {
+    apiSearch,
+    on_loader
+}
+export default connect(null, mapActionToProps)(Search)

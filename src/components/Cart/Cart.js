@@ -14,7 +14,6 @@ class Cart extends React.Component {
 
     items = (props) => props.cart.map(cart => {
         let total = Number(cart.item.price) * Number(cart.quantity)
-        console.log(cart)
         return (
             <Item
                 key={cart.item.id}
@@ -24,7 +23,7 @@ class Cart extends React.Component {
                 quantity={cart.quantity}
                 productQty={cart.item.quantity}
                 total={total}
-                image={cart.item.image}
+                image={cart.item.front_images}
             />
         )
     })

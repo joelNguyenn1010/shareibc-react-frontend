@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { CircleLoader } from 'react-spinners';
-import { css } from 'react-emotion';
-import { add_to_card, delete_from_cart, set_quantity } from '../../../store/actions/cart-action';
+import Loading from '../../Loading/Loading'
+import { add_to_card, delete_from_cart, set_quantity } from '../../../store/actions/cart-action'
 import "./Details.css"
 class Details extends Component {
     state = {
@@ -12,24 +11,6 @@ class Details extends Component {
         loader: true
     }
 
-    loading = () => {
-        const style = css`
-        display: block;
-        margin: 0 auto 5rem auto;
-        border-color: red;
-    `;
-        return (
-            <div className="container">
-                <CircleLoader
-                    className={style}
-                    sizeUnit={"px"}
-                    size={200}
-                    color={'#123abc'}
-                    loading={this.state.loader}
-                />
-            </div>
-        )
-    }
     componentDidMount() {
         axios.get(`http://138.197.12.138/api/product/${this.props.match.params.id}/`)
             .then(res => {

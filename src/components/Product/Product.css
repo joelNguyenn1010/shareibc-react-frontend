@@ -1,5 +1,4 @@
 .card.card-single {
-    border-radius: 15px;
     margin-top: 15px;
     margin-bottom: 15px;
     -webkit-transition: 0.3s all;
@@ -32,12 +31,13 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.card.card-single .card-body {
-    padding-top: unset;
-}
 
 .card.card-single .card-body .card-info {
-    width: 80%;
+    width: 50%;
+}
+
+.card-body{
+    height: 3rem!important;
 }
 
 .card.card-single .card-body .card-info p {
@@ -54,4 +54,22 @@
     color: #747373;
     font-size: 2rem;
     font-weight: 400;
+}
+
+
+.box {
+    position: relative;
+    bottom: 0px;
+
+}
+.equal-height {
+    flex: 1;
+    padding: 16px;
+}
+
+a {
+    color: rgb(50, 48, 48)
+}
+a:hover {
+    color: rgb(50, 48, 48);
 }

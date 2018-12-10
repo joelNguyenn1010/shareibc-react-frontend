@@ -1,20 +1,32 @@
-import { LOAD_PRODUCTS } from '../actions/products-action'
+import { LOAD_PRODUCTS, ERROR_LOAD_PRODUCTS, LOADER, on_loader } from '../actions/products-action'
 
 const initialState = {
-    products: {
-        name: '',
-        company: '',
-        price: 1.00,
-        value: 1.00
-    }
+    products: [],
+    error: '',
+    loader: true
 }
 
-const reducer = (state = initialState, action) =>{ 
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case LOAD_PRODUCTS:
             return {
                 ...state,
-                products: action.payload.products
+                products: action.payload.products,
+                loader: false
+            }
+        case ERROR_LOAD_PRODUCTS:
+            return {
+                ...state,
+                error: action.payload.error,
+                products: [],
+                loader: false
+            }
+        case LOADER:
+            return {
+                ...state,
+                products: [],
+                error: '',
+                loader: true
             }
         default:
             return state;
