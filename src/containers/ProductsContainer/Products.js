@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Product from './../../components/Product/Product'
-import Home from './../Home/home'
-import Details from '../../components/Product/Details/Details'
-import { Link, Route } from 'react-router-dom'
+
 import { load_product, apiProducts, apiSearch } from '../../store/actions/products-action'
 import axios from 'axios'
 import Catalogies from '../../components/Catalogies/Catalogies'
@@ -57,38 +55,21 @@ class Products extends Component {
                 id={product.id} />
             )
         })
-        console.log(['all'])
-        console.log(allProduct)
+
         return (
             <React.Fragment>
-                {/* Product page */}
-                <Carousel />
+            <Carousel />
+            <div className="container mt-5">
                 <Catalogies onSearch={this.onSearch} />
-
                 <div className="container mb-5">
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         <Loading loader={this.props.loader} />
                         {allProduct.length === 0 ? <NotFoundProduct mess={this.props.error} /> : allProduct}
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.state.mess} /> : allProduct}
-
+              
                     </div>
                 </div>
+            </div>
             </React.Fragment>
-
         )
     }
 }

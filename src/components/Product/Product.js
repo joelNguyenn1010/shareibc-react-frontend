@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './Product.css'
 class Product extends React.Component {

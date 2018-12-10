@@ -38,7 +38,7 @@ class Cart extends React.Component {
             <div>
                 <h1 className="cart-header">Shopping Cart</h1>
                 <div className="row">
-                    <div className='col-md-7 ml-3 mr-3'>
+                    <div className='col-md-7'>
                         <div className="table-responsive">
                             <table className="table table-condensed border">
                                 <thead className="card-header">
@@ -55,17 +55,17 @@ class Cart extends React.Component {
                             </table>
                         </div>
                     </div>
-                    <div className="col-md-4 ">
+                    <div className="col-md-5">
                         <GeneralInfo
                             total={this.props.cart.length}
                             totalprice={this.props.totalPrice}
                         />
                     </div>
-                    <div className="choices-btn m-4">
+                </div>
+                <div className="choices-btn m-4">
                         <button className="btn btn-outline-primary" onClick={this.props.clear_all_cart} >Clear all</button>
                         <NavLink to='/checkout' className="btn btn-white" >Checkout</NavLink>
                     </div>
-                </div>
             </div>
         )
     }

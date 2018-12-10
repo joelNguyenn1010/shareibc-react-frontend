@@ -5,8 +5,6 @@ export const LOADER = 'loader:loader'
 
 
 export function load_product(products) {
-    console.log('[HERERERER]')
-    console.log(products)
     return {
         type: LOAD_PRODUCTS,
         payload: {
@@ -27,9 +25,6 @@ export function error_load_product(error) {
 export function on_loader(){
     return {
         type: LOADER,
-        payload: {
-            loader: true
-        }
     }
 }
 
@@ -45,7 +40,7 @@ export function apiSearch(key) {
             }
         })
         .catch(error => {
-            dispatch(error_load_product("Unable to find products"))
+            dispatch(error_load_product("Server error"))
         })
     }
 }
@@ -61,7 +56,7 @@ export function apiFilter(type) {
             }
         })
         .catch(error => {
-            dispatch(error_load_product("Unable to find products"))
+            dispatch(error_load_product("Server error"))
         })
     }
 }
@@ -77,7 +72,7 @@ export function apiProducts() {
             }
         })
         .catch(error => {
-            dispatch(error_load_product("Unable to load products"))
+            dispatch(error_load_product("Server error"))
         })
     }
 }

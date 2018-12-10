@@ -7,12 +7,16 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import productReducer from './store/reducers/products'
 import userReducer from './store/reducers/user'
 import cartReducer from './store/reducers/cart'
+import carouselReducer from './store/reducers/carousel'
+import checkoutReducer from  './store/reducers/checkout'
 import thunk from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 const rootReducer = combineReducers({
     productReducer,
     userReducer,
     cartReducer,
+    carouselReducer,
+    checkoutReducer,
     form: formReducer,
 })
 var cart = {

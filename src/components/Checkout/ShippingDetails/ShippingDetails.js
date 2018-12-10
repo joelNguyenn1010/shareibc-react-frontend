@@ -1,27 +1,48 @@
 import React from 'react'
 import * as DETAILS from './../Type'
+import {connect} from 'react-redux'
+import TextField from '@material-ui/core/TextField';
 
 const ShippingDetail = (props) => {
     console.log(props)
     return (
         <React.Fragment>
-            <li class="completed">
+            <li className="completed">
                 <a href="#!">
-                    <span class="circle">1</span>
-                    <span class="label">Shipping Address</span>
+                    <span className="circle">1</span>
+                    <span className="label">Shipping Address</span>
                 </a>
                 <div className="card-body step-content w-custom">
-                    <input className="form-control" placeholder="Address" onChange={e => props.onChangeInput(DETAILS.ADDRESS, e)} />
-                    <input className="form-control" placeholder="City" onChange={(e) => props.onChangeInput(DETAILS.CITY, e)} />
-                    <input className="form-control" type="email" placeholder="Email" onChange={(e) => props.onChangeInput(DETAILS.EMAIL, e)} />
-                    <input className="form-control" placeholder="First Name" onChange={(e) => props.onChangeInput(DETAILS.FIRSTNAME, e)} />
-                    <input className="form-control" placeholder="Last Name" onChange={(e) => props.onChangeInput(DETAILS.LASTNAME, e)} />
-                    <input className="form-control" type="number" placeholder="Postcode" onChange={(e) => props.onChangeInput(DETAILS.POSTCODE, e)} />
-
+                    <span className="text-danger">{props.errors.address}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.addressValidation} placeholder="Address" onChange={e => props.onChangeInput(DETAILS.ADDRESS, e)} />
+                    
+                    <span className="text-danger">{props.errors.city}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.cityValidation} placeholder="City" onChange={(e) => props.onChangeInput(DETAILS.CITY, e)} />
+                    
+                    <span className="text-danger">{props.errors.email}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.emailValidation} placeholder="Email" onChange={(e) => props.onChangeInput(DETAILS.EMAIL, e)} />
+                    
+                    <span className="text-danger">{props.errors.first_name}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.first_nameValidation} placeholder="First Name" onChange={(e) => props.onChangeInput(DETAILS.FIRSTNAME, e)} />
+                    
+                    <span className="text-danger">{props.errors.last_name}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.last_nameValidation} placeholder="Last Name" onChange={(e) => props.onChangeInput(DETAILS.LASTNAME, e)} />
+                    
+                    <span className="text-danger">{props.errors.postcode}</span>
+                    <TextField className="w-100 mb-3" error={props.errors.postcodeValidation} type="number" placeholder="Postcode" onChange={(e) => props.onChangeInput(DETAILS.POSTCODE, e)} />
                 </div>
             </li>
         </React.Fragment>
     )
 }
 
-export default ShippingDetail
+const mapStateToProps = state => (
+    {
+      cart: state.cartReducer.products,
+      totalPrice: state.cartReducer.totalPrice,
+      details: state.checkoutReducer.details,
+      errors: state.checkoutReducer.errors
+    }
+  )
+
+export default connect(mapStateToProps)(ShippingDetail)

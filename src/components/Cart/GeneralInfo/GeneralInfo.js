@@ -10,14 +10,14 @@ class GeneralInfo extends React.Component {
     }
     render() {
         return (
-            <div className="border">
-                <div class="card-header">
+            <div className="card border">
+                <div className="card-header">
                     <h1>General Info</h1>
                 </div>
                 <div className="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Total product: {this.props.total}</li>
-                        <li class="list-group-item">Total price: {this.props.totalprice}</li>
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">Total product: {this.props.total}</li>
+                        <li className="list-group-item">Total price: {this.props.totalprice}</li>
                     </ul>
                 </div>
             </div>

@@ -27,11 +27,12 @@ class Checkout extends Component {
         <p>{this.state.mess}</p>
         <label>Credit Card</label>
         <CardElement style={{base: {fontSize: '18px'}}}/>
-        <button disabled={this.props.cardStatus} className="btn btn-primary btn-sm ml-0 mt-5" onClick={() =>
-          {
-            this.submit()
-            this.props.onClickButton()
-          }}>Place Order</button>
+        {/* <button disabled={this.props.cardStatus} className="btn btn-primary btn-sm ml-0 mt-5" 
+        // onClick={() =>
+        //   {
+        //     this.submit()
+        //   }}
+          >Place Order</button> */}
 
 
 
@@ -43,4 +44,4 @@ class Checkout extends Component {
   }
 }
 
-export default injectStripe(Checkout);
+export default Checkout;

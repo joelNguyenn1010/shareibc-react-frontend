@@ -102,13 +102,12 @@ class Details extends Component {
                                             <div class="input-group-prepend">
                                                 <span className="px-2">Quantity</span>
                                             </div>
-                                            <input className="input-quantity" type="number" name="quantity" value="1"></input>
                                         </div>
                                     {/*  */}
                                     </div>
                                     <div className="col col-lg-4">
-                                        <button className="photo-button detail-button">Add to cart</button>
-                                        <button className="photo-button detail-button">Some text here</button>    
+                                        <button className="btn btn-primary">Add to cart</button>
+                                        <button className="btn btn-primary">Some text here</button>    
                                     </div>
                                 </div>
                             </li>
