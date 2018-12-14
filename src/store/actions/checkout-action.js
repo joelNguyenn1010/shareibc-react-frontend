@@ -34,29 +34,43 @@ export function isValidate(details) {
             last_nameValidation: false,
             email: '',
             emailValidation: false,
+            phone_number: '',
+            phone_numberValidation: false,
             isError: false
         }
-            if(details.address.length < 5){
-                errors.address = "Please enter address"
-                errors.addressValidation = true
-                errors.isError = true
-            }
-            if(details.city.length < 5){
-                errors.city = "Please enter city"
-                errors.cityValidation = true
-                errors.isError = true
-            }
+            // if(details.address.length < 5){
+            //     errors.address = "Please enter address"
+            //     errors.addressValidation = true
+            //     errors.isError = true
+            // }
+            // if(details.city.length < 5){
+            //     errors.city = "Please enter city"
+            //     errors.cityValidation = true
+            //     errors.isError = true
+            // }
      
-            if(details.postcode === null){
-                errors.postcode = "Please enter postcode"
-                errors.postcodeValidation = true
+            // if(details.postcode === null){
+            //     errors.postcode = "Please enter postcode"
+            //     errors.postcodeValidation = true
 
+            //     errors.isError = true
+            // }
+            if(details.phone_number === null){
+                errors.phone_number = "Phone number is required"
+                errors.phone_numberValidation = true
                 errors.isError = true
+            } else if(details.phone_number) {
+                if(details.phone_number.toString().length < 10) {
+                    errors.phone_number = "Phone number should have at least 10 digits"
+                    errors.phone_numberValidation = true
+                    errors.isError = true
+                }
             }
+           
+
             if(details.first_name.length <2){
                 errors.first_name = "Please enter first name"
                 errors.first_nameValidation = true
-
                 errors.isError = true
             }
             if(details.last_name.length <2){

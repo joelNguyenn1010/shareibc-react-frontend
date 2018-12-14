@@ -4,4 +4,4 @@ export const POSTCODE = 'detail:postcode'
 export const FIRSTNAME = 'detail:firstname'
 export const LASTNAME = 'detail:lastname'
 export const EMAIL = 'detail:email'
-
+export const PHONE = 'detail:phone'

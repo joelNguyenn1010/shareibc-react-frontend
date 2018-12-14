@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Register.css'
 import { reduxForm, Field } from 'redux-form'
 import {connect } from 'react-redux'
-import * as userActions from '../../store/actions/user-action'
+import { register } from '../../store/actions/user-action'
 import { compose } from 'redux';
 class Register extends Component {
     state = {
@@ -83,7 +83,10 @@ const mapStateToProps = (state) => {
         errorMesss: state.userReducer.mess
     }
 }
+const mapActionToProps = {
+    register
+}
 export default compose(
-    connect(mapStateToProps, userActions),
+    connect(mapStateToProps, mapActionToProps),
     reduxForm({form: 'register'})
 )(Register)

@@ -8,15 +8,22 @@ const initialState = {
         postcode: null,
         first_name: '',
         last_name: '',
-        email: ''
+        email: '',
+        phone_number: null
     },
     errors: {
         address: '',
+        addressValidation: false,
         city: '',
+        cityValidation: false,
         postcode: '',
+        postcodeValidation: false,
         first_name: '',
+        first_nameValidation: false,
         last_name: '',
+        last_nameValidation: false,
         email: '',
+        emailValidation: false,
         isError: false
     }
 }

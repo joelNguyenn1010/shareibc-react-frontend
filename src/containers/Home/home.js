@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 import "./Home.css"
-
+import axios from 'axios'
 
 
 class Home extends Component {
+    componentDidMount() {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5ndXllbm5nb2Nhbmg1OTBAZ21haWwuY29tIiwiZXhwIjoxNTQ0Njc1MTEwLCJlbWFpbCI6Im5ndXllbm5nb2Nhbmg1OTBAZ21haWwuY29tIn0.gjCOCmnanc9nmGGI2QTLAoGeg8YRdS_Hxxou6hpz8OE`
+        }
+
+        axios.get("http://127.0.0.1:8000/api/user/verify", {headers})
+        .then(res=>console.log(res))
+        .catch(error=>console.log(error))
+    }
+
     render() {
         const style = {
             backgroundImage: "url('http://138.197.12.138/media/background/sydney_5.jpg')",

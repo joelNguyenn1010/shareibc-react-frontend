@@ -23,12 +23,18 @@ var cart = {
   products: [],
   totalPrice: 0
 }
+var auth = {
+  token: ''
+}
 // JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
 
 if(JSON.parse(localStorage.getItem('cart'))){
     cart = JSON.parse(localStorage.getItem('cart'))
 }
 
+if(JSON.parse(localStorage.getItem('auth'))) {
+  auth = JSON.parse(localStorage.getItem('auth'))
+}
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
@@ -43,7 +49,9 @@ const enhancer = composeEnhancers(
 
 
 const store = createStore(rootReducer, { 
-  userReducer: { auth: localStorage.getItem('token')},
+  userReducer: { 
+    ...auth
+  },
   cartReducer: {
     ...cart
   }

@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Checkout.css'
 import axios from 'axios'
-import { CardElement, injectStripe } from 'react-stripe-elements';
-
-import { Elements } from 'react-stripe-elements';
+import { injectStripe } from 'react-stripe-elements';
+import SuccesCheckout from './SuccessCheckout/SuccesCheckout'
 import Card from './Card/Card'
 import { clear_all_cart } from '../../store/actions/cart-action'
 import { update_details, isValidate } from '../../store/actions/checkout-action'
 import * as DETAILS from './Type'
 import ShippingDetail from './ShippingDetails/ShippingDetails';
 import GeneralInfo from '../Cart/GeneralInfo/GeneralInfo'
-import { CircleLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
+import { css } from 'react-emotion';
+import Processing from './Processing/Processing'
+
 
 
 class Checkout extends Component {
@@ -20,6 +22,7 @@ class Checkout extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this)
   }
   state = {
+    auth: '',
     cardStatus: false,
     products: [],
     token: '',
@@ -30,33 +33,38 @@ class Checkout extends Component {
       postcode: null,
       first_name: '',
       last_name: '',
-      email: ''
+      email: '',
+      phone_number: null
     },
-    errors: {}
+    loadingMess: '',
+    errors: {},
+    submitButton: "Place order",
+    success: false,
+    processing: false
   }
 
-  isFormValid = () => {
-    let isError = false;
-    let errors = {
-      addressError: "",
-      cityError: "",
-      emailError: "",
-      first_nameError: "",
-      last_nameError: "",
-      postCodeError: ""
-    };
-    console.log(this.state.details.address.length < 5)
-    if (this.state.details.address.length < 5) {
-      isError = true;
-      errors.addressError = "Username needs to be atleast 5 characters long";
-    }
-    this.setState({
-      errors
-    });
-    console.log(this.state)
-    console.log(isError)
-    return isError;
-  }
+  // isFormValid = () => {
+  //   let isError = false;
+  //   let errors = {
+  //     addressError: "",
+  //     cityError: "",
+  //     emailError: "",
+  //     first_nameError: "",
+  //     last_nameError: "",
+  //     postCodeError: ""
+  //   };
+  //   console.log(this.state.details.address.length < 5)
+  //   if (this.state.details.address.length < 5) {
+  //     isError = true;
+  //     errors.addressError = "Username needs to be atleast 5 characters long";
+  //   }
+  //   this.setState({
+  //     errors
+  //   });
+  //   console.log(this.state)
+  //   console.log(isError)
+  //   return isError;
+  // }
 
   // getToken = async (token) => {
   //   this.setState({ cardStatus: false })
@@ -120,6 +128,10 @@ class Checkout extends Component {
         let postcode = Number(e.target.value)
         details.postcode = postcode === 0 ? null : postcode
         break;
+      case DETAILS.PHONE:
+        let phone_number = Number(e.target.value)
+        details.phone_number = phone_number === 0 ? null : phone_number
+        break;
       default:
         break;
     }
@@ -127,12 +139,17 @@ class Checkout extends Component {
     this.setState({
       details: details
       //this exicute the validation
-    }, () => { this.isFormValid() })
+    }
+      // , () => { this.isFormValid() }
+    )
   }
 
   onSubmitForm(e) {
+    this.props.isValidate(this.props.details)
     this.setState({
-      cardStatus: true
+      cardStatus: true,
+      submitButton: "",
+      processing: true
     })
     this.props.stripe.createToken({ name: this.props.details.email }).then(({ token }) => {
       if (token && !this.props.errors.isError) {
@@ -146,47 +163,69 @@ class Checkout extends Component {
 
         let details = {
           ...this.props.details,
-          "total_price": 1233,
+          "total_price": this.props.totalPrice,
           "orders": oldState,
           "status": 1,
           "token": token.id
         }
-        console.log(details)
-        axios.post("http://127.0.0.1:8000/api/order/create/", details)
+        let headers = {
+          'Content-Type': 'application/json',
+        }
+        if (this.props.user && this.props.user.length > 0) {
+          headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${this.props.user}`
+          }
+        }
+        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers })
           .then(res => {
             console.log(res.data)
             if (res.status === 201) {
               // this.props.clear_all_cart()
-              console.log('[success charge]')
+              this.setState({
+                success: true,
+                processing: false
+              })
             } else {
               this.setState({
                 mess: 'Something went wrong, please try again'
               })
             }
           })
-          .catch(error => console.log(error.message))
+          .catch(error => {
+            console.log(error.response)
+
+            this.setState({
+              mess: error.response.data.Error
+            })
+
+          }
+          )
           .then(() => {
             this.setState({
-              cardStatus: false
+              cardStatus: false,
+              submitButton: "Place order",
+              processing: false
             })
           })
       } else {
-        console.log("ERRRORRRR FORM")
         this.setState({
-          cardStatus: false
+          cardStatus: false,
+          submitButton: "Try again",
+          processing: false
         })
       }
     });
-    this.props.isValidate(this.props.details)
+
     e.preventDefault()
 
   }
 
   render() {
+
     return (
       <div className="container">
         <form className="w-100 h-100" onSubmit={this.onSubmitForm}>
-          <h1>{this.state.mess}</h1>
           <div className="row">
             <div className="card col-lg-8 mr-3 mt-4 mx-auto">
               <div className="row mt-1">
@@ -214,15 +253,26 @@ class Checkout extends Component {
                         //   {
                         //     this.submit()
                         //   }}
-                        >Place Order
-          </button>
+                        >{this.state.submitButton}
+                          <ClipLoader
+                            sizeUnit={"px"}
+                            size={20}
+                            color={'#ffffff'}
+                            loading={this.state.cardStatus}
+                          />
+                          {this.state.loadingMess}
+                        </button>
+                        <span>{this.state.loadingMess}</span>
                       </div>
                     </li>
                   </ul>
 
+                  <h1 className="text-center text-danger">{this.state.mess}</h1>
 
                 </div>
+
               </div>
+
             </div>
             <div className="col-lg-4 mt-4">
 
@@ -233,6 +283,8 @@ class Checkout extends Component {
             </div>
           </div>
         </form>
+
+        <SuccesCheckout success={this.state.success} />
       </div>
     );
   }
@@ -249,7 +301,8 @@ const mapStateToProps = state => (
     cart: state.cartReducer.products,
     totalPrice: state.cartReducer.totalPrice,
     details: state.checkoutReducer.details,
-    errors: state.checkoutReducer.errors
+    errors: state.checkoutReducer.errors,
+    user: state.userReducer.token
   }
 )
 

@@ -1,7 +1,8 @@
-import { REGISTER, ERROR , LOGIN, LOGOUT} from './../actions/types'
+import { REGISTER, ERROR , LOGIN, LOGOUT, FACEBOOK_LOGIN} from './../actions/types'
 const initialState = {
     auth: {},
-    mess: ''
+    mess: '',
+    loginType: ''
 }
 
 const reducer = (state = initialState, action) =>{ 
@@ -9,7 +10,8 @@ const reducer = (state = initialState, action) =>{
         case REGISTER:
             return {
                 ...state,
-                auth: action.payload,
+                ...action.payload,
+                loginType: LOGIN,
                 mess: 'Success'
             }
         case ERROR:
@@ -20,10 +22,18 @@ const reducer = (state = initialState, action) =>{
         case LOGIN:
             return {
                 ...state,
-                auth: action.payload
+                ...action.payload,
+                loginType: LOGIN,
+                mess: ''
+            }
+        case FACEBOOK_LOGIN:
+            return {
+                ...state,
+                ...action.payload,
+                loginType: FACEBOOK_LOGIN,
+                mess: ''
             }
         case LOGOUT:
-            localStorage.removeItem('token')
             return {
                 ...state,
                 auth: action.payload.auth,
