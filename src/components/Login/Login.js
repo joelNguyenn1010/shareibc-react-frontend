@@ -90,7 +90,7 @@ class Login extends Component {
                 name: response.name,
                 email: response.email
             }
-            
+            console.log(user)
             this.props.facebookLogin(user, () => {
                 this.props.history.push('/')
             })
@@ -133,9 +133,7 @@ class Login extends Component {
                                 type="password"
                                 onChange={(event) => this.setState({ password: event.target.value })}
                             />
-                            <div className="container text-center mt-5">
                                 <span className="text-danger">{this.props.userReducer.mess}</span>
-                            </div>
                             <div className="container text-center mt-5">
                                 <FacebookLoginButton
                                     responseFacebook={this.responseFacebook}
@@ -143,7 +141,7 @@ class Login extends Component {
                             </div>
 
                             <div className="text-center button-transform">
-                                <button className="btn btn-outline-primary" >Submit</button>
+                                <button className="btn btn-outline-info waves-effect" >Submit</button>
                             </div>
                         </form>
                     </div>

@@ -1,8 +1,10 @@
 import { REGISTER, ERROR , LOGIN, LOGOUT, FACEBOOK_LOGIN} from './../actions/types'
 const initialState = {
-    auth: {},
+    token: '',
     mess: '',
-    loginType: ''
+    loginType: '',
+    email: '',
+    name: ''
 }
 
 const reducer = (state = initialState, action) =>{ 
@@ -30,6 +32,7 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 ...action.payload,
+
                 loginType: FACEBOOK_LOGIN,
                 mess: ''
             }
@@ -37,6 +40,9 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 auth: action.payload.auth,
+                email: '',
+                name: '',
+                token:'',
                 mess: action.payload.mess
             }
         default:

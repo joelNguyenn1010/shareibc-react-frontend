@@ -17,7 +17,7 @@ export const login = (user, callback) => async dispatch => {
     try {
         const res = await axios.post('http://127.0.0.1:8000/api/user/api-token-auth/', user)
         const auth = {
-            token: res.data.token
+            ...res.data
         }
         dispatch({type: LOGIN, payload: auth})
         localStorage.setItem('auth', JSON.stringify(auth))

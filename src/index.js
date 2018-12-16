@@ -24,7 +24,9 @@ var cart = {
   totalPrice: 0
 }
 var auth = {
-  token: ''
+  token: '',
+  mess: '',
+  loginType: ''
 }
 // JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
 

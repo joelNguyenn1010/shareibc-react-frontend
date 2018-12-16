@@ -12,11 +12,11 @@ import './Main.css'
 import { Elements } from 'react-stripe-elements'
 
 const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Checkout'));
-
+const AsyncOrder = asyncComponents(() => import('../../components/Order/Order'))
 const AsyncAuthentication = asyncComponents(() => import('./../../components/Login/Login'));
 const AsyncRegister = asyncComponents(() => import('./../../components/Register/Register'));
-const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'))
-const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'))
+const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
+const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 class Main extends Component {
     render() {
         return (
@@ -29,6 +29,7 @@ class Main extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/products" exact component={Products} />
                     <Container>
+                        <Route path='/order' component={AsyncOrder} />
                         <Route path='/login' exact component={AsyncAuthentication} />
                         <Route path='/register' exact component={AsyncRegister} />
                         <Route path='/logout' exact component={Logout} />
