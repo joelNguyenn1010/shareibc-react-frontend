@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import 'Order.css'
+import './Order.css'
 import * as order from './testOrder.json'
 class Order extends React.Component {
     state = {
