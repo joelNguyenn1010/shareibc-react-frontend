@@ -110,7 +110,7 @@ img {
 
 .description {
   font-size: 1.5rem;
-}
+} /*
 .carousel .thumb.selected, .carousel .thumb:hover {
   border: none;
   padding: 2px;
@@ -124,10 +124,18 @@ img {
 
 .carousel.carousel-slider {
   height: 570px;
+} */
+
+.image-gallery-thumbnail.active {
+  border: none;
+  opacity: 0.7;
 }
 
-}
 
+
+.image-gallery-left-nav:hover::before,
+.image-gallery-right-nav:hover::before {
+  color: #fff!important; }
 
 
 

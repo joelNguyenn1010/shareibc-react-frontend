@@ -48,20 +48,35 @@ class Details extends Component {
     }
 
     renderDetails = () => {
-        let images;
+        let images = [];
         if (this.state.product.images_product) {
-            images = this.state.product.images_product.slice(0, 11).map(i => {
-                console.log(i.image)
-                return (
-                    <div>
-                        <img className="img-carousel" src={i.image} />
-                        
-                    </div>
-                
-                )
+            images = [
+                {
+                    original: this.state.product.front_images,
+                    thumbnail: this.state.product.front_images,
+                    sizes: '100px',
+                    originalAlt: "Can't find image",
+                    
+                }
+            ]
+            this.state.product.images_product.slice(0, 11).map(i => {
+                let temp = {
+                    original: i.image,
+                    thumbnail: i.image,
+                }
+                images.push(temp)
+                //     return (
+                //         <div>
+                //             <img className="img-carousel" src={i.image} />
+
+                //         </div>
+
+                //     )
             })
 
         }
+
+        console.log(images)
 
         // const images = [
         //     {
@@ -78,23 +93,27 @@ class Details extends Component {
         //       }
         //   ]
 
-          
+
 
         return (
             <React.Fragment>
                 <div className="product-carousel">
-                    <Carousel
+                    {/* <Carousel
                         showStatus={false}
                         emulateTouch
                         showArrows={false}
                         useKeyboardArrows
                     >
                         {images}
-                    </Carousel>
+                    </Carousel> */}
 
 
 
-      {/* <ImageGallery items={images} /> */}
+                    <ImageGallery 
+                    items={images} 
+                    showFullscreenButton={false}
+                    showPlayButton={false}
+                    disableArrowKeys={true}/>
 
                 </div>
 
