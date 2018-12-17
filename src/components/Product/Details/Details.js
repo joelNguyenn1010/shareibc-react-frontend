@@ -3,7 +3,8 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import Loading from '../../Loading/Loading'
 import { add_to_card, delete_from_cart, set_quantity } from '../../../store/actions/cart-action'
-import { Carousel } from 'react-responsive-carousel';
+import CartModal from './CartModal/CartModal'
+import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import CardDetails from './CardDetails/CardDetails'
 import ImageGallery from 'react-image-gallery';
@@ -15,8 +16,19 @@ class Details extends Component {
     state = {
         product: {},
         mess: '',
-        loader: true
+        loader: true,
+        modal: false,
     }
+
+    //for mdbreact modals
+  toggle =()=> {
+   
+    this.setState({
+        modal: !this.state.modal
+    }, () => {console.log(this.state)});
+  }
+
+
 
     componentDidMount() {
         axios.get(`http://127.0.0.1:8000/api/product/${this.props.match.params.id}/`)
@@ -119,6 +131,7 @@ class Details extends Component {
 
 
                 <CardDetails
+                    toggle={this.toggle}
                     product={this.state.product}
                     add_cart={this.add_cart}
                 />
@@ -143,14 +156,17 @@ class Details extends Component {
         )
     }
     render() {
-
+        const style = {
+            display: 'block'
+        }
 
         return (
             <div className="container">
                 <Loading loader={this.state.loader} />
                 {this.state.loader === false ? this.renderDetails() : ""}
-
-
+                <CartModal 
+                toggle={this.toggle}
+                modal={this.state.modal}/>
             </div >
 
         )

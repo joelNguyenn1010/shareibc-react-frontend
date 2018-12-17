@@ -8,13 +8,13 @@ import Details from '../../components/Product/Details/Details.js'
 import Footer from '../../components/Footer/Footer'
 import Container from './Container'
 import Products from '../ProductsContainer/Products'
+import Login from '../../components/Login/Login'
+import Register from '../../components/Register/Register'
 import './Main.css'
 import { Elements } from 'react-stripe-elements'
-
+import alreadyAuth from '../hoc/alreadyAuth'
 const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Checkout'));
 const AsyncOrder = asyncComponents(() => import('../../components/Order/Order'))
-const AsyncAuthentication = asyncComponents(() => import('./../../components/Login/Login'));
-const AsyncRegister = asyncComponents(() => import('./../../components/Register/Register'));
 const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 class Main extends Component {
@@ -25,13 +25,12 @@ class Main extends Component {
                 <Navbar />
 
                 <Switch>
-
                     <Route path="/" exact component={Home} />
                     <Route path="/products" exact component={Products} />
                     <Container>
                         <Route path='/order' component={AsyncOrder} />
-                        <Route path='/login' exact component={AsyncAuthentication} />
-                        <Route path='/register' exact component={AsyncRegister} />
+                        <Route path='/login' exact component={alreadyAuth(Login)} />
+                        <Route path='/register' exact component={alreadyAuth(Register)} />
                         <Route path='/logout' exact component={Logout} />
                         <Route path='/contact-us' component={AsyncContactUs} />
                         <Route path='/cart' exact component={AsyncCart} />

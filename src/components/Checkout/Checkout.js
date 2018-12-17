@@ -11,8 +11,7 @@ import * as DETAILS from './Type'
 import ShippingDetail from './ShippingDetails/ShippingDetails';
 import GeneralInfo from '../Cart/GeneralInfo/GeneralInfo'
 import { ClipLoader } from 'react-spinners';
-import { css } from 'react-emotion';
-import Processing from './Processing/Processing'
+
 
 
 
@@ -174,10 +173,11 @@ class Checkout extends Component {
         if (this.props.user && this.props.user.length > 0) {
           headers = {
             'Content-Type': 'application/json',
-            'Authorization': `JWT ${this.props.user}`
+            'Authorization': `Bearer facebook ${this.props.user}`
           }
         }
-        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers })
+        console.log(this.props.headers)
+        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers: this.props.headers+"FF" })
           .then(res => {
             console.log(res.data)
             if (res.status === 201) {
@@ -194,10 +194,16 @@ class Checkout extends Component {
           })
           .catch(error => {
             console.log(error.response)
+            if (error.response || error.response.data.Error) {
+              this.setState({
+                mess: error.response.data.Error
+              })
+            } else {
+              this.setState({
+                mess: "Server error"
+              })
+            }
 
-            this.setState({
-              mess: error.response.data.Error
-            })
 
           }
           )
@@ -302,7 +308,8 @@ const mapStateToProps = state => (
     totalPrice: state.cartReducer.totalPrice,
     details: state.checkoutReducer.details,
     errors: state.checkoutReducer.errors,
-    user: state.userReducer.token
+    user: state.userReducer.token,
+    headers: state.userReducer.headers
   }
 )
 

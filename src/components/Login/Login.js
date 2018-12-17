@@ -75,7 +75,7 @@ class Login extends Component {
                 'password': this.state.password
             }
             this.props.login(user, () => {
-                this.props.history.push('/')
+                this.props.history.push('/products')
             });
         }
     }

@@ -26,7 +26,10 @@ var cart = {
 var auth = {
   token: '',
   mess: '',
-  loginType: ''
+  loginType: '',
+  email: '',
+  name: '',
+  headers: {}
 }
 // JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
 
@@ -49,7 +52,7 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-
+console.log(auth)
 const store = createStore(rootReducer, { 
   userReducer: { 
     ...auth

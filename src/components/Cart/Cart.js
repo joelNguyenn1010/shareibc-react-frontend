@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Item from './Items/Item'
 import { NavLink } from 'react-router-dom'
+import CartTable from './CartTable/CartTable'
 import './Cart.css'
 import EmptyCart from './EmptyCart/EmptyCart'
 import GeneralInfo from './GeneralInfo/GeneralInfo'
@@ -11,22 +12,6 @@ class Cart extends React.Component {
         super(props)
     }
 
-
-    items = (props) => props.cart.map(cart => {
-        let total = Number(cart.item.price) * Number(cart.quantity)
-        return (
-            <Item
-                key={cart.item.id}
-                id={cart.item.id}
-                name={cart.item.name}
-                description={cart.item.description}
-                quantity={cart.quantity}
-                productQty={cart.item.quantity}
-                total={total}
-                image={cart.item.front_images}
-            />
-        )
-    })
 
 
 
@@ -39,7 +24,9 @@ class Cart extends React.Component {
                 <h1 className="cart-header">Shopping Cart</h1>
                 <div className="row">
                     <div className='col-md-7'>
-                        <div className="table-responsive">
+                    <CartTable 
+                    />
+                        {/* <div className="table-responsive">
                             <table className="table table-condensed border">
                                 <thead className="card-header">
                                     <tr>
@@ -53,7 +40,7 @@ class Cart extends React.Component {
                                 {this.items(this.props)}
 
                             </table>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-md-5">
                         <GeneralInfo

@@ -4,46 +4,68 @@ const initialState = {
     mess: '',
     loginType: '',
     email: '',
-    name: ''
+    name: '',
+    headers: {}
 }
 
 const reducer = (state = initialState, action) =>{ 
     switch(action.type){
         case REGISTER:
-            return {
+            let userRegister = {
                 ...state,
                 ...action.payload,
                 loginType: LOGIN,
+                name: action.payload.first_name + " " + action.payload.last_name,
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `JWT ${action.payload.token}`,
+                },
                 mess: 'Success'
             }
+            localStorage.setItem('auth', JSON.stringify(userRegister))
+            return userRegister
         case ERROR:
             return {
                 ...state,
                 mess: action.payload
             }
         case LOGIN:
-            return {
+            let userLogin = {
                 ...state,
                 ...action.payload,
                 loginType: LOGIN,
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `JWT ${action.payload.token}`,
+                },
                 mess: ''
             }
+            localStorage.setItem('auth', JSON.stringify(userLogin))
+            return userLogin
         case FACEBOOK_LOGIN:
-            return {
+            let userFacebook = {
                 ...state,
                 ...action.payload,
 
                 loginType: FACEBOOK_LOGIN,
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization" :`Bearer facebook ${action.payload.token}`
+                },
                 mess: ''
             }
+            localStorage.setItem('auth', JSON.stringify(userFacebook))
+
+            return userFacebook
         case LOGOUT:
             return {
                 ...state,
-                auth: action.payload.auth,
                 email: '',
                 name: '',
                 token:'',
-                mess: action.payload.mess
+                mess: '',
+                headers: {},
+                loginType: ''
             }
         default:
             return state;

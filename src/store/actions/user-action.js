@@ -5,8 +5,6 @@ export const register = (newUser, callback) => async dispatch => {
     try {
         const res = await axios.post('http://127.0.0.1:8000/api/user/auth/create', newUser)
         dispatch({ type: REGISTER, payload: res.data })
-
-        localStorage.setItem('auth', JSON.stringify(res.data))
         callback()
     } catch (e) {
         dispatch({ type: ERROR, payload: 'Error occur, please try again' })
@@ -20,7 +18,6 @@ export const login = (user, callback) => async dispatch => {
             ...res.data
         }
         dispatch({type: LOGIN, payload: auth})
-        localStorage.setItem('auth', JSON.stringify(auth))
         callback()
     } catch (e) {
         dispatch({ type: ERROR, payload: 'Username or password is incorrect, please try again' })
@@ -32,13 +29,20 @@ export const facebookLogin = (user, callback) => dispatch => {
         type:FACEBOOK_LOGIN,
         payload: user
     })
-    localStorage.setItem('auth', JSON.stringify(user))
     callback()
 }
 
-export const logout = (callback) => async dispatch => {
-    localStorage.removeItem('auth')
-    dispatch({ type: LOGOUT, payload: { auth: '', mess: 'You have been logout' } })
+export const logout = (callback) => dispatch => {
+    var auth = {
+        token: '',
+        mess: '',
+        loginType: '',
+        email: '',
+        name: '',
+        headers: {}
+      }
+    localStorage.setItem('auth', JSON.stringify(auth))
+    dispatch({ type: LOGOUT , payload: '' })
     callback()
 }
 
@@ -61,6 +65,14 @@ export const isAuthenticated = (token) => async dispatch => {
     }
 
 }
+
+    // if(auth.token && auth.loginType === FACEBOOK_LOGIN) {
+    //     return {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer facebook ${auth.token}`
+    //     }
+    // }
+
 // export function load_product(username, password) {
 //     return {
 //         type: LOGIN,

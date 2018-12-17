@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button } from 'mdbreact'
 const CardDetails = (props) => {
     return (
         <div className="card mb-5">
@@ -13,7 +14,11 @@ const CardDetails = (props) => {
                             <div className="col col-lg-2">Value: <span>{props.product.value}</span></div>
                             <div className="col col-lg-2">Quantity: <span>{props.product.quantity}</span></div>
                             <div className="col col-lg-4">
-                                <button className="btn btn-primary" onClick={props.add_cart}>Add to cart</button>
+      
+                                <Button color="primary" onClick={() => {
+                                    props.toggle(8)
+                                    props.add_cart()
+                                }}>Add to cart</Button>
                             </div>
                         </div>
                     </li>

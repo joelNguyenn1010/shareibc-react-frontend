@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import {headerS} from '../../store/actions/user-action'
 import './Order.css'
 import * as order from './testOrder.json'
 class Order extends React.Component {
@@ -12,13 +13,13 @@ class Order extends React.Component {
         //THIS IS FOR TEST AND CREATE UI
         // console.log(order.default)
 
-
         //THIS IS FOR PRODUCTION
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${this.props.user.token}`
-        }
-
+        const headers = this.props.user.headers
+            // 'Content-Type': 'application/json',
+            // 'Authorization': `Bearer facebook ${this.props.user.token}`
+            
+        
+        console.log(headers)
         axios.get('http://127.0.0.1:8000/api/order/', { headers })
             .then(res => {
                 if(res.data && res.data.length > 0) {
@@ -35,17 +36,17 @@ class Order extends React.Component {
            
             })
             .catch(error => {
-                if (error.response.status === 401 || error.response.status === 403) {
-                    this.setState({
-                        orders: [],
-                        mess: "You need to login in order to do that"
-                    })
-                } else {
-                    this.setState({
-                        orders: [],
-                        mess: "Server error"
-                    })
-                }
+                // if (error.response.status === 401 || error.response.status === 403) {
+                //     this.setState({
+                //         orders: [],
+                //         mess: "You need to login in order to do that"
+                //     })
+                // } else {
+                //     this.setState({
+                //         orders: [],
+                //         mess: "Server error"
+                //     })
+                // }
             })
     }
 
@@ -63,4 +64,5 @@ const mapStateToProps = (state) => {
         user: state.userReducer
     }
 }
+
 export default connect(mapStateToProps)(Order)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-export default ChildComponent => {
+import { withRouter } from 'react-router'
+
+export default (ChildComponent) => {
   class ComposedComponent extends Component {
     // Our component just got rendered
     componentDidMount() {
@@ -11,8 +13,9 @@ export default ChildComponent => {
       this.shouldNavigateAway();
     }
     shouldNavigateAway() {
-      if (!this.props.auth) {
-        this.props.history.push('/');
+      console.log(this.props.auth)
+      if (this.props.auth) {
+        this.props.history.push('/products');
       }
     }
     render() {
@@ -20,7 +23,7 @@ export default ChildComponent => {
     }
   }
   function mapStateToProps(state) {
-    return { auth: state.userReducer.auth.token };
+    return { auth: state.userReducer.token };
   }
-  return connect(mapStateToProps)(ComposedComponent);
+  return connect(mapStateToProps)(withRouter(ComposedComponent));
 };
