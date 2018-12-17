@@ -1,4 +1,5 @@
 import axios from 'axios'
+import conf from '../../conf'
 export const LOAD_PRODUCTS = 'load:products'
 export const ERROR_LOAD_PRODUCTS = 'error:products'
 export const LOADER = 'loader:loader'
@@ -30,7 +31,7 @@ export function on_loader(){
 
 export function apiSearch(key) {
     return dispatch => {
-        axios.get(`http://138.197.12.138/api/product/?search=${key}`)
+        axios.get(`${conf.BASE_URL}/api/product/?search=${key}`)
         .then(res => {
             console.log('[SEARCH]')
             if(res.data && res.data.length > 0) {
@@ -47,7 +48,7 @@ export function apiSearch(key) {
 
 export function apiFilter(type) {
     return dispatch => {
-        axios.get(`http://138.197.12.138/api/product/?ordering=${type}`)
+        axios.get(`${conf.BASE_URL}/api/product/?ordering=${type}`)
         .then(res => {
             if(res.data && res.data.length > 0) {
                 dispatch(load_product(res.data))
@@ -63,7 +64,7 @@ export function apiFilter(type) {
 
 export function apiProducts() {
     return dispatch => {
-        axios.get('http://127.0.0.1:8000/api/product/')
+        axios.get(`${conf.BASE_URL}/api/product/`)
         .then(res => {
             if(res.data && res.data.length > 0) {
                 dispatch(load_product(res.data))
