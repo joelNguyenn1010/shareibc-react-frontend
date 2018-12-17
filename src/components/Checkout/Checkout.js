@@ -16,10 +16,7 @@ import { ClipLoader } from 'react-spinners';
 
 
 class Checkout extends Component {
-  constructor(props) {
-    super(props)
-    this.onSubmitForm = this.onSubmitForm.bind(this)
-  }
+
   state = {
     auth: '',
     cardStatus: false,
@@ -143,7 +140,7 @@ class Checkout extends Component {
     )
   }
 
-  onSubmitForm(e) {
+  onSubmitForm = (e) => {
     this.props.isValidate(this.props.details)
     this.setState({
       cardStatus: true,
@@ -167,17 +164,17 @@ class Checkout extends Component {
           "status": 1,
           "token": token.id
         }
-        let headers = {
-          'Content-Type': 'application/json',
-        }
-        if (this.props.user && this.props.user.length > 0) {
-          headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer facebook ${this.props.user}`
-          }
-        }
+        // let headers = {
+        //   'Content-Type': 'application/json',
+        // }
+        // if (this.props.user && this.props.user.length > 0) {
+        //   headers = {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': `Bearer facebook ${this.props.user}`
+        //   }
+        // }
         console.log(this.props.headers)
-        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers: this.props.headers+"FF" })
+        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers: this.props.headers })
           .then(res => {
             console.log(res.data)
             if (res.status === 201) {
@@ -193,16 +190,16 @@ class Checkout extends Component {
             }
           })
           .catch(error => {
-            console.log(error.response)
-            if (error.response || error.response.data.Error) {
-              this.setState({
-                mess: error.response.data.Error
-              })
-            } else {
-              this.setState({
-                mess: "Server error"
-              })
-            }
+            console.log(error)
+            // if (error.response || error.response.data.Error) {
+            //   this.setState({
+            //     mess: error.response.data.Error
+            //   })
+            // } else {
+            //   this.setState({
+            //     mess: "Server error"
+            //   })
+            // }
 
 
           }
@@ -222,16 +219,26 @@ class Checkout extends Component {
         })
       }
     });
-
     e.preventDefault()
-
+    this.something(e)
   }
+
+  something = (function(e) {
+    var executed = false;
+    return function(e) {
+        if (!executed) {
+            executed = true;
+            e.target.className += ' was-validated';
+
+        }
+    };
+})();
 
   render() {
 
     return (
       <div className="container">
-        <form className="w-100 h-100" onSubmit={this.onSubmitForm}>
+        <form className="needs-validation" noValidate onSubmit={this.onSubmitForm}>
           <div className="row">
             <div className="card col-lg-8 mr-3 mt-4 mx-auto">
               <div className="row mt-1">
