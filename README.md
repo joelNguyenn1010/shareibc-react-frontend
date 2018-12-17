@@ -3,5 +3,6 @@ CSS:
 ## Bootstrap
 https://mdbootstrap.com/docs/.
 
-## Material for component
-https://material-ui.com/.
+
+React Bootstrap
+https://mdbootstrap.com/docs/react/
