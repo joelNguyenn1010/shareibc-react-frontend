@@ -23,19 +23,19 @@ export function isValidate(details) {
     return dispatch => {
         let errors = {
             address: '',
-            addressValidation: false,
+            addressValidation: '',
             city: '',
-            cityValidation: false,
+            cityValidation: '',
             postcode: '',
-            postcodeValidation: false,
+            postcodeValidation: '',
             first_name: '',
-            first_nameValidation: false,
+            first_nameValidation: '',
             last_name: '',
-            last_nameValidation: false,
+            last_nameValidation: '',
             email: '',
-            emailValidation: false,
+            emailValidation: '',
             phone_number: '',
-            phone_numberValidation: false,
+            phone_numberValidation: '',
             isError: false
         }
             // if(details.address.length < 5){
@@ -57,12 +57,13 @@ export function isValidate(details) {
             // }
             if(details.phone_number === null){
                 errors.phone_number = "Phone number is required"
-                errors.phone_numberValidation = true
+                errors.phone_numberValidation = 'invalid'
                 errors.isError = true
             } else if(details.phone_number) {
-                if(details.phone_number.toString().length < 10) {
-                    errors.phone_number = "Phone number should have at least 10 digits"
-                    errors.phone_numberValidation = true
+                let re = /^\+?1?\d{9,15}$/;
+                if(!re.test(details.phone_number)) {
+                    errors.phone_number = "Phone number should have at least 10 digits and have international format +99999999"
+                    errors.phone_numberValidation ='invalid'
                     errors.isError = true
                 }
             }
@@ -70,19 +71,19 @@ export function isValidate(details) {
 
             if(details.first_name.length <2){
                 errors.first_name = "Please enter first name"
-                errors.first_nameValidation = true
+                errors.first_nameValidation = 'invalid'
                 errors.isError = true
             }
             if(details.last_name.length <2){
                 errors.last_name = "Please enter last name"
-                errors.last_nameValidation = true
+                errors.last_nameValidation = 'invalid'
 
                 errors.isError = true
             }
             let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if(!re.test(details.email)){
                 errors.email = "Please enter valid email"
-                errors.emailValidation = true
+                errors.emailValidation = 'invalid'
                 errors.isError = true
             }
             dispatch(assert_error(errors))

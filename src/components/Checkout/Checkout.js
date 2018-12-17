@@ -191,16 +191,24 @@ class Checkout extends Component {
           })
           .catch(error => {
             console.log(error)
-            // if (error.response || error.response.data.Error) {
-            //   this.setState({
-            //     mess: error.response.data.Error
-            //   })
-            // } else {
-            //   this.setState({
-            //     mess: "Server error"
-            //   })
-            // }
+            if(error.response) {
 
+            
+            if (error.response || error.response.data.Error) {
+              this.setState({
+                mess: error.response.data.Error
+              })
+            } else {
+              this.setState({
+                mess: "Server error"
+              })
+            }
+
+          } else {
+            this.setState({
+              mess: "Server error, please log out and try again"
+            })
+          }
 
           }
           )
@@ -222,7 +230,12 @@ class Checkout extends Component {
     e.preventDefault()
     this.something(e)
   }
-
+  toggle = () => {
+    this.props.history.push('/')
+    this.setState({
+      success: !this.state.success
+    })
+  }
   something = (function(e) {
     var executed = false;
     return function(e) {
@@ -297,7 +310,10 @@ class Checkout extends Component {
           </div>
         </form>
 
-        <SuccesCheckout success={this.state.success} />
+        <SuccesCheckout 
+        success={this.state.success} 
+        toggle={this.toggle}
+        />
       </div>
     );
   }

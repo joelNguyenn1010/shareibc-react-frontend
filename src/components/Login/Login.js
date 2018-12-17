@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as userActions from '../../store/actions/user-action'
 import './Login.css'
-import Checkout from '../Checkout/Card/Card'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
+import { MDBInput } from "mdbreact";
+
 import FacebookLoginButton from './FacebookLogin';
 
 class Login extends Component {
@@ -118,7 +116,7 @@ class Login extends Component {
                         <form onSubmit={this.handleSubmit} className="form-root">
                             {/* <label>Email:</label>
                         <input type="email"  /> */}
-                            <TextField
+                            <MDBInput
                                 error={this.state.errors.usernameError}
                                 className="w-100 mt-4"
                                 label="Email"
@@ -126,7 +124,7 @@ class Login extends Component {
                             {/* <label >Password:</label> */}
                             {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
 
-                            <TextField
+                            <MDBInput
                                 error={this.state.errors.passwordError}
                                 className="w-100 mt-4 mb-3"
                                 label="Password"
