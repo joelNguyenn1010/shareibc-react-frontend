@@ -22,13 +22,7 @@
 
 
 
-ul {
-    list-style-type: none;
-}
 
-ul li {
-    display: inline;
-}
 
 .equal-margin {
     margin-top: 0.85rem;

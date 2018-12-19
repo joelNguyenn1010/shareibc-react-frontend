@@ -6,7 +6,6 @@ import axios from 'axios'
 
 class Home extends Component {
 
-
     render() {
         const style = {
             backgroundImage: `url('${Background}')`,
