@@ -53,7 +53,7 @@ const set_quantity = (state, action) => {
                 {
                     [index]: {
                         quantity: { $set: Number(productInCart.quantity) },
-                        subtotal: { $set: Number(productInCart.quantity*productInCart.item.price) }
+                        subtotal: { $set: Number(productInCart.quantity*productInCart.item.price).toFixed(2) }
                     }
 
                 })
@@ -127,7 +127,7 @@ const add_existing_cart = (state, action) => {
     const add_cart = state.products.concat({
         item: action.payload.product,
         quantity: 1,
-        subtotal: Number(action.payload.product.price)
+        subtotal: Number(action.payload.product.price).toFixed(2)
     });
     let totalPrice = 0
     add_cart.map(product => {

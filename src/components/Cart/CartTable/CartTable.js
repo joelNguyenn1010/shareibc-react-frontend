@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import Item from '../Items/Item'
 import './CartTable.css'
 const items = (props) => props.cart.map(cart => {
-    let total = Number(cart.item.price) * Number(cart.quantity)
     return (
         <Item
             key={cart.item.id}
@@ -12,7 +11,7 @@ const items = (props) => props.cart.map(cart => {
             description={cart.item.description}
             quantity={cart.quantity}
             productQty={cart.item.quantity}
-            total={total}
+            total={cart.subtotal}
             image={cart.item.front_images}
         />
     )
