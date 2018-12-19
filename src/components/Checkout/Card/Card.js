@@ -21,7 +21,6 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log(this.props.cardStatus)
     return (
       <div className="checkout">
         <p>{this.state.mess}</p>

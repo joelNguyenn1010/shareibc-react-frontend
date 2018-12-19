@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { LOGIN, REGISTER, ERROR, LOGOUT, FACEBOOK_LOGIN } from './types'
+import { LOGIN, REGISTER, REGISTER_ERROR ,ERROR, LOGOUT, FACEBOOK_LOGIN } from './types'
 
 export const register = (newUser, callback) => async dispatch => {
     try {
@@ -7,7 +7,14 @@ export const register = (newUser, callback) => async dispatch => {
         dispatch({ type: REGISTER, payload: res.data })
         callback()
     } catch (e) {
-        dispatch({ type: ERROR, payload: 'Error occur, please try again' })
+        if(e.response.data.username) {
+            dispatch({ type: REGISTER_ERROR, payload: "Username already register"})
+        } else if (e.response.data.email) {
+            dispatch({ type: REGISTER_ERROR, payload: "Email already register"})
+        } else {
+            dispatch({ type: REGISTER_ERROR, payload: "Server error, please try again"})
+
+        }
     }
 }
 

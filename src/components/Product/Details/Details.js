@@ -77,50 +77,15 @@ class Details extends Component {
                     thumbnail: i.image,
                 }
                 images.push(temp)
-                //     return (
-                //         <div>
-                //             <img className="img-carousel" src={i.image} />
-
-                //         </div>
-
-                //     )
             })
 
         }
-
-        console.log(images)
-
-        // const images = [
-        //     {
-        //       original: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //       thumbnail: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //     },
-        //     {
-        //         original: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //         thumbnail: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //       },
-        //       {
-        //         original: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //         thumbnail: 'http://138.197.12.138/media/products/UTS_Technology_fewfd-hotel_Bt8yM71.jpeg',
-        //       }
-        //   ]
-
 
 
         return (
             <React.Fragment>
                 <div className="product-carousel">
-                    {/* <Carousel
-                        showStatus={false}
-                        emulateTouch
-                        showArrows={false}
-                        useKeyboardArrows
-                    >
-                        {images}
-                    </Carousel> */}
-
-
-
+                
                     <ImageGallery 
                     items={images} 
                     showFullscreenButton={false}

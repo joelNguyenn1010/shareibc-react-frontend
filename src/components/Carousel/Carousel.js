@@ -30,7 +30,7 @@ class Carousel extends React.Component {
 
                 <div className="carousel-inner">
                     {/* <div className="carousel-item active">
-                        <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-Free-Background-HD.jpg" alt="Loading" />
+                        <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
                     </div>
                     <div className="carousel-item">
                         <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
@@ -38,7 +38,6 @@ class Carousel extends React.Component {
                     <div className="carousel-item">
                         <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
                     </div> */}
-                    {renderImages}
                 </div>
 
             </div>

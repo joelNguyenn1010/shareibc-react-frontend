@@ -28,6 +28,23 @@ export function on_loader(){
         type: LOADER,
     }
 }
+export function apiSearchFilter(key, type) {
+    return dispatch => {
+        axios.get(`${conf.BASE_URL}/api/product/?search=${key}&ordering=${type}`)
+        .then(res => {
+            if(res.data && res.data.length > 0) {
+                console.log(res.data)
+                dispatch(load_product(res.data))
+            } else {
+                dispatch(error_load_product("Can't find any products"))
+            }
+        })
+        .catch(error => {
+            dispatch(error_load_product("Server error"))
+        })
+    }
+}
+
 
 export function apiSearch(key) {
     return dispatch => {

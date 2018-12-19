@@ -14,8 +14,7 @@ const CardDetails = (props) => {
                             <div className="col col-lg-2">Value: <span>{props.product.value}</span></div>
                             <div className="col col-lg-2">Quantity: <span>{props.product.quantity}</span></div>
                             <div className="col col-lg-4">
-                            <input className="form-control"/>
-
+                        
                                 <Button color="primary" onClick={() => {
                                     props.toggle()
                                     props.add_cart()

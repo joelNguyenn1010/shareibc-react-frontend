@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Item from '../Items/Item'
+import './CartTable.css'
 const items = (props) => props.cart.map(cart => {
     let total = Number(cart.item.price) * Number(cart.quantity)
     return (
@@ -20,20 +21,22 @@ const items = (props) => props.cart.map(cart => {
 
 
 const CartTable = (props) => {
+const style= {
+    width: '70%'
+}
     return(
         <div className="table-responsive">
         <table className="table table-condensed border">
             <thead className="card-header">
                 <tr>
-                    <th>Item</th>
-                    <th></th>
+                    <th style={style}>Item</th>
                     <th>Quantity</th>
                     <th>Price</th>
                 </tr>
             </thead>
-
+            <tbody>
             {items(props)}
-
+            </tbody>
         </table>
     </div>
     )

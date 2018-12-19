@@ -1,26 +1,30 @@
 import React, { Component } from 'react'
 import './Register.css'
 import { reduxForm, Field } from 'redux-form'
-import {connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { register } from '../../store/actions/user-action'
 import { compose } from 'redux';
 class Register extends Component {
     state = {
-            username: '',
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
-            password2: '',
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        password2: '',
         validation: ''
     }
-
+  
     onSubmit = (event) => {
+        // const newUser = event
         const newUser = event
-        this.props.register(newUser, ()=> {
+        console.log(newUser)
+        this.props.register(newUser, () => {
             this.props.history.push('/');
         })
-        
+      
+
+
         // const user = {
         //     username : this.state.username,
         //     first_name : this.state.first_name,
@@ -37,41 +41,53 @@ class Register extends Component {
         // .catch(error => console.log(error))
     }
     render() {
+        
         const { handleSubmit } = this.props
         return (
             <div className="margin">
                 <p>Validation {this.props.errorMesss}</p>
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                     <label>Username:</label>
-                    <Field 
-                    name="username"
-                    type="text"
-                    component="input" />
+                    <Field
+                        name="username"
+                        type="text"
+                        component="input" />
                     <label>Email:</label>
-                    <Field 
-                    name="email"
-                    type="email"
-                    component="input" />
+                    <Field
+                        name="email"
+                        type="email"
+                        component="input" />
+
                     <label>First Name:</label>
-                    <Field 
-                    name="first_name"
-                    type="text"
-                    component="input" />
+                    <Field
+                        name="first_name"
+                        type="text"
+                        component="input" />
+
                     <label>Last Name:</label>
-                    <Field 
-                    name="last_name"
-                    type="text"
-                    component="input" />
+                    <Field
+                        name="last_name"
+                        type="text"
+                        component="input" />
+
+                    <label>Phone number:</label>
+                    <Field
+                        name="userprofile.phone_number"
+                        type="number"
+                        component="input" />
+
                     <label >Password:</label>
-                    <Field 
-                    name="password"
-                    type="password"
-                    component="input" />
+                    <Field
+                        name="password"
+                        type="password"
+                        component="input" />
+
                     <label >Password Confirm:</label>
-                    <Field 
-                    name="password2"
-                    type="password"
-                    component="input" />
+                    <Field
+                        name="password2"
+                        type="password"
+                        component="input" />
+
                     <button>Register</button>
                 </form>
             </div>
@@ -80,7 +96,7 @@ class Register extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        errorMesss: state.userReducer.mess
+        errorMesss: state.userReducer.mess,
     }
 }
 const mapActionToProps = {
@@ -88,5 +104,5 @@ const mapActionToProps = {
 }
 export default compose(
     connect(mapStateToProps, mapActionToProps),
-    reduxForm({form: 'register'})
+    reduxForm({ form: 'register' })
 )(Register)

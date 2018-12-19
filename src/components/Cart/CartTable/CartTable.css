@@ -1,0 +1,9 @@
+ .image-table-row {
+    width: 72px;
+}
+
+/* @media (min-width: 500px) {
+    .image-table-row {
+        width: 1000px;
+    }
+}  */

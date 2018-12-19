@@ -1,12 +1,36 @@
 import React from 'react'
 import Search from './Search/Search'
 import Menu from './Menu/Menu'
+import {connect} from 'react-redux'
+import {on_loader, apiSearchFilter} from '../../store/actions/products-action'
 class Catalogies extends React.Component {
-    onSortPriceLow = (order) =>{
-        
+    state = {
+        searchKey: '',
+        filterType: ''
     }
-    render() {
+    onSearch = (key) =>{
+        this.setState({
+            searchKey: key
+        }, () => this.onAPISearch()
+        )
+    }
+    onFilter = (type) => {
+        this.setState({
+            filterType: type
+        }, () => this.onAPISearch()
+        )
+    }
 
+    onAPISearch = () => {
+        this.props.on_loader()
+        this.props.apiSearchFilter(this.state.searchKey,this.state.filterType)
+    }
+
+    
+
+
+    render() {
+        
         return (
             <div className="mx-0 px-0">
                 <nav className="navbar navbar-expand-lg navbar-dark primary-color mb-5">
@@ -17,10 +41,12 @@ class Catalogies extends React.Component {
                         <div className="navbar-collapse collapse ml-5" id="navbarSupportedContent1">
 
                             <ul className="navbar-nav mr-auto">
-                                <Menu onSortPriceLow={this.onSortPriceLow} />
+                                <Menu 
+                                onFilter={this.onFilter} />
                             </ul>
 
-                            <Search />
+                            <Search 
+                            onSearch={this.onSearch}/>
                         </div>
                     </div>
                 </nav>
@@ -29,5 +55,8 @@ class Catalogies extends React.Component {
         )
     }
 }
-
-export default Catalogies
+const mapActionToProps = {
+    apiSearchFilter,
+    on_loader
+}
+export default connect(null, mapActionToProps)(Catalogies)

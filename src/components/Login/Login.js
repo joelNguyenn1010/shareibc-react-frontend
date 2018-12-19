@@ -114,10 +114,8 @@ class Login extends Component {
                         </div>
 
                         <form onSubmit={this.handleSubmit} className="form-root">
-                            {/* <label>Email:</label>
-                        <input type="email"  /> */}
+                
                             <MDBInput
-                                error={this.state.errors.usernameError}
                                 className="w-100 mt-4"
                                 label="Email"
                                 onChange={(event) => this.setState({ username: event.target.value })} />
@@ -125,7 +123,6 @@ class Login extends Component {
                             {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
 
                             <MDBInput
-                                error={this.state.errors.passwordError}
                                 className="w-100 mt-4 mb-3"
                                 label="Password"
                                 type="password"

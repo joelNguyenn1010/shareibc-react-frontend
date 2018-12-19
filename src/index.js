@@ -29,7 +29,8 @@ var auth = {
   loginType: '',
   email: '',
   name: '',
-  headers: {}
+  headers: {},
+
 }
 // JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
 

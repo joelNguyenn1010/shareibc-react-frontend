@@ -1,11 +1,12 @@
-import { REGISTER, ERROR , LOGIN, LOGOUT, FACEBOOK_LOGIN} from './../actions/types'
+import { REGISTER, ERROR , LOGIN, LOGOUT, FACEBOOK_LOGIN, REGISTER_ERROR} from './../actions/types'
 const initialState = {
     token: '',
     mess: '',
     loginType: '',
     email: '',
     name: '',
-    headers: {}
+    headers: {},
+
 }
 
 const reducer = (state = initialState, action) =>{ 
@@ -27,7 +28,13 @@ const reducer = (state = initialState, action) =>{
         case ERROR:
             return {
                 ...state,
-                mess: action.payload
+                mess: action.payload,
+            }
+        case REGISTER_ERROR:
+            return {
+                ...state,
+                mess: action.payload,
+
             }
         case LOGIN:
             let userLogin = {

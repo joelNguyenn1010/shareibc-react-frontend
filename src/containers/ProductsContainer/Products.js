@@ -65,7 +65,7 @@ class Products extends Component {
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         <Loading loader={this.props.loader} />
                         {allProduct.length === 0 ? <NotFoundProduct mess={this.props.error} /> : allProduct}
-              
+            
                     </div>
                 </div>
             </div>

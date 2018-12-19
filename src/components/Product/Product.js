@@ -15,12 +15,13 @@ class Product extends React.Component {
 
     render() {
         const style = {
-            width: "14rem",
+            width: "18rem"
 
         }
+
         return (
             <React.Fragment>
-            <section className="text-center mt-3 mb-3 ">
+            <section className="text-center mt-3 mb-3 " >
             
                 <div className="col-lg-3 col-md-4 w-100 h-100 ">
                     <NavLink to={`/product/${this.props.id}`}>

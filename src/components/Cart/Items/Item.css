@@ -11,17 +11,16 @@
 
 }
 
-.form-control {
-    -webkit-box-shadow: none!important;
-    box-shadow: none!important;
 
-}
 .text-danger{
     display: block!important;
 }
-.img-thumbnail {
-    border: none
+.img-custom {
+    width: 100%;
+    height: auto;
 }
+
+
 
 ul {
     list-style-type: none;

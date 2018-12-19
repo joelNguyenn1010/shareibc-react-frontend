@@ -58,13 +58,21 @@ class Item extends React.Component {
             width: '4rem'
         }
         return (
-            <tbody>
-
+        
+            <React.Fragment>
                 {/* <div className="row">
                         <div className="col-5 col-lg-3 col-md-3 col-sm-3"> */}
                 <tr>
-                    <td> <img className="img-thumbnail" src={this.props.image} alt={this.props.name} /></td>
-                    <td><p className='equal-margin'>{this.props.name}</p></td>
+                    <td>
+                        <div className="row">
+                        <div className="col-lg-7 col-sm-9">
+                            <img className="img-custom" src={this.props.image} alt={this.props.name} />
+                        </div>
+                        <div className="col-lg-5 col-sm-3">
+                            <p className='equal-margin'>{this.props.name}</p>
+                        </div>
+                        </div>
+                    </td>
                     <td>
                         <input
                             type='number'
@@ -105,7 +113,7 @@ class Item extends React.Component {
                     {/* </div> */}
                 </tr>
 
-            </tbody>
+          </React.Fragment>
         )
     }
 }

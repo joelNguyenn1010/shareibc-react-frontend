@@ -11,8 +11,9 @@ class Search extends Component {
     }
 
     handleSubmit(event) {
-        this.props.on_loader()
-        this.props.apiSearch(this.state.key)
+        // this.props.on_loader()
+        // this.props.apiSearch(this.state.key)
+        this.props.onSearch(this.state.key)
         event.preventDefault();
     }
     render() {
@@ -21,7 +22,7 @@ class Search extends Component {
             <React.Fragment>
                     <form onSubmit={this.handleSubmit} className="search-form" >
                         <div className="form-group md-form my-0 waves-light waves-effect waves-light">
-                            <input onChange={event => this.setState({ key: event.target.value })} type="text" className="form-control" placeholder="Searching" />
+                            <input onChange={event => this.setState({ key:this.props.onSearch(event.target.value) })} type="text" className="form-control" placeholder="Searching" />
                         </div>
                     </form>
 
