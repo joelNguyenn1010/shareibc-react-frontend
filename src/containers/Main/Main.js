@@ -17,6 +17,7 @@ const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Ch
 const AsyncOrder = asyncComponents(() => import('../../components/Order/Order'))
 const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
+const AsyncProjects = asyncComponents(() => import('../Projects/Projects'))
 class Main extends Component {
     render() {
         return (
@@ -35,6 +36,7 @@ class Main extends Component {
                         <Route path='/contact-us' component={AsyncContactUs} />
                         <Route path='/cart' exact component={AsyncCart} />
                         <Route path='/product/:id' exact component={Details} />
+                        <Route path='/projects' component={AsyncProjects} />
                         <Elements>
                             <Route path='/checkout' exact component={AsyncCheckout} />
                         </Elements>

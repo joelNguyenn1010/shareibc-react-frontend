@@ -113,7 +113,7 @@ class Login extends Component {
                             </div>
                         </div>
 
-                        <form onSubmit={this.handleSubmit} className="form-root">
+                        <form onSubmit={this.handleSubmit} className="form-root needs-validation">
                 
                             <MDBInput
                                 className="w-100 mt-4"

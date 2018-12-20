@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="page-footer font-small footer-color">
 
-      <div class="container-fluid text-md-left">
+      <div className="container-fluid text-md-left">
   <FooterLink />
         
 
