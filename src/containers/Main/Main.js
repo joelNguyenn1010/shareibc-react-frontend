@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Home from './../Home/home'
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/navbar'
 import asyncComponents from './../hoc/asyncComponents'
 import { Route, Switch } from 'react-router-dom'
 import Logout from '../../components/Logout/Logout'
