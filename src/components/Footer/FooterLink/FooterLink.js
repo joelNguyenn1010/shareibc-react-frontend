@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom'
 
 const FooterLink = () =>{
     return(
-        <div class="row text-center">
+        <div className="row text-center">
           <div className="col-lg-4 ">
-            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About us</h5>
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">About us</h5>
 
-            <ul class="list-unstyled ">
+            <ul className="list-unstyled ">
               <li className="mb-2">
                 <NavLink to="/products">Shop</NavLink>
               </li>
@@ -22,9 +22,9 @@ const FooterLink = () =>{
           </div>
 
           <div className="col-lg-4">
-            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Follow Us</h5>
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Follow Us</h5>
 
-            <ul class="list-unstyled">
+            <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="https://www.facebook.com/joel.nguyenanh" target="_blank">Facebook</a>
               </li>
@@ -36,9 +36,9 @@ const FooterLink = () =>{
           </div >
 
           <div className="col-lg-4">
-            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Get the app</h5>
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Get the app</h5>
 
-            <ul class="list-unstyled">
+            <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="#!">Android (Coming Soon)</a>
               </li>

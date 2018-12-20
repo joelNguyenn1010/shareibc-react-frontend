@@ -9,6 +9,7 @@ import userReducer from './store/reducers/user'
 import cartReducer from './store/reducers/cart'
 import carouselReducer from './store/reducers/carousel'
 import checkoutReducer from  './store/reducers/checkout'
+import projectReducer from './store/reducers/project'
 import thunk from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     cartReducer,
     carouselReducer,
     checkoutReducer,
+    projectReducer,
     form: formReducer,
 })
 var cart = {
