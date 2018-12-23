@@ -13,7 +13,7 @@ class Search extends Component {
     handleSubmit(event) {
         // this.props.on_loader()
         // this.props.apiSearch(this.state.key)
-        this.props.onSearch(this.state.key)
+        // this.props.onSearch(this.state.key)
         event.preventDefault();
     }
     render() {

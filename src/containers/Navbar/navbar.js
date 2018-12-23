@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import Links from './Links/Links'
 import './Navbar.css'
+import {connect } from 'react-redux'
+import * as userAction from  '../../store/actions/user-action'
 import UserLink from './UserLink/UserLink'
 class Navbar extends Component {
+    //a function to help verify token to backend
 
     render() {
-        const style = window.location.pathname !== '/' ? 'navbar-blue ' : ' '
         return (
             <div className="Navbar">
-                <nav className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar "+style}>
+                <nav className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar "+this.props.style}>
                     <div className="container">
                         <a className="navbar-brand" href="/" >
                             <strong>Shareibc</strong>
@@ -30,5 +32,11 @@ class Navbar extends Component {
         )
     }
 }
-
-export default Navbar
+const mapStateToProps = state => {
+    return {
+        token: state.userReducer.token,
+        headers: state.userReducer.headers,
+        type: state.userReducer.loginType
+    }
+}
+export default connect(mapStateToProps,userAction)(Navbar)

@@ -9,6 +9,12 @@
     background-repeat: no-repeat; 
     background-size: cover;
 }
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+}
 
 #root {
    height: 100%;

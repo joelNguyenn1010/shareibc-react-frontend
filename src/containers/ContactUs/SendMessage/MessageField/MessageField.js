@@ -99,10 +99,7 @@ class MessageField extends React.Component {
         .catch(error => console.log(error))
     }
     render() {
-        const { handleSubmit, pristine, reset, submitting } = this.props
-       
-
-          
+        const { handleSubmit } = this.props
         return (
             <form className="mt-5" onSubmit={handleSubmit(this.submit)}>
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Item from './Items/Item'
 import { NavLink } from 'react-router-dom'
 import CartTable from './CartTable/CartTable'
 import './Cart.css'
@@ -8,14 +7,6 @@ import EmptyCart from './EmptyCart/EmptyCart'
 import GeneralInfo from './GeneralInfo/GeneralInfo'
 import { clear_all_cart } from '../../store/actions/cart-action'
 class Cart extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-
-
-
-
 
     renderItem = () => {
 

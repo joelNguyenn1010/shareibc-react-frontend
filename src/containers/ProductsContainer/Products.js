@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Product from './../../components/Product/Product'
-
+import Pagination from '../../components/Product/Pagination/Pagination'
 import { load_product, apiProducts, apiSearch } from '../../store/actions/products-action'
 import axios from 'axios'
 import Catalogies from '../../components/Catalogies/Catalogies'
@@ -20,21 +20,7 @@ class Products extends Component {
 
     componentDidMount() {
         this.props.apiProducts()
-        console.log('babae')
         console.log(this.props.products)
-        // axios.get('http://138.197.12.138/api/product/')
-        //     .then(res => {
-        //         if (res.data && res.data.length > 0) {
-        //             this.setState({
-        //                 products: res.data,
-        //                 loader: false
-        //             })
-        //         }
-
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
     }
     onSearch = (key) => {
         this.props.apiSearch(key)
@@ -65,7 +51,9 @@ class Products extends Component {
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         <Loading loader={this.props.loader} />
                         {allProduct.length === 0 ? <NotFoundProduct mess={this.props.error} /> : allProduct}
-            
+                    </div>
+                    <div className="container mt-5">
+                    <Pagination />
                     </div>
                 </div>
             </div>
