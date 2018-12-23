@@ -7,8 +7,10 @@ import * as userActions from '../../../store/actions/user-action'
 class Links extends Component {
 
     render() {
+       
         return (
             <React.Fragment>
+                
                 <li className="nav-item">
                     <NavLink to="/" exact activeClassName="active" className="nav-link waves-effect waves-light">Home</NavLink>
                 </li>
@@ -18,10 +20,10 @@ class Links extends Component {
                 <li className="nav-item">
                     <NavLink className="nav-link waves-effect waves-light" to="/contact-us">Contact us</NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" >
                     <NavLink to="/projects" exact className="nav-link waves-effect waves-light">Projects</NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" >
                     <NavLink to="/cart" exact className="nav-link waves-effect waves-light">Cart {this.props.cart.length}</NavLink>
                 </li>
 
