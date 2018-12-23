@@ -16,7 +16,7 @@ class Menu extends React.Component {
                     aria-expanded="false">Sort By</a>
                 <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a className="dropdown-item" onClick={() => this.props.onFilter(Type.PRICE_ACS)}>Price - Lowest</a>
-                    <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.PRICE_DECS)}>Price - Highest</a>
+                    <a className="dropdown-item" onClick={() => this.props.onFilter(Type.PRICE_DECS)}>Price - Highest</a>
                     <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.NAME_ACS)}>Name - A-Z</a>
                     <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.NAME_DECS)}>Name - Z-A</a>
 

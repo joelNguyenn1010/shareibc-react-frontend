@@ -1,12 +1,9 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
 import './Product.css'
 class Product extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+
     toDetail = () => {
         return (
             <NavLink to='/checkout' />

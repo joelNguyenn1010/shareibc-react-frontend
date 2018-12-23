@@ -5,15 +5,14 @@ const FooterLink = () =>{
     return(
         <div className="row text-center">
           <div className="col-lg-4 ">
-            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">About us</h5>
 
-            <ul className="list-unstyled ">
-              <li className="mb-2">
+            <ul className="list-unstyled mt-4">
+              <li>
                 <NavLink to="/products">Shop</NavLink>
               </li>
-              {/* <li>
-                <NavLink to=''>Project</NavLink>
-              </li> */}
+              <li>
+                <NavLink to='projects'>Project</NavLink>
+              </li>
               <li>
                 <NavLink to="/contact-us">Contact Us</NavLink>
               </li>

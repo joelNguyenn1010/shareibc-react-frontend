@@ -3,11 +3,11 @@ import React from 'react'
 
 
 class GeneralInfo extends React.Component {
-    items = () => {
-        return(
-            <li className="list-group-item">{this.items()}</li>
-        )
-    }
+    // items = () => {
+    //     return(
+    //         <li className="list-group-item">{this.items()}</li>
+    //     )
+    // }
     render() {
         return (
             <div className="card border">

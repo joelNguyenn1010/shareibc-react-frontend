@@ -3,8 +3,12 @@ import conf from '../../conf'
 export const LOAD_PRODUCTS = 'load:products'
 export const ERROR_LOAD_PRODUCTS = 'error:products'
 export const LOADER = 'loader:loader'
+export const PAGE = 'page:product'
+export const SEARCH = 'search:product'
+export const TYPE = 'type:product'
 
 
+//loading product
 export function load_product(products) {
     return {
         type: LOAD_PRODUCTS,
@@ -13,7 +17,7 @@ export function load_product(products) {
         }
     }
 }
-
+//if there error occur when do api call
 export function error_load_product(error) {
     return {
         type: ERROR_LOAD_PRODUCTS,
@@ -22,18 +26,21 @@ export function error_load_product(error) {
         }
     }
 }
-
+//this is for loading animation
 export function on_loader(){
     return {
         type: LOADER,
     }
 }
-export function apiSearchFilter(key, type) {
-    return dispatch => {
-        axios.get(`${conf.BASE_URL}/api/product/?search=${key}&ordering=${type}`)
+export function apiSearchFilter() {
+    return (dispatch,getState) => {
+
+        let type = getState().productReducer.type
+        let page = getState().productReducer.page
+        let search = getState().productReducer.search
+        axios.get(`${conf.BASE_URL}/api/product/?search=${search}&ordering=${type}&page=${page}`)
         .then(res => {
-            if(res.data && res.data.length > 0) {
-                console.log(res.data)
+            if(res.data) {
                 dispatch(load_product(res.data))
             } else {
                 dispatch(error_load_product("Can't find any products"))
@@ -46,51 +53,77 @@ export function apiSearchFilter(key, type) {
 }
 
 
-export function apiSearch(key) {
+export function apiSearch(search) {
+    return (dispatch, getState) => {
+        //Do someFunc first then this action, use getState() for currentState if you want
+        dispatch( {
+            type: SEARCH,
+            payload: {
+                search,
+                page: 1
+            }
+        });
+        dispatch(apiSearchFilter());
+
+    }
+}
+
+
+export function onApiNextProductPage(url) {
     return dispatch => {
-        axios.get(`${conf.BASE_URL}/api/product/?search=${key}`)
+        axios.get(url)
         .then(res => {
-            console.log('[SEARCH]')
             if(res.data && res.data.length > 0) {
                 dispatch(load_product(res.data))
-            } else {
-                dispatch(error_load_product("Can't find any products"))
             }
-        })
-        .catch(error => {
-            dispatch(error_load_product("Server error"))
         })
     }
 }
 
 export function apiFilter(type) {
-    return dispatch => {
-        axios.get(`${conf.BASE_URL}/api/product/?ordering=${type}`)
-        .then(res => {
-            if(res.data && res.data.length > 0) {
-                dispatch(load_product(res.data))
-            } else {
-                dispatch(error_load_product("Can't find any products"))
+    return (dispatch, getState) => {
+        //Do someFunc first then this action, use getState() for currentState if you want
+        dispatch( {
+            type: TYPE,
+            payload: {
+                type,
+                page: 1
             }
-        })
-        .catch(error => {
-            dispatch(error_load_product("Server error"))
-        })
+        });
+        dispatch(apiSearchFilter());
+
     }
 }
 
+export function apiPage(page) {
+    return (dispatch, getState) => {
+    
+        //Do someFunc first then this action, use getState() for currentState if you want
+        dispatch( {
+            type: PAGE,
+            payload: {
+                page
+            }
+        });
+        // dispatch(apiSearchFilter(search, type, page));
+        dispatch(apiSearchFilter());
+
+    }
+}
+//api call for all product
 export function apiProducts() {
     return dispatch => {
-        axios.get(`${conf.BASE_URL}/api/product/`)
-        .then(res => {
-            if(res.data && res.data.length > 0) {
-                dispatch(load_product(res.data))
-            } else {
-                dispatch(error_load_product("Can't find any products"))
-            }
-        })
-        .catch(error => {
-            dispatch(error_load_product("Server error"))
-        })
+        dispatch(apiSearchFilter())
+        // axios.get(`${conf.BASE_URL}/api/product/`)
+        // .then(res => {
+        //     if(res.data) {
+        //         dispatch(load_product(res.data))
+        //     } else {
+        //         dispatch(error_load_product("Can't find any products"))
+        //     }
+        // })
+        // .catch(error => {
+        //     dispatch(error_load_product("Server error"))
+        // })
     }
 }

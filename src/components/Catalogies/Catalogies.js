@@ -2,28 +2,37 @@ import React from 'react'
 import Search from './Search/Search'
 import Menu from './Menu/Menu'
 import {connect} from 'react-redux'
-import {on_loader, apiSearchFilter} from '../../store/actions/products-action'
+import * as productAction from '../../store/actions/products-action'
 class Catalogies extends React.Component {
     state = {
         searchKey: '',
         filterType: ''
     }
-    onSearch = (key) =>{
-        this.setState({
-            searchKey: key
-        }, () => this.onAPISearch()
-        )
+    onSearch = async (key) =>{
+        // this.setState({
+        //     searchKey: key
+        // }, () => this.onAPISearch()
+        // )
+
+        this.props.apiSearch(key)
+        // if(key.length > 0) {
+        //     this.props.apiSearch(key);
+        // } else {
+        //     this.props.apiSearchFilter('','', this.props.page)
+
+        // }
+
     }
     onFilter = (type) => {
-        this.setState({
-            filterType: type
-        }, () => this.onAPISearch()
-        )
+        // this.setState({
+        //     filterType: type
+        // }, () => this.onAPISearch()
+        // )
+        this.props.apiFilter(type)
     }
 
     onAPISearch = () => {
         this.props.on_loader()
-        this.props.apiSearchFilter(this.state.searchKey,this.state.filterType)
     }
 
     
@@ -55,8 +64,11 @@ class Catalogies extends React.Component {
         )
     }
 }
-const mapActionToProps = {
-    apiSearchFilter,
-    on_loader
+const mapStateToProps = state => {
+    return {
+        page: state.productReducer.page,
+        type: state.productReducer.type,
+        search: state.productReducer.search
+    }
 }
-export default connect(null, mapActionToProps)(Catalogies)
+export default connect(mapStateToProps, productAction)(Catalogies)
