@@ -1,3 +1,9 @@
+.navbar-blue {
+    background-color: #54ceff!important
+}
+.paragraph{
+    white-space: pre-wrap;
+}
 
 .form-control {
     -webkit-box-shadow: none!important;

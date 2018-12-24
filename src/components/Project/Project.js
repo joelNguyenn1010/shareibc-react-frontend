@@ -3,6 +3,7 @@ import Jumbotron from './Jumbotron/Jumbotron'
 import ProjectDetails from './ProjectDetails/ProjectDetails'
 import { connect } from 'react-redux'
 import * as projectAction from '../../store/actions/project-action'
+import {NavLink} from 'react-router-dom'
 
 class Project extends React.Component {
     componentDidMount() {
@@ -11,11 +12,14 @@ class Project extends React.Component {
   
     render() {
         const details =  this.props.projects.map((project, index) => {
+            console.log(project)
             return(
+                <NavLink key={project.id} to={`/projects/${project.id}`}>
+
                 <ProjectDetails 
-                key={index}
                 project={project}
                 />
+                 </NavLink>
             )
         })
         return (

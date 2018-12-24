@@ -16,10 +16,13 @@ class Product extends React.Component {
 
         }
 
+
+
         return (
             <React.Fragment>
             <section className="text-center mt-3 mb-3 " >
-            
+    
+       
                 <div className="col-lg-3 col-md-4 w-100 h-100 ">
                     <NavLink to={`/product/${this.props.id}`}>
                     <div className="card h-100 card-single" style={style} >
