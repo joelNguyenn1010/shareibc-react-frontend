@@ -2,6 +2,8 @@ import React from 'react'
 import ProjectDetails from '../../ProjectDetails/ProjectDetails'
 import Images from './Images'
 import AboutProject from './AboutProject/AboutProject'
+import {
+    FacebookShareButton} from 'react-share'
 
 
 const Info = (props) => {
@@ -21,7 +23,10 @@ const Info = (props) => {
                 />
                 <div className="m-4 d-flex flex-row-reverse justify-content-between">
                     <button className="btn btn-primary">Donate</button>
-                    <button className="btn btn-primary" >Share this on Facebook</button>
+                    <FacebookShareButton 
+                    className="btn btn-primary"
+                    url={window.location.href}
+                    >Share this on Facebook</FacebookShareButton>
                 </div>
 
                 <hr />
