@@ -42,7 +42,7 @@ class Catalogies extends React.Component {
         
         return (
             <div className="mx-0 px-0">
-                <nav className="navbar navbar-expand-lg navbar-dark primary-color mb-5">
+                <nav className="navbar navbar-expand-lg navbar-dark navbar-blue mb-5">
                     <div className="container">
                         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>

@@ -6,9 +6,10 @@ import axios from 'axios'
 import Catalogies from '../../components/Catalogies/Catalogies'
 import { connect } from 'react-redux'
 import './Products.css'
+import Images from '../Home/Image/Free-Background-HD.jpg'
 import Loading from '../../components/Loading/Loading'
 import Carousel from '../../components/Carousel/Carousel'
-import NotFoundProduct from '../../components/NotFoundProduct/NotFoundProduct'
+import NotFound404 from '../../components/NotFound404/NotFound404'
 class Products extends Component {
 
     state = {
@@ -41,16 +42,23 @@ class Products extends Component {
                 id={product.id} />
             )
         })
+        const images = [
+            {
+                image: Images
+            }
+        ]
 
         return (
             <React.Fragment>
-            <Carousel />
+            <Carousel 
+            images={images}
+            />
             <div className="container mt-5">
                 <Catalogies onSearch={this.onSearch} />
                 <div className="container mb-5">
                     <div className="row col-container d-flex justify-content-center animated fadeIn">
                         <Loading loader={this.props.loader} />
-                        {allProduct.length === 0 ? <NotFoundProduct mess={this.props.error} /> : allProduct}
+                        {allProduct.length === 0 ? <NotFound404 mess={this.props.error} /> : allProduct}
                     </div>
                     <div className="container mt-5">
                     <Pagination />

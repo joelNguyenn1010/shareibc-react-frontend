@@ -11,6 +11,7 @@ import Container from './Container'
 import Products from '../ProductsContainer/Products'
 import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
+import ProjectInfo from '../../components/Project/ProjectInfo/ProjectInfo'
 import './Main.css'
 //verify token
 import verifyAuth from '../hoc/verifyAuth'
@@ -20,7 +21,7 @@ const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Ch
 const AsyncOrder = asyncComponents(() => import('../../components/Order/Order'))
 const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
-const AsyncProjects = asyncComponents(() => import('../Projects/Projects'))
+const AsyncProjects = asyncComponents(() => import('../Projects/Projects'));
 class Main extends Component {
     render() {
         const style = window.location.pathname !== '/' ? 'navbar-blue ' : ' '
@@ -30,6 +31,8 @@ class Main extends Component {
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
                     <Route path="/products" exact component={verifyAuth(Products)} />
+                    <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
+
                     <Container>
                         <Route path='/order' component={AsyncOrder} />
                         <Route path='/login' exact component={alreadyAuth(Login)} />
@@ -38,7 +41,8 @@ class Main extends Component {
                         <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />
                         <Route path='/cart' exact component={verifyAuth(AsyncCart)} />
                         <Route path='/product/:id' exact component={(Details)} />
-                        <Route path='/projects' component={verifyAuth(AsyncProjects)} />
+                        <Route path='/projects' exact component={verifyAuth(AsyncProjects)} />
+
                         <Elements>
                             <Route path='/checkout' exact component={verifyAuth(AsyncCheckout)} />
                         </Elements>
