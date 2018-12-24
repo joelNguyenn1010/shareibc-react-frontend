@@ -18,7 +18,7 @@ class Paginations extends React.Component {
     // })
     onClickPage = (page) => {
         console.log(page)
-        if(page > 0 && page <= this.props.page) {
+        if (page > 0 && page <= this.props.page) {
             this.props.apiPage(page)
         }
         // this.props.apiSearchFilter('','',page)
@@ -48,24 +48,24 @@ class Paginations extends React.Component {
 
         return (
             <React.Fragment>
-            <Pagination
-            innerClass="pagination pg-blue pagination-circle justify-content-center"
-            itemClass="page-item"
-            linkClass="page-link page-link"
-            linkClassFirst="hide-a-href"
-            linkClassLast="hide-a-href"
-            activeClass="active"
-            activePage={this.props.currentPage}
-            activeLinkClass="active"
-            itemsCountPerPage={2}
-            totalItemsCount={this.props.totalProduct}
-            pageRangeDisplayed={5}
-            firstPageText="First"
-            lastPageText="Last"
-            onChange={this.onClickPage}
-          />
+                <Pagination
+                    innerClass="pagination pg-blue pagination-circle justify-content-center"
+                    itemClass="page-item"
+                    linkClass="page-link page-link"
+                    linkClassFirst="hide-a-href"
+                    linkClassLast="hide-a-href"
+                    activeClass="active"
+                    activePage={this.props.currentPage}
+                    activeLinkClass="active"
+                    itemsCountPerPage={this.props.items_per_page}
+                    totalItemsCount={this.props.totalProduct}
+                    pageRangeDisplayed={5}
+                    firstPageText="First"
+                    lastPageText="Last"
+                    onChange={this.onClickPage}
+                />
 
-            {/* <MDBPagination circle className="justify-content-center">
+                {/* <MDBPagination circle className="justify-content-center">
                 <MDBPageItem onClick={() => this.onClickPage(1)}>
                     <MDBPageNav className="page-link">
                         <span>First</span>
@@ -102,6 +102,7 @@ const mapStateToProps = (state) => {
         page: state.productReducer.total_pages,
         currentPage: state.productReducer.page,
         totalProduct: state.productReducer.count,
+        items_per_page: state.productReducer.items_per_page
     }
 }
 

@@ -19,7 +19,8 @@ class Menu extends React.Component {
                     <a className="dropdown-item" onClick={() => this.props.onFilter(Type.PRICE_DECS)}>Price - Highest</a>
                     <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.NAME_ACS)}>Name - A-Z</a>
                     <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.NAME_DECS)}>Name - Z-A</a>
-
+                    <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.VALUE_DECS)}>Value - Highest</a>
+                    <a className="dropdown-item"  onClick={() => this.props.onFilter(Type.VALUE_ACS)}>Value - Lowest</a>
                 </div>
             </li>
         )

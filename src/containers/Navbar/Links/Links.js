@@ -24,7 +24,7 @@ class Links extends Component {
                     <NavLink to="/projects" exact className="nav-link waves-effect waves-light">Projects</NavLink>
                 </li>
                 <li className="nav-item" >
-                    <NavLink to="/cart" exact className="nav-link waves-effect waves-light">Cart {this.props.cart.length}</NavLink>
+                    <NavLink to="/cart" exact className="nav-link waves-effect waves-light"><i className="fas fa-shopping-cart"></i> {this.props.cart.length}</NavLink>
                 </li>
 
             </React.Fragment>

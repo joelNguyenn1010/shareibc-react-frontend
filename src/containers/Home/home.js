@@ -21,16 +21,6 @@ class Home extends Component {
                         <div className="carousel-item active">
                             <div className="views darken-theme" style={style}></div>
                         </div>
-          
-
-
-                        {/* <div className="carousel-item">
-                            <img className="d-block w-100 h-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100 h-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg" alt="Third slide" />
-                        </div> */}
-
                     </div>
 
 

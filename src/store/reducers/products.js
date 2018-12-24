@@ -10,7 +10,8 @@ const initialState = {
     total_pages: 0,
     page: 1,
     type: "",
-    search: ""
+    search: "",
+    items_per_page: 1
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,7 @@ const reducer = (state = initialState, action) => {
                 previous: action.payload.products.previous,
                 count: action.payload.products.count,
                 total_pages: action.payload.products.total_pages,
+                items_per_page: action.payload.products.items_per_page,
                 loader: false
             }
         case ERROR_LOAD_PRODUCTS:

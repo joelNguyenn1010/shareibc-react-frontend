@@ -1,43 +1,33 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+
 import './Product.css'
-class Product extends React.Component {
+const Product = (props) => {
 
-    toDetail = () => {
-        return (
-            <NavLink to='/checkout' />
-        );
-    }
-
-    render() {
         const style = {
             width: "18rem"
 
         }
-
-
-
         return (
             <React.Fragment>
             <section className="text-center mt-3 mb-3 " >
-    
-       
+            
                 <div className="col-lg-3 col-md-4 w-100 h-100 ">
-                    <NavLink to={`/product/${this.props.id}`}>
+                    <NavLink to={`/product/${props.id}`}>
                     <div className="card h-100 card-single" style={style} >
                         <div className="">
-                            <img className="card-img-top" src={this.props.img} alt="Can't get image" />
+                            <img className="card-img-top" src={props.img} alt="Can't get image" />
 
                         </div>
                         <div className="card-body">
-                            <h4 id="content" className="card-title">{this.props.name}</h4>
+                            <h4 id="content" className="card-title">{props.name}</h4>
                         </div>
                         <div className="card-footer">
                         <div className="box">          
-                            <p className="card-text">Company: {this.props.company}</p>
-                            <p className="card-text">Price: ${this.props.price}</p>
-                            <p className="card-text">Value: ${this.props.value}</p>
+                            <p className="card-text">Company: {props.company}</p>
+                            <p className="card-text">Price: ${props.price}</p>
+                            <p className="card-text">Value: ${props.value}</p>
                         </div>
                         </div>
                     </div>
@@ -46,7 +36,7 @@ class Product extends React.Component {
             </section>
         </React.Fragment>
         )
-    }
+    
 }
 
 export default Product
