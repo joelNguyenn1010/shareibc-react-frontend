@@ -13,6 +13,7 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
     }
+ 
     state = {
         username: '',
         password: '',
@@ -102,48 +103,52 @@ class Login extends Component {
         }
 
         return (
-            <div className="responsive-card  mx-auto">
+            <React.Fragment>
+             <div className="row justify-content-center">
+                <div className="col-responsive">
 
-                <div className="margin card" style={cardHeight} >
-                    <div className="card-body">
-                        <div className="card transform-card">
-                            <div className="card-body text-center">
-                                <h3 className="text-white">Shareibc</h3>
-                                <h2 className="text-white">Login</h2>
+                    <div className="margin card" style={cardHeight} >
+                        <div className="card-body">
+                            <div className="card transform-card">
+                                <div className="card-body text-center">
+                                    <h3 className="text-white">Shareibc</h3>
+                                    <h2 className="text-white">Login</h2>
+                                </div>
                             </div>
+
+                            <form onSubmit={this.handleSubmit} className="form-root needs-validation">
+
+                                <MDBInput
+                                    className="w-100 mt-4"
+                                    label="Email"
+                                    onChange={(event) => this.setState({ username: event.target.value })} />
+                                {/* <label >Password:</label> */}
+                                {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
+
+                                <MDBInput
+                                    className="w-100 mt-4 mb-3"
+                                    label="Password"
+                                    type="password"
+                                    onChange={(event) => this.setState({ password: event.target.value })}
+                                />
+                                <span className="text-danger">{this.props.userReducer.mess}</span>
+                                <div className="container text-center mt-5">
+                                    <FacebookLoginButton
+                                        responseFacebook={this.responseFacebook}
+                                        onClickFacebook={this.onClickFacebook} />
+                                </div>
+
+                                <div className="text-center button-transform">
+                                    <button className="btn btn-outline-info waves-effect" >Submit</button>
+                                </div>
+                            </form>
                         </div>
 
-                        <form onSubmit={this.handleSubmit} className="form-root needs-validation">
-                
-                            <MDBInput
-                                className="w-100 mt-4"
-                                label="Email"
-                                onChange={(event) => this.setState({ username: event.target.value })} />
-                            {/* <label >Password:</label> */}
-                            {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
-
-                            <MDBInput
-                                className="w-100 mt-4 mb-3"
-                                label="Password"
-                                type="password"
-                                onChange={(event) => this.setState({ password: event.target.value })}
-                            />
-                                <span className="text-danger">{this.props.userReducer.mess}</span>
-                            <div className="container text-center mt-5">
-                                <FacebookLoginButton
-                                    responseFacebook={this.responseFacebook}
-                                    onClickFacebook={this.onClickFacebook} />
-                            </div>
-
-                            <div className="text-center button-transform">
-                                <button className="btn btn-outline-info waves-effect" >Submit</button>
-                            </div>
-                        </form>
                     </div>
 
                 </div>
-
-            </div>
+                </div>
+            </React.Fragment>
         )
     }
 }

@@ -10,7 +10,7 @@ const UserLink = (props) => {
                     <i className="fa fa-user"></i> {props.user.name} </a>
                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                     <a className="dropdown-item waves-effect waves-light" href="#">My account</a>
-                    <NavLink to="/order" className="dropdown-item waves-effect waves-light" >My order</NavLink>
+                    <NavLink to={`/${props.user.email}/order`} className="dropdown-item waves-effect waves-light" >My order</NavLink>
                     <NavLink to="/logout" className="dropdown-item waves-effect waves-light" >Log out</NavLink>
 
                 </div>

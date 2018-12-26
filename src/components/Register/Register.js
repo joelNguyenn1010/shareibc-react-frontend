@@ -4,16 +4,27 @@ import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { register } from '../../store/actions/user-action'
 import { compose } from 'redux';
+import {NavLink } from 'react-router-dom'
+import {
+    MDBCard,
+    MDBCardBody,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBIcon,
+    MDBBtn
+  } from "mdbreact";
 class Register extends Component {
     state = {
-        username: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: '',
-        password2: '',
-        validation: ''
-    }
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        password2: "",
+        validation: "",
+        displayLogin: true
+      };
   
     onSubmit = (event) => {
         // const newUser = event
@@ -45,6 +56,123 @@ class Register extends Component {
         const { handleSubmit } = this.props
         return (
             <div className="margin">
+
+{/*   
+        {!this.state.displayLogin && 
+        <MDBContainer>
+          <div className="row justify-content-center">
+            <MDBCol md="6">
+              <div className="text-center mt-12">
+                <MDBBtn
+                  className="form__button form__button-facebook"
+                  color="info"
+                  type="submit"
+                >
+                  <MDBIcon
+                    className="button__icon button__icon-facebook"
+                    icon="facebook-square"
+                  />
+                  <p> Continue with Facebook </p>
+                </MDBBtn>
+              </div>
+            </MDBCol>
+          </div>
+          <MDBRow>
+            <MDBCol md="6">
+              <div className="text-center mt-12">
+                <MDBBtn
+                  className="form__button form__button-google"
+                  type="submit"
+                >
+                  <MDBIcon className="button__icon" icon="google-plus-square" />
+                  <p> Continue with Google</p>
+                </MDBBtn>
+              </div>
+            </MDBCol>
+          </MDBRow>
+          <MDBRow>
+            <MDBCol md="6">
+              <div className="text-center mt-12">
+                <MDBBtn className="form__button" color="primary" type="submit">
+                  Sign up
+                </MDBBtn>
+              </div>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>} */}
+        {/* Register form pop-up starts here */}
+        {this.state.displayLogin && <MDBContainer>
+          <MDBRow className="justify-content-center">
+            <div className="col-responsive">
+              {/* Register form  */}
+              <form className="register-form">
+                {/* Form name  */}
+                <p className="h4 text-center mb-4">Sign up</p>
+                <br />
+                {/* Email  */}
+                <label
+                  htmlFor="defaultFormRegisterEmailEx"
+                  className="grey-text"
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="defaultFormRegisterEmailEx"
+                  className="form-control"
+                />
+                <br />
+                {/* Password */}
+                <label
+                  htmlFor="defaultFormRegisterPasswordEx"
+                  className="grey-text"
+                >
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  id="defaultFormRegisterPasswordEx"
+                  className="form-control"
+                />
+                <br />
+                {/* Confirm password */}
+                <label
+                  htmlFor="defaultFormRegisterConfirmEx"
+                  className="grey-text"
+                >
+                  Confirm password
+                </label>
+                <input
+                  type="password"
+                  id="defaultFormRegisterConfirmEx"
+                  className="form-control"
+                />
+                <br />
+
+                <div className="text-center mt-12">
+                  <MDBBtn
+                    className="form__button"
+                    color="primary"
+                    type="submit"
+                  >
+                    Join
+                  </MDBBtn>
+                </div>
+              </form>
+              <div className="register-form__login">
+                <span>Already have an account?&nbsp; </span>
+                <div>
+                  <span>
+                    <NavLink to="/login">Log in</NavLink>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </MDBRow>
+        </MDBContainer>
+        }
+
+
                 <p>Validation {this.props.errorMesss}</p>
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                     <label>Username:</label>

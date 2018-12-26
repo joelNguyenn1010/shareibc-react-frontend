@@ -39,3 +39,34 @@ outline: none;
               background: rgba(0, 0, 0, 0.2)!important;
           }
       }
+
+
+      .col-responsive {
+        width: 90%;
+        height: auto;
+    }
+    
+    @media (min-width: 576px) {
+        .col-responsive {
+            width: 76%;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .col-responsive {
+            width: 55%;
+        }
+    }
+    
+    @media (min-width: 922px) {
+        .col-responsive {
+            width: 45%;
+        }
+        }
+        
+    
+    @media (min-width: 1200px) {
+        .col-responsive{
+            width: 40%;
+        }
+    }

@@ -12,13 +12,15 @@ import Products from '../ProductsContainer/Products'
 import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
 import ProjectInfo from '../../components/Project/ProjectInfo/ProjectInfo'
+import requiredAuth from '../hoc/requiredAuth'
 import './Main.css'
+import Flash from '../../components/Flash/Flash'
+import Order from '../../components/Order/Order'
 //verify token
 import verifyAuth from '../hoc/verifyAuth'
 import { Elements } from 'react-stripe-elements'
 import alreadyAuth from '../hoc/alreadyAuth'
 const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Checkout'));
-const AsyncOrder = asyncComponents(() => import('../../components/Order/Order'))
 const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 const AsyncProjects = asyncComponents(() => import('../Projects/Projects'));
@@ -27,14 +29,17 @@ class Main extends Component {
         const style = window.location.pathname !== '/' ? 'navbar-blue ' : ' '
         return (
             <div className="Main">
-                <Navbar style={style}/>
+                <Navbar style={style} />
+                <Flash 
+                
+                />
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
                     <Route path="/products" exact component={verifyAuth(Products)} />
                     <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
 
                     <Container>
-                        <Route path='/order' component={AsyncOrder} />
+                        <Route path='/:email/order' component={requiredAuth(Order)} />
                         <Route path='/login' exact component={alreadyAuth(Login)} />
                         <Route path='/register' exact component={alreadyAuth(Register)} />
                         <Route path='/logout' exact component={Logout} />
@@ -48,6 +53,7 @@ class Main extends Component {
                         </Elements>
                     </Container>
                 </Switch>
+          
                 <Footer />
             </div>
         )

@@ -16,18 +16,8 @@ import {
 } from "mdbreact";
 import "./Order.css";
 import * as order from "./testOrder.json";
+import MyUser from '../MyUser/MyUser'
 
-const userMenus = [
-  {
-    name: "a"
-  },
-  {
-    name: "b"
-  },
-  {
-    name: "c"
-  }
-];
 class Order extends React.Component {
   state = {
     orders: [],
@@ -61,10 +51,7 @@ class Order extends React.Component {
       })
       .catch(error => {
         // if (error.response.status === 401 || error.response.status === 403) {
-        //     this.setState({
-        //         orders: [],
-        //         mess: "You need to login in order to do that"
-        //     })
+        //     this.props.history.push('/login');
         // } else {
         //     this.setState({
         //         orders: [],
@@ -78,47 +65,18 @@ class Order extends React.Component {
     return (
       <MDBContainer fluid>
         <MDBRow>
-          <MDBCol size="12" md="4">
-            <MDBListGroup style={{ width: "100%", marginTop: "15px" }}>
-              <MDBListGroupItem>Cras justo odio</MDBListGroupItem>
-              <MDBListGroupItem>
-                <MDBRow>
-                  <MDBCol md="6">
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
-                      className="img-fluid rounded-circle z-depth-2"
-                      alt="aligment"
-                    />
-                  </MDBCol>
-                  <MDBCol md="6">Thông tin</MDBCol>
-                </MDBRow>
-              </MDBListGroupItem>
-              {userMenus.map((item, index) => (
-                <MDBListGroupItem
-                  onClick={() => {
-                    this.setState({ index });
-                  }}
-                  hover
-                  className={this.state.index === index ? "active" : null}
-                >
-                  {" "}
-                  {item.name}{" "}
-                </MDBListGroupItem>
-              ))}
-              {/* <MDBListGroupItem hover> Morbi leo risus</MDBListGroupItem>
-              <MDBListGroupItem hover>Porta ac consectetur ac</MDBListGroupItem>
-              <MDBListGroupItem> Vestibulum at eros</MDBListGroupItem> */}
-            </MDBListGroup>
-          </MDBCol>
+          <MyUser />
           <MDBCol size="12" md="8">
-            {orderList.map((item, index) => (
+            {this.state.orders.map((item, index) => (
               <MDBCard style={{ marginTop: "15px" }} key={index}>
                 <MDBCardBody>
                   <MDBRow>
-                    <MDBCol md="4">
+                    <MDBCol md="4"
+                    >
                       <img
                         style={{
-                          height: "150px"
+                          height: "150px",
+                          // width: '100%'
                         }}
                         src="https://mdbootstrap.com/img/Others/documentation/1.jpg"
                         className="img-fluid"
@@ -126,6 +84,7 @@ class Order extends React.Component {
                       />
                     </MDBCol>
                     <MDBCol
+                    className="mt-3"
                       md="8"
                       style={{
                         display: "flex",
@@ -136,11 +95,11 @@ class Order extends React.Component {
                       <MDBRow>
                         <MDBCol md="3">
                           <p className="font-weight-bold text-uppercase">
-                            Name
+                            City
                           </p>
                         </MDBCol>
                         <MDBCol md="9">
-                          {item.first_name} {item.last_name}
+                          {item.city}
                         </MDBCol>
                       </MDBRow>
                       <MDBRow>
@@ -155,7 +114,7 @@ class Order extends React.Component {
                         <MDBCol md="3">
                           {" "}
                           <p className="font-weight-bold text-uppercase">
-                            price
+                            total price
                           </p>
                         </MDBCol>
                         <MDBCol md="9">{item.total_price}</MDBCol>

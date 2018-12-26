@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import * as userAction from '../../store/actions/user-action'
+import {logout}from '../../store/actions/user-action'
+import {flash_alert_warining} from '../../store/actions/alert-action'
 import axios from 'axios'
 export default (ChildComponent) => {
   class ComposedComponent extends Component {
@@ -18,7 +19,9 @@ export default (ChildComponent) => {
         axios.get('http://127.0.0.1:8000/api/user/verify/', {headers: this.props.headers})
         .then(res => console.log(res))
         .catch(error => {
-            this.props.logout(() => {})
+            this.props.logout(() => {
+              this.props.flash_alert_warining("Session has expire, please login again")
+            })
         })
       }
     }
@@ -33,5 +36,10 @@ export default (ChildComponent) => {
 
     };
   }
-  return connect(mapStateToProps, userAction)(withRouter(ComposedComponent));
+  const mapActionToProps = {
+    logout,
+    flash_alert_warining
+}
+
+  return connect(mapStateToProps, mapActionToProps)(withRouter(ComposedComponent));
 };

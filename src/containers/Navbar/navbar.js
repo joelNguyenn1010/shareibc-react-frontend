@@ -26,6 +26,7 @@ class Navbars extends Component {
     render() {
         return (
             // <>
+            <React.Fragment>
                 <Navbar className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " + this.props.style}>
                     <div className="container">
                         <a className="navbar-brand" href="/" >
@@ -43,25 +44,26 @@ class Navbars extends Component {
                             navbar
                         >
                             <NavbarNav>
-                                <ul className="navbar-nav mr-auto" 
-                                onClick={() => this.closeCollapse()}
+                                <ul className="navbar-nav mr-auto"
+                                    onClick={() => this.closeCollapse()}
                                 >
-                                    <Links 
+                                    <Links
                                     />
                                 </ul>
-                                <ul className="navbar-nav" 
-                                onClick={() => this.closeCollapse()}
+                                <ul className="navbar-nav"
+                                    onClick={() => this.closeCollapse()}
                                 >
-                                    <UserLink 
-                           />
+                                    <UserLink
+                                    />
                                 </ul>
                             </NavbarNav>
 
                         </Collapse>
 
                     </div>
-            
-            </Navbar>
+                </Navbar>
+      
+            </React.Fragment>
         )
     }
 }

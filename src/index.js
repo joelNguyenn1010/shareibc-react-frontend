@@ -10,6 +10,7 @@ import cartReducer from './store/reducers/cart'
 import carouselReducer from './store/reducers/carousel'
 import checkoutReducer from  './store/reducers/checkout'
 import projectReducer from './store/reducers/project'
+import alertReducer from './store/reducers/alert'
 import thunk from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     carouselReducer,
     checkoutReducer,
     projectReducer,
+    alertReducer,
     form: formReducer,
 })
 var cart = {
