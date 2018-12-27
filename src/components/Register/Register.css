@@ -3,30 +3,6 @@
 }
 
 
-.form__button {
-    width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px;
-    display: table-row;
-    height: 50.88px;
-}
-
-.form__button p {
-    margin: 15px 0 1em;
-}
-
-.form__button-google {
-    background: #397AF2 !important;
-    width: 100%;
-    margin: 0;
-}
-
-.button__icon {
-    font-size: 50px !important;
-    margin: 0 5px;
-    float: left;
-}
 /* 
 .form-control {
     display: block;

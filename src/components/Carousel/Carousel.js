@@ -42,27 +42,33 @@ class Carousels extends React.Component {
             height: '42rem'
         }
         return (
-            // <div style={style} id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-
-            //     <div className="carousel-inner">
-            //         {/* <div className="carousel-item active">
-            //             <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
-            //         </div>
-            //         <div className="carousel-item">
-            //             <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
-            //         </div>
-            //         <div className="carousel-item">
-            //             <img className="d-block w-100" src="http://138.197.12.138/media/carousels/Home_Images-download.jpeg" alt="Loading" />
-            //         </div> */}
-            //         {renderImages}
-            //     </div>
-
-            // </div>
-            <Carousel style={style} activeItem={1} length={this.props.images.length} showControls={true} showIndicators={true} className="z-depth-1">
-                <CarouselInner>
-                {renderImages}
-                </CarouselInner>
-            </Carousel>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg" alt="First slide" />
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg" alt="Second slide" />
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg" alt="Third slide" />
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+     
+            // <Carousel style={style} activeItem={1} length={this.props.images.length} showControls={true} showIndicators={true} className="z-depth-1">
+            //     <CarouselInner>
+            //     {renderImages}
+            //     </CarouselInner>
+            // </Carousel>
         )
     }
 }

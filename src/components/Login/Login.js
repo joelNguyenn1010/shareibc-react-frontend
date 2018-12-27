@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as userActions from '../../store/actions/user-action'
 import './Login.css'
-import { MDBInput } from "mdbreact";
+import { NavLink } from 'react-router-dom'
 
 import FacebookLoginButton from './FacebookLogin';
 
@@ -99,7 +99,7 @@ class Login extends Component {
 
     render() {
         const cardHeight = {
-            height: '35rem'
+            // height: '35rem'
         }
 
         return (
@@ -107,7 +107,7 @@ class Login extends Component {
              <div className="row justify-content-center">
                 <div className="col-responsive">
 
-                    <div className="margin card" style={cardHeight} >
+                    <div className="card" style={cardHeight} >
                         <div className="card-body">
                             <div className="card transform-card">
                                 <div className="card-body text-center">
@@ -117,30 +117,39 @@ class Login extends Component {
                             </div>
 
                             <form onSubmit={this.handleSubmit} className="form-root needs-validation">
-
-                                <MDBInput
-                                    className="w-100 mt-4"
-                                    label="Email"
+                                <div className="form-group">
+                                <label>Email</label>
+                                <input
+                                    className="w-100 p-4 form-control"
                                     onChange={(event) => this.setState({ username: event.target.value })} />
                                 {/* <label >Password:</label> */}
                                 {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
+                                </div>
+                                <label>Password</label>
 
-                                <MDBInput
-                                    className="w-100 mt-4 mb-3"
-                                    label="Password"
+                                <input
+                                    className="w-100 p-4 mb-3 form-control"
                                     type="password"
                                     onChange={(event) => this.setState({ password: event.target.value })}
                                 />
                                 <span className="text-danger">{this.props.userReducer.mess}</span>
-                                <div className="container text-center mt-5">
+                                {/* <div className="container text-center mt-5"> */}
                                     <FacebookLoginButton
                                         responseFacebook={this.responseFacebook}
                                         onClickFacebook={this.onClickFacebook} />
+                                {/* </div> */}
+                                <button className="btn btn-outline-info waves-effect form__button">Submit</button>
+                                <div className="register-form__login">
+                                    <span>Already have an account?&nbsp; </span>
+                                    <div>
+                                        <span>
+                                            <NavLink to='/register'>Log in</NavLink>
+                                        </span>
+                                    </div>
                                 </div>
-
-                                <div className="text-center button-transform">
-                                    <button className="btn btn-outline-info waves-effect" >Submit</button>
-                                </div>
+                            
+                                {/* <div className="text-center button-transform">
+                                </div> */}
                             </form>
                         </div>
 

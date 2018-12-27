@@ -2,18 +2,14 @@ import React, { Component } from 'react'
 import './Register.css'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
-import { register } from '../../store/actions/user-action'
+import { register, facebookLogin } from '../../store/actions/user-action'
 import { compose } from 'redux';
-import {NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import FacebookLoginButton from '../Login/FacebookLogin'
 import {
-    MDBCard,
-    MDBCardBody,
-    MDBContainer,
     MDBRow,
-    MDBCol,
-    MDBIcon,
     MDBBtn
-  } from "mdbreact";
+} from "mdbreact";
 class Register extends Component {
     state = {
         username: "",
@@ -24,40 +20,51 @@ class Register extends Component {
         password2: "",
         validation: "",
         displayLogin: true
-      };
-  
+    };
+
+    onClickFacebook = (e) => {
+        this.responseFacebook()
+    }
+    responseFacebook = (response) => {
+        console.log(response)
+        if (response.accessToken && response.email) {
+            const user = {
+                token: response.accessToken,
+                name: response.name,
+                email: response.email
+            }
+            console.log(user)
+            this.props.facebookLogin(user, () => {
+                this.props.history.push('/')
+            })
+        }
+
+    }
+
+
     onSubmit = (event) => {
         // const newUser = event
-        const newUser = event
-        console.log(newUser)
+          const newUser = {
+            // username :event.email,
+            // first_name : event.first_name,
+            // last_name : event.last_name,
+            // email : event.email,
+            // password : event.password,
+            // password2: event.password2,
+            ...event,
+            username: event.email
+        }
         this.props.register(newUser, () => {
             this.props.history.push('/');
         })
-      
-
-
-        // const user = {
-        //     username : this.state.username,
-        //     first_name : this.state.first_name,
-        //     last_name : this.state.last_name,
-        //     email : this.state.email,
-        //     password : this.state.password,
-        //     password2: this.state.password2
-
-        // }
-        // axios.post('http://127.0.0.1:8000/api/user/auth/create', user)
-        // .then(res => {
-        //     console.log(res)
-        // })
-        // .catch(error => console.log(error))
     }
     render() {
-        
+
         const { handleSubmit } = this.props
         return (
             <div className="margin">
 
-{/*   
+                {/*   
         {!this.state.displayLogin && 
         <MDBContainer>
           <div className="row justify-content-center">
@@ -100,79 +107,131 @@ class Register extends Component {
             </MDBCol>
           </MDBRow>
         </MDBContainer>} */}
-        {/* Register form pop-up starts here */}
-        {this.state.displayLogin && <MDBContainer>
-          <MDBRow className="justify-content-center">
-            <div className="col-responsive">
-              {/* Register form  */}
-              <form className="register-form">
-                {/* Form name  */}
-                <p className="h4 text-center mb-4">Sign up</p>
-                <br />
-                {/* Email  */}
-                <label
-                  htmlFor="defaultFormRegisterEmailEx"
-                  className="grey-text"
-                >
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  id="defaultFormRegisterEmailEx"
-                  className="form-control"
-                />
-                <br />
-                {/* Password */}
-                <label
-                  htmlFor="defaultFormRegisterPasswordEx"
-                  className="grey-text"
-                >
-                  Your password
-                </label>
-                <input
-                  type="password"
-                  id="defaultFormRegisterPasswordEx"
-                  className="form-control"
-                />
-                <br />
-                {/* Confirm password */}
-                <label
-                  htmlFor="defaultFormRegisterConfirmEx"
-                  className="grey-text"
-                >
-                  Confirm password
-                </label>
-                <input
-                  type="password"
-                  id="defaultFormRegisterConfirmEx"
-                  className="form-control"
-                />
-                <br />
+                {/* Register form pop-up starts here */}
 
-                <div className="text-center mt-12">
-                  <MDBBtn
-                    className="form__button"
-                    color="primary"
-                    type="submit"
-                  >
-                    Join
+                <MDBRow className="justify-content-center">
+                    <div className="col-responsive">
+                        <div className="card">
+                            <div className="card-body">
+                                {/* Register form  */}
+                                <form className="register-form" onSubmit={handleSubmit(this.onSubmit)}>
+                                    {/* Form name  */}
+                                    <div className="card transform-card">
+                                        <div className="card-body text-center">
+                                            <h3 className="text-white">Shareibc</h3>
+                                            <h2 className="text-white">Register</h2>
+                                        </div>
+                                    </div>
+                                    {/* <p className="h4 text-center mb-4">Sign up</p> */}
+                                    {/* Email  */}
+                                    <div className="form-group">
+                                        <label htmlFor="defaultFormRegisterEmailEx">
+                                            Email
+                                    </label>
+                                        <Field
+                                            name="email"
+                                            type="email"
+                                            component="input"
+                                            id="defaultFormRegisterEmailEx"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="defaultFormRegisterfirstNameEx">
+                                            First Name
+                                    </label>
+                                        <Field
+                                            name="first_name"
+                                            type="text"
+                                            component="input"
+                                            id="defaultFormRegisterfirstNameEx"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="last_name">
+                                            Last Name
+                                    </label>
+                                        <Field
+                                            name="last_name"
+                                            type="text"
+                                            component="input"
+                                            id="last_name"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="phone">
+                                            Phone Number
+                                    </label>
+                                        <Field
+                                            name="userprofile.phone_number"
+                                            type="number"
+                                            component="input"
+                                            id="phone"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+
+                                    {/* Password */}
+                                    <div className="form-group">
+                                        <label htmlFor="defaultFormRegisterPasswordEx">
+                                            Your password
+                                        </label>
+                                        <Field
+                                            name="password"
+                                            type="password"
+                                            component="input"
+                                            id="defaultFormRegisterPasswordEx"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        {/* Confirm password */}
+                                        <label htmlFor="defaultFormRegisterConfirmEx">
+                                            Confirm password
+                                            </label>
+                                        <Field
+                                            type="password"
+                                            component="input"
+                                            name="password2"
+                                            id="defaultFormRegisterConfirmEx"
+                                            className="form-control p-4"
+                                        />
+                                    </div>
+                                    <FacebookLoginButton
+                                        responseFacebook={this.responseFacebook}
+                                        onClickFacebook={this.onClickFacebook} />
+
+
+                                    <div className="text-center mt-12">
+                                        <MDBBtn
+                                            className="form__button"
+                                            outline
+                                            color="info"
+                                            type="submit"
+                                        >
+                                            Join
                   </MDBBtn>
-                </div>
-              </form>
-              <div className="register-form__login">
-                <span>Already have an account?&nbsp; </span>
-                <div>
-                  <span>
-                    <NavLink to="/login">Log in</NavLink>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </MDBRow>
-        </MDBContainer>
-        }
+                                    </div>
+                                </form>
+                                <div className="register-form__login">
+                                    <span>Already have an account?&nbsp; </span>
+                                    <div>
+                                        <span>
+                                            <NavLink to='/login'>Log in</NavLink>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </MDBRow>
 
 
+                {/* 
                 <p>Validation {this.props.errorMesss}</p>
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                     <label>Username:</label>
@@ -217,7 +276,7 @@ class Register extends Component {
                         component="input" />
 
                     <button>Register</button>
-                </form>
+                </form> */}
             </div>
         )
     }
@@ -228,7 +287,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapActionToProps = {
-    register
+    register,
+    facebookLogin
 }
 export default compose(
     connect(mapStateToProps, mapActionToProps),

@@ -16,7 +16,7 @@ class Home extends Component {
         }
         return (
             <div className="Home w-100 h-100" >
-                <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                <div id="carouselExampleControls" className="carousel__home slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="views darken-theme" style={style}></div>

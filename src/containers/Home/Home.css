@@ -15,16 +15,16 @@ html,
 body {
   height: 100%; }
 
-.carousel {
+.carousel__home {
     height: 100%;
     width: 100%; 
 }
 
-    .carousel .carousel-inner {
+    .carousel__home .carousel-inner {
       height: 100%; 
       width: 100%; 
     }
-      .carousel .carousel-inner .carousel-item,
-      .carousel .carousel-inner .active {
+      .carousel__home .carousel-inner .carousel-item,
+      .carousel__home .carousel-inner .active {
         height: 100%; 
         width: 100%; }
