@@ -29,16 +29,17 @@ class Main extends Component {
         const style = window.location.pathname !== '/' ? 'navbar-blue ' : ' '
         return (
             <div className="Main">
-                <Navbar style={style} />
+                <Navbar styles={style} />
                 <Flash 
                 
                 />
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
-                    <Route path="/products" exact component={verifyAuth(Products)} />
                     <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
 
                     <Container>
+                    <Route path="/products" exact component={verifyAuth(Products)} />
+
                         <Route path='/:email/order' component={requiredAuth(Order)} />
                         <Route path='/login' exact component={alreadyAuth(Login)} />
                         <Route path='/register' exact component={alreadyAuth(Register)} />

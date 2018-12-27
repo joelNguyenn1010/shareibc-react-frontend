@@ -27,7 +27,7 @@ class Navbars extends Component {
         return (
             // <>
             <React.Fragment>
-                <Navbar className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " + this.props.style}>
+                <Navbar className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " + this.props.styles}>
                     <div className="container">
                         <a className="navbar-brand" href="/" >
                             <strong>Shareibc</strong>
