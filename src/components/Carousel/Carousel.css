@@ -2,7 +2,9 @@
     height: auto;
 }
 
-
+.catalogies-position {
+    position: relative;
+}
 
 .carousel__half {
     height: auto;

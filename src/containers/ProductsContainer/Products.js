@@ -49,37 +49,40 @@ class Products extends Component {
         ]
         const ProductRender = this.props.products.length > 0 ? (
             <React.Fragment>
-        <div className="row d-flex justify-content-center animated fadeIn">
-        <Loading loader={this.props.loader} />
-        {allProduct.length === 0 ? <NotFound404 mess={this.props.error} /> : allProduct}
-    </div>
-    <div className="container mt-5">
-    <Pagination />
-    </div>
-    </React.Fragment>
-    ) : ''
+                <div className="row d-flex justify-content-center animated fadeIn">
+                    <Loading loader={this.props.loader} />
+                    {allProduct.length === 0 ? <NotFound404 mess={this.props.error} /> : allProduct}
+                </div>
+                <div className="container mt-5">
+                    <Pagination />
+                </div>
+            </React.Fragment>
+        ) : ''
         return (
             <React.Fragment>
-            <Carousel 
-            images={images}
-            />
-            <div className="container mt-4">
-               <div className="d-flex justify-content-between">
-               <div>
-                <h1 className="position__results">{this.props.products.length} results</h1>
+                <Carousel
+                    images={images}
+                />
+                <div className="low-z-index">
+                <div className="container mt-4 low-z-index">
+                    <div className="d-flex justify-content-between low-z-index">
+                        <div className="low-z-index">
+                            <h1 className="position__results">{this.props.products.length} results</h1>
+                        </div>
+                        <div className="low-z-index">
+                            <h1 className="position__results">{this.props.products.length} results</h1>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                <h1 className="position__results">{this.props.products.length} results</h1>
-                </div>
-                </div>
-                </div>
-            <div className="container-fluid mt-3">
-         
-            {ProductRender}
-                 
+                <div className="container-fluid mt-3">
+
+                    {ProductRender}
 
 
-            </div>
+
+                </div>
+
+                </div>
             </React.Fragment>
         )
     }

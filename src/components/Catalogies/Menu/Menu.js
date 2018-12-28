@@ -21,7 +21,7 @@ class Menu extends React.Component {
                     <MDBDropdownToggle caret color="dark">
                         {this.props.sortTitle}
       </MDBDropdownToggle>
-                    <MDBDropdownMenu basic>
+                    <MDBDropdownMenu className="z-index-menu" basic>
                     <MDBDropdownItem onClick={() => this.props.onFilter(Type.ALL)}>All</MDBDropdownItem>
                         <MDBDropdownItem onClick={() => this.props.onFilter(Type.PRICE_ACS)}>Price   Lowest </MDBDropdownItem>
                         <MDBDropdownItem onClick={() => this.props.onFilter(Type.PRICE_DECS)}>Price   Highest</MDBDropdownItem>

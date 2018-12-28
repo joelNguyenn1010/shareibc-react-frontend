@@ -30,7 +30,7 @@ class CitySort extends React.Component {
             )
         })
         return (
-            <MDBDropdown size="sm">
+            <MDBDropdown dropup size="sm">
                 <MDBDropdownToggle caret color="dark">
                     {this.props.city}
 </MDBDropdownToggle>

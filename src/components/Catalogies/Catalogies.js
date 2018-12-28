@@ -106,7 +106,6 @@ onChangeCity={this.onChangeCity}/>
                     </div>
                 </div>
                 </div>
-{/* <h1>{this.props.products.length} results</h1> */}
 
 
 

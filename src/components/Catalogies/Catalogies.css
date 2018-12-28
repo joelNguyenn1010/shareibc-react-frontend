@@ -1,11 +1,19 @@
 
-
-.position__catalogies {
-    top: 0;
-    /* bottom: 0; */
+.catalogies-position {
+    position: relative;
 }
-
-/* @media (min-width: 1200px) {
+.position__catalogies {
+    position: absolute;
+    right: 15%;
+   bottom: 20px;
+    left: 15%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+/* 
+@media (min-width: 1200px) {
     .transform_filter {
         transform: translate(0%, 27rem);   
         position: absolute;

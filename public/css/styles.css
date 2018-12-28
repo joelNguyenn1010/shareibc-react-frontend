@@ -1,3 +1,10 @@
+.z-index-menu{
+    z-index: 999999999!important;
+}
+.low-z-index {
+    position: relative;
+    z-index: -10000!important;
+}
 .navbar-blue {
     background-color: #54ceff!important
 }

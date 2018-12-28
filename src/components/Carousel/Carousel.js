@@ -12,9 +12,7 @@ class Carousels extends React.Component {
     Caption = () => {
         if( window.location.pathname === '/products') {
             return(
-                    <CarouselCaption>
                    <Catalogies />
-                    </CarouselCaption>
             )
         }
     }
@@ -56,10 +54,10 @@ class Carousels extends React.Component {
             height: '62vh'
         }
         return (
+            <React.Fragment>
                 <div id="carouselExampleControls" class="carousel slide carousel__half" data-ride="carousel">
                 <div class="carousel-inner">
                     {renderImages}
-            {this.Caption()}
                 </div>
             
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -71,6 +69,11 @@ class Carousels extends React.Component {
                   <span class="sr-only">Next</span>
                 </a>
               </div>
+              <div className="catalogies-position">
+              {this.Caption()}
+              </div>
+
+</React.Fragment>
             // <div className="row">
             // <section > 
             //     {/* <div className="col-md-6"> */}
