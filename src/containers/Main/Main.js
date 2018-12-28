@@ -16,6 +16,7 @@ import requiredAuth from '../hoc/requiredAuth'
 import './Main.css'
 import Flash from '../../components/Flash/Flash'
 import Order from '../../components/Order/Order'
+import User from '../User/User'
 //verify token
 import verifyAuth from '../hoc/verifyAuth'
 import { Elements } from 'react-stripe-elements'
@@ -41,10 +42,10 @@ class Main extends Component {
                     <Route path="/products" exact component={verifyAuth(Products)} />
 
                     <Container>
-
-                        <Route path='/:email/order' component={requiredAuth(Order)} />
                         <Route path='/login' exact component={alreadyAuth(Login)} />
                         <Route path='/register' exact component={alreadyAuth(Register)} />
+                        <Route path='/user/:email' component={requiredAuth(User)} />
+
                         <Route path='/logout' exact component={Logout} />
                         <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />
                         <Route path='/cart' exact component={verifyAuth(AsyncCart)} />

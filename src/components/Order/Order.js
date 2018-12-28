@@ -1,28 +1,23 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { headerS } from "../../store/actions/user-action";
-import orderList from "./testOrder.json";
+import Loader from '../Loading/Loading'
 import {
   MDBCol,
   MDBRow,
   MDBContainer,
   MDBCardBody,
   MDBCard,
-  MDBCardTitle,
-  MDBCardText,
-  MDBListGroup,
-  MDBListGroupItem
 } from "mdbreact";
 import "./Order.css";
-import * as order from "./testOrder.json";
-import MyUser from '../MyUser/MyUser'
 
 class Order extends React.Component {
   state = {
     orders: [],
     mess: "",
-    index: null
+    index: null,
+    loader: true,
+
   };
   componentDidMount() {
     //THIS IS FOR TEST AND CREATE UI
@@ -58,15 +53,15 @@ class Order extends React.Component {
         //         mess: "Server error"
         //     })
         // }
-      });
+      })
+      .then(()=>this.setState({loader: false}))
   }
 
   render() {
     return (
-      <MDBContainer fluid>
-        <MDBRow>
-          <MyUser />
-          <MDBCol size="12" md="8">
+           <MDBCol size="12" md="8">
+            <Loader loader={this.state.loader} />
+
             {this.state.orders.map((item, index) => (
               <MDBCard style={{ marginTop: "15px" }} key={index}>
                 <MDBCardBody>
@@ -124,9 +119,8 @@ class Order extends React.Component {
                 </MDBCardBody>
               </MDBCard>
             ))}
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+          </MDBCol> 
+ 
     );
   }
 }

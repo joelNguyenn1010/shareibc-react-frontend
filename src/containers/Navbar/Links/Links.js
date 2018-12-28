@@ -15,10 +15,10 @@ class Links extends Component {
                     <NavLink to="/" exact activeClassName="active" className="nav-link waves-effect waves-light">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/products" exact className="nav-link waves-effect waves-light">Products</NavLink>
+                    <NavLink to="/products" exact className="nav-link waves-effect waves-light">Shop</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link waves-effect waves-light" to="/contact-us">Contact us</NavLink>
+                    <NavLink className="nav-link waves-effect waves-light" to="/contact-us">Contact</NavLink>
                 </li>
                 <li className="nav-item" >
                     <NavLink to="/projects" exact className="nav-link waves-effect waves-light">Projects</NavLink>

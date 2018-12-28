@@ -88,7 +88,7 @@ class Item extends React.Component {
                     </td>
                     <td>
                         <p className='equal-margin'>{this.props.total}</p>
-                        <button className="btn btn-sm btn-outline-primary btn-position" onClick={this.delete_item}>Remove</button>
+                        <button className="btn btn-sm btn-outline-info btn-position" onClick={this.delete_item}>Remove</button>
                     </td>
                     {/* </div> */}
                     {/* <div className="col-7 col-lg-9 col-md-9 col-sm-8"> */}

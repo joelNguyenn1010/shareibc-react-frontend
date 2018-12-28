@@ -1,12 +1,9 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import {
     MDBCol,
     MDBRow,
-    MDBContainer,
-    MDBCardBody,
-    MDBCard,
-    MDBCardTitle,
-    MDBCardText,
+  
     MDBListGroup,
     MDBListGroupItem
   } from "mdbreact";
@@ -40,21 +37,13 @@ class MyUser extends React.Component {
                       alt="aligment"
                     />
                   </MDBCol>
-                  <MDBCol md="6">Thông tin</MDBCol>
+                  <MDBCol md="6">Info</MDBCol>
                 </MDBRow>
               </MDBListGroupItem>
-              {userMenus.map((item, index) => (
-                <MDBListGroupItem
-                key={index}
-                  onClick={() => {
-                    this.setState({ index });
-                  }}
-                  hover
-                  className={this.state.index === index ? "active" : null}
-                >
-                  {item.name}{" "}
-                </MDBListGroupItem>
-              ))}
+              <NavLink activeClassName='active' className="list-group-item" to={`/user/${this.props.userEmail}/order`}> My Order</NavLink>
+
+              <NavLink activeClassName='active' className="list-group-item" to={`/user/${this.props.userEmail}/info`}> My Account</NavLink>
+        
               {/* <MDBListGroupItem hover> Morbi leo risus</MDBListGroupItem>
               <MDBListGroupItem hover>Porta ac consectetur ac</MDBListGroupItem>
               <MDBListGroupItem> Vestibulum at eros</MDBListGroupItem> */}

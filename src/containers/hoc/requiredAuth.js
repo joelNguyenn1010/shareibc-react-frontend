@@ -26,7 +26,7 @@ export default (ChildComponent) => {
                     })
             } else {
                 this.props.logout(() => {
-                    this.props.flash_alert_warining("Please login")
+                    this.props.flash_alert_warining("Please login again")
                     this.props.history.push('/products');
                     
                 })

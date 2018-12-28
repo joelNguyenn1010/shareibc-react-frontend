@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const UserLink = (props) => {
@@ -9,9 +9,9 @@ const UserLink = (props) => {
                 <a className="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i className="fa fa-user"></i> {props.user.name} </a>
                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                    <a className="dropdown-item waves-effect waves-light" href="#">My account</a>
-                    <NavLink to={`/${props.user.email}/order`} className="dropdown-item waves-effect waves-light" >My order</NavLink>
-                    <NavLink to="/logout" className="dropdown-item waves-effect waves-light" >Log out</NavLink>
+                    <Link to={`/user/${props.user.email}/info`} className="dropdown-item waves-effect waves-light" >My Account</Link>
+                    <Link to={`/user/${props.user.email}/order`} className="dropdown-item waves-effect waves-light" >My order</Link>
+                    <Link to="/logout" className="dropdown-item waves-effect waves-light" >Log out</Link>
 
                 </div>
             </li>
@@ -21,12 +21,12 @@ const UserLink = (props) => {
     } else {
         return (
             <React.Fragment>
-            <li className="nav-item" >
-                <NavLink to="/login" exact className="nav-link waves-effect waves-light">Login</NavLink>
-            </li>
-            <li className="nav-item" >
-                <NavLink to="/register" exact className="nav-link waves-effect waves-light">Register</NavLink>
-            </li>
+                <li className="nav-item" >
+                    <NavLink to="/login" className="nav-link waves-effect waves-light">Login</NavLink>
+                </li>
+                <li className="nav-item" >
+                    <NavLink to="/register" className="nav-link waves-effect waves-light">Register</NavLink>
+                </li>
             </React.Fragment>
         )
 

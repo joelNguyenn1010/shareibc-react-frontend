@@ -41,8 +41,7 @@ class Cart extends React.Component {
                     </div>
                 </div>
                 <div className="choices-btn m-4">
-                        <button className="btn btn-outline-primary" onClick={this.props.clear_all_cart} >Clear all</button>
-                        <NavLink to='/checkout' className="btn btn-white" >Checkout</NavLink>
+                        <NavLink to='/checkout' className="btn btn-white btn-lg" >Checkout</NavLink>
                     </div>
             </div>
         )

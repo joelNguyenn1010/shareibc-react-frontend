@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Background from './Image/Free-Background-HD.jpg'
+import { Link } from 'react-router-dom'
 import "./Home.css"
 import axios from 'axios'
 
@@ -19,19 +20,30 @@ class Home extends Component {
                 <div id="carouselExampleControls" className="carousel slide w-100 h-100" data-ride="carousel">
                     <div className="carousel-inner w-100 h-100">
                         <div className="carousel-item w-100 h-100 active">
-                            <div className="views darken-theme" style={style}></div>
+                            <div className="views darken-theme" style={style}>
+        
+                            </div>
+
+                            <div className="carousel-caption transform__home__button">
+                                    <Link to='/products' className="btn btn-lg btn-outline-white m-3">Shop</Link>
+                                    <Link to='/projects' className="btn btn-lg btn-outline-white m-3">Projects</Link>
+                                </div>
+
+
                         </div>
+
+
                     </div>
 
 
-                    <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    {/* <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="sr-only">Previous</span>
                     </a>
                     <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="sr-only">Next</span>
-                    </a>
+                    </a> */}
                 </div>
             </div>
         )

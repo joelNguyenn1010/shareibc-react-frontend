@@ -29,10 +29,12 @@ class Navbars extends Component {
             // <>
             <React.Fragment>
                 <Navbar className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " + this.props.styles + this.props.styleProduct}>
-                    <div className="container">
+                    <div className="container justify-content-between">
+                    <div>
                         <a className="navbar-brand" href="/" >
-                            <strong>Shareibc</strong>
+                            <strong>Si</strong>
                         </a>
+                        </div>
                         {/* <button className="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button> */}
@@ -45,7 +47,7 @@ class Navbars extends Component {
                             navbar
                         >
                             <NavbarNav>
-                                <ul className="navbar-nav mr-auto"
+                                <ul className="navbar-nav desktop_mx_auto"
                                     onClick={() => this.closeCollapse()}
                                 >
                                     <Links

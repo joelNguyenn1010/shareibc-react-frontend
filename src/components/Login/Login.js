@@ -140,10 +140,10 @@ class Login extends Component {
                                 {/* </div> */}
                                 <button className="btn btn-outline-info waves-effect form__button">Submit</button>
                                 <div className="register-form__login">
-                                    <span>Already have an account?&nbsp; </span>
+                                    <span>Don't haveve account?&nbsp; </span>
                                     <div>
                                         <span>
-                                            <NavLink to='/register'>Log in</NavLink>
+                                            <NavLink to='/register'>Register</NavLink>
                                         </span>
                                     </div>
                                 </div>

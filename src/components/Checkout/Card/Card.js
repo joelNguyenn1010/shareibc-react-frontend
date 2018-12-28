@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import {
+  CardElement, 
+  injectStripe, 
+  CardNumberElement,
+  CardExpiryElement,
+  CardCVCElement,
+} from 'react-stripe-elements';
 import {connect} from 'redux'
 import axios from 'axios'
 class Checkout extends Component {
@@ -26,6 +32,9 @@ class Checkout extends Component {
         <p>{this.state.mess}</p>
         <label>Credit Card</label>
         <CardElement style={{base: {fontSize: '18px'}}}/>
+        {/* <CardNumberElement onReady={(el) => el.focus()}/>
+        <CardExpiryElement />
+        <CardCVCElement /> */}
         {/* <button disabled={this.props.cardStatus} className="btn btn-primary btn-sm ml-0 mt-5" 
         // onClick={() =>
         //   {

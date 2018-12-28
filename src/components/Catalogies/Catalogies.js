@@ -59,7 +59,7 @@ class Catalogies extends React.Component {
         }
     }
     onChangeCity = (city) => {
-        this.setState({city})
+        this.setState({ city })
         this.props.apiCity(city)
     }
 
@@ -83,28 +83,28 @@ class Catalogies extends React.Component {
 
         return (
             <React.Fragment>
-                
-                <div className="transform_filter position__catalogies">
-                <div className="text-center">
-                    <h1>
-                    All profit will go to donation
-                    </h1>
-                </div>
-                <div className="d-flex bd-highlight">
-                    <div className="w-89 bd-highlight p-2">
-                    <Search
-                    onSearch={this.onSearch} />
-                    </div>
-                    <div className="flex-shrink-1 bd-highlight">
-                    <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
 
+                <div className="transform_filter position__catalogies">
+                    <div className="text-center">
+                        <h1>
+                            All profit will go to donation
+                    </h1>
                     </div>
-                    <div className="flex-shrink-1">
-                    <CitySort 
-                    city={this.state.city}
-onChangeCity={this.onChangeCity}/>
+                    <div className="d-flex bd-highlight">
+                        <div className="w-89 bd-highlight p-2">
+                            <Search
+                                onSearch={this.onSearch} />
+                        </div>
+                        <div className="flex-shrink-1 bd-highlight">
+                            <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
+
+                        </div>
+                        <div className="flex-shrink-1">
+                            <CitySort
+                                city={this.state.city}
+                                onChangeCity={this.onChangeCity} />
+                        </div>
                     </div>
-                </div>
                 </div>
 
 
