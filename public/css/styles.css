@@ -70,3 +70,38 @@ outline: none;
             width: 40%;
         }
     }
+
+       
+.form__button {
+    width: 100%;
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    padding: 0px;
+    height: 50.88px;
+}
+
+.form__button p {
+    margin: 15px 0 1em;
+}
+
+.form__button-google {
+    background: #397AF2 !important;
+    width: 100%;
+    margin: 0;
+}
+
+.button__icon {
+    font-size: 50px !important;
+    margin: 0 5px;
+    float: left;
+}
+
+.register-form__login {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.w-89 {
+    width: 89%;
+}

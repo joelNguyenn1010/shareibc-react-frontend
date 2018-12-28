@@ -20,13 +20,11 @@ class Search extends Component {
         return (
             
             <React.Fragment>
-                    <form onSubmit={this.handleSubmit} className="search-form" >
-                        <div className="form-group md-form my-0 waves-light waves-effect waves-light">
-                            <input onChange={event => this.setState({ key:this.props.onSearch(event.target.value) })} type="text" className="form-control" placeholder="Searching" />
-                        </div>
-                    </form>
-
-
+                    {/* <form onSubmit={this.handleSubmit} className="search-form" >
+                        <div className="form-group md-form my-0 waves-light waves-effect waves-light"> */}
+                            <input  onChange={event => this.setState({ key:this.props.onSearch(event.target.value) })} type="text" className="border p-4 w-100 h-75" placeholder="Searching" />
+                        {/* </div>
+                    </form> */}
             </React.Fragment>
         )
     }

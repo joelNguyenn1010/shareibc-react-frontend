@@ -7,7 +7,7 @@ const CardDetails = (props) => {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item font-style">Name: <span className="product-name">{props.product.name}</span> </li>
                     <li className="list-group-item font-style">Company: <span>{props.product.company}</span></li>
-                    <li className="list-group-item font-style">Type: <span>{props.product.type}</span></li>
+                    <li className="list-group-item font-style">Type: <span>{props.product.type.name}</span></li>
                     <li className="list-group-item font-style">
                         <div className="row">
                             <div className="col col-lg-2">Price: <span>${props.product.price}</span></div>

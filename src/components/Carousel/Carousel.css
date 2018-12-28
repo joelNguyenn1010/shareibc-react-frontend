@@ -1,0 +1,16 @@
+.carousel__image{
+    height: auto;
+}
+
+
+
+.carousel__half {
+    height: auto;
+}
+
+
+@media (min-width: 1200px) {
+    .carousel__half {
+        height: 84vh;
+    }
+}

@@ -32,11 +32,21 @@ class Details extends Component {
     componentDidMount() {
         axios.get(`http://127.0.0.1:8000/api/product/${this.props.match.params.id}/`)
             .then(res => {
-                console.log(res.data)
-                this.setState({
-                    product: res.data,
-                    loader: false
-                })
+
+                if(res.data) {
+                    console.log(res.data)
+
+                    this.setState({
+                        product: 
+                        {
+                            ...res.data
+                        }
+          
+                        ,
+                        loader: false
+                    })
+                }
+           
             })
             .catch(error => {
                 console.log(error)

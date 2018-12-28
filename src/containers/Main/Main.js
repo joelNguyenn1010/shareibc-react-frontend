@@ -26,19 +26,21 @@ const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 const AsyncProjects = asyncComponents(() => import('../Projects/Projects'));
 class Main extends Component {
     render() {
-        const style = window.location.pathname !== '/' ? 'navbar-blue ' : ' '
+        const style = window.location.pathname !== '/' && window.location.pathname !== '/products' ? ' navbar-blue ' : ' '
+        // const style2 = window.location.pathname !== '/products' ? ' navbar-blue ' : ' '
+
         return (
             <div className="Main">
-                <Navbar styles={style} />
+                <Navbar styles={style}/>
                 <Flash 
                 
                 />
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
                     <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
+                    <Route path="/products" exact component={verifyAuth(Products)} />
 
                     <Container>
-                    <Route path="/products" exact component={verifyAuth(Products)} />
 
                         <Route path='/:email/order' component={requiredAuth(Order)} />
                         <Route path='/login' exact component={alreadyAuth(Login)} />

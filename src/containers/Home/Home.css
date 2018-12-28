@@ -14,7 +14,7 @@
 html,
 body {
   height: 100%; }
-
+/* 
 .carousel__home {
     height: 100%;
     width: 100%; 
@@ -27,4 +27,4 @@ body {
       .carousel__home .carousel-inner .carousel-item,
       .carousel__home .carousel-inner .active {
         height: 100%; 
-        width: 100%; }
+        width: 100%; } */

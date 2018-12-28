@@ -1,4 +1,4 @@
-import { SEARCH, PAGE, TYPE, LOAD_PRODUCTS, ERROR_LOAD_PRODUCTS, LOADER, on_loader } from '../actions/products-action'
+import { CITY, SEARCH, PAGE, TYPE, LOAD_PRODUCTS, ERROR_LOAD_PRODUCTS, LOADER, on_loader } from '../actions/products-action'
 
 const initialState = {
     products: [],
@@ -11,7 +11,8 @@ const initialState = {
     page: 1,
     type: "",
     search: "",
-    items_per_page: 1
+    items_per_page: 1,
+    city: ""
 }
 
 const reducer = (state = initialState, action) => {
@@ -41,6 +42,12 @@ const reducer = (state = initialState, action) => {
                 products: [],
                 error: '',
                 loader: true
+            }
+        case CITY:
+            return {
+                ...state,
+                city: action.payload.city,
+                page: action.payload.page
             }
         case SEARCH:
             return {

@@ -4,5 +4,6 @@ export const Type = {
     PRICE_DECS: '-price',
     PRICE_ACS: 'price',
     VALUE_DECS: '-value',
-    VALUE_ACS: 'value'
+    VALUE_ACS: 'value',
+    ALL: ''
 }

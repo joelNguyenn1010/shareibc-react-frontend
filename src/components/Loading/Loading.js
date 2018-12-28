@@ -8,7 +8,7 @@ const loading = (props) => {
     margin: 0 auto 5rem auto;
 `;
     return (
-        <div className="container">
+        <React.Fragment>
             <CircleLoader   
                 className={style}
                 sizeUnit={"px"}
@@ -16,7 +16,7 @@ const loading = (props) => {
                 color={'#123abc'}
                 loading={props.loader}
             />
-        </div>
+            </React.Fragment>
     )
 }
 
