@@ -17,21 +17,6 @@ class Cart extends React.Component {
                     <div className='col-md-7'>
                     <CartTable 
                     />
-                        {/* <div className="table-responsive">
-                            <table className="table table-condensed border">
-                                <thead className="card-header">
-                                    <tr>
-                                        <th>Item</th>
-                                        <th></th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-
-                                {this.items(this.props)}
-
-                            </table>
-                        </div> */}
                     </div>
                     <div className="col-md-5">
                         <GeneralInfo
@@ -49,7 +34,7 @@ class Cart extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid p-5">
                 {this.props.cart.length > 0 ? this.renderItem() : <EmptyCart />}
             </div>
         )

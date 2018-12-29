@@ -27,7 +27,7 @@ const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 const AsyncProjects = asyncComponents(() => import('../Projects/Projects'));
 class Main extends Component {
     render() {
-        const style = window.location.pathname !== '/' && window.location.pathname !== '/products' ? ' navbar-blue ' : ' '
+        const style = window.location.pathname !== '/' && window.location.pathname !== '/products' && window.location.pathname !== '/projects' ? ' navbar-blue ' : ' '
         // const style2 = window.location.pathname !== '/products' ? ' navbar-blue ' : ' '
 
         return (
@@ -38,20 +38,19 @@ class Main extends Component {
                 />
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
-                    <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
                     <Route path="/products" exact component={verifyAuth(Products)} />
+                    <Route path='/projects' exact component={verifyAuth(AsyncProjects)} />
 
                     <Container>
                         <Route path='/login' exact component={alreadyAuth(Login)} />
                         <Route path='/register' exact component={alreadyAuth(Register)} />
                         <Route path='/user/:email' component={requiredAuth(User)} />
-
+                        <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
                         <Route path='/logout' exact component={Logout} />
-                        <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />
                         <Route path='/cart' exact component={verifyAuth(AsyncCart)} />
-                        <Route path='/product/:id' exact component={(Details)} />
-                        <Route path='/projects' exact component={verifyAuth(AsyncProjects)} />
+                        <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />
 
+                        <Route path='/product/:id' exact component={(Details)} />
                         <Elements>
                             <Route path='/checkout' exact component={verifyAuth(AsyncCheckout)} />
                         </Elements>

@@ -7,7 +7,7 @@ class App extends Component {
 
   render() {
     return (
-      <StripeProvider apiKey="pk_test_MlIt57HmUqLZZRaQwZRCSg1l">
+      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_TEST}>
       <BrowserRouter>
       <ScrollToTop>
           <div className="App h-100 w-100">

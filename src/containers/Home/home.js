@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Background from './Image/Free-Background-HD.jpg'
+import Background from './Image/Home.jpg'
 import { Link } from 'react-router-dom'
 import "./Home.css"
 import axios from 'axios'
@@ -25,8 +25,9 @@ class Home extends Component {
                             </div>
 
                             <div className="carousel-caption transform__home__button">
-                                    <Link to='/products' className="btn btn-lg btn-outline-white m-3">Shop</Link>
-                                    <Link to='/projects' className="btn btn-lg btn-outline-white m-3">Projects</Link>
+                            <h1>Better Lifestyle, Better World</h1>
+                                    <Link to='/products' className="btn btn-lg btn-elegant mx-shop">Shop</Link>
+                                    <Link to='/projects' className="btn btn-lg btn-elegant mx-project">Projects</Link>
                                 </div>
 
 

@@ -1,6 +1,9 @@
 .z-index-menu{
     z-index: 999999999!important;
 }
+.mt-overlay {
+    margin-top: 100px;
+}
 .low-z-index {
     position: relative;
     z-index: -10000!important;
@@ -34,12 +37,18 @@ outline: none;
 }
 
   .top-nav-collapse {
-    background-color: #54ceff; }
+    background-color: #54ceff; 
+}
   
   /* Adding color to the Navbar on mobile */
-  @media only screen and (max-width: 768px) {
+  /* @media only screen and (max-width: 768px) {
     .navbar {
-        background-color: rgba(0, 0, 0, 0.2); } }
+        background-color: #54ceff; 
+    
+    } } */
+    .link-up-size {
+        font-size: 1.2rem;
+    }
 
         @media (min-width: 800px) and (max-width: 850px) {
           .navbar:not(.top-nav-collapse) {

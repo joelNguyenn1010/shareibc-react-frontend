@@ -7,6 +7,7 @@ export const PAGE = 'page:product'
 export const SEARCH = 'search:product'
 export const TYPE = 'type:product'
 export const CITY = 'city:product'
+export const DATE ='date:product'
 
 
 //loading product
@@ -40,7 +41,8 @@ export function apiSearchFilter() {
         let page = getState().productReducer.page
         let search = getState().productReducer.search
         let city = getState().productReducer.city
-        axios.get(`${conf.BASE_URL}/api/product/?search=${search}&ordering=${type}&page=${page}&city=${city}`)
+        let date = getState().productReducer.date
+        axios.get(`${conf.BASE_URL}/api/product/?search=${search}&ordering=${type}&page=${page}&city=${city}&date=${date}`)
         .then(res => {
             if(res.data) {
                 dispatch(load_product(res.data))
@@ -86,6 +88,19 @@ export function apiCity(city) {
     }
 }
 
+export const apiDate =(date)=> {
+    return(dispatch,getState) => {
+        dispatch({
+            type: DATE,
+            payload: {
+                date,
+                page: 1
+            }
+        })
+        dispatch(apiSearchFilter());
+
+    }
+}
 
 export function onApiNextProductPage(url) {
     return dispatch => {

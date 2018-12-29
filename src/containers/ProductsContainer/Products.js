@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import Product from './../../components/Product/Product'
 import Pagination from '../../components/Product/Pagination/Pagination'
-import { load_product, apiProducts, apiSearch } from '../../store/actions/products-action'
+import { load_product, apiProducts, apiSearch, apiDate } from '../../store/actions/products-action'
 import axios from 'axios'
 import Catalogies from '../../components/Catalogies/Catalogies'
 import { connect } from 'react-redux'
 import './Products.css'
-import Images from '../Home/Image/Free-Background-HD.jpg'
+import Images from './Product.jpg'
 import Loading from '../../components/Loading/Loading'
 import Carousel from '../../components/Carousel/Carousel'
 import NotFound404 from '../../components/NotFound404/NotFound404'
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+
 class Products extends Component {
 
     state = {
         products: [],
         loader: true,
-        mess: ''
+        mess: '',
+        date: 'Newest'
 
     }
 
@@ -62,27 +65,46 @@ class Products extends Component {
             <React.Fragment>
                 <Carousel
                     images={images}
+                    pageTitles="Shop"
                 />
-                <div className="low-z-index">
-                <div className="container mt-4 low-z-index">
-                    <div className="d-flex justify-content-between low-z-index">
-                        <div className="low-z-index">
-                            <h1 className="position__results">{this.props.products.length} results</h1>
-                        </div>
-                        <div className="low-z-index">
-                            <h1 className="position__results">{this.props.products.length} results</h1>
+                    <div className="container mt-4">
+                        <div className="d-flex justify-content-between">
+                            <div>
+                                <h1 className="position__results">{this.props.products.length} results</h1>
+                            </div>
+                            <div>
+                                {/* <h1 className="position__results">{this.props.products.length} results</h1> */}
+                                <MDBDropdown>
+                                    <MDBDropdownToggle caret outline color="info">
+                                        {this.state.date}
+                                     </MDBDropdownToggle>
+                                    <MDBDropdownMenu basic>
+                                        <MDBDropdownItem onClick={
+                                            ()=>{
+                                                this.props.apiDate('')
+                                                this.setState({date:'Newest'})
+                                            }
+                                        }>Newest</MDBDropdownItem>
+                                        <MDBDropdownItem onClick={
+                                            ()=>{
+                                                this.props.apiDate('date')
+                                                this.setState({date:'Oldest'})
+                                            }
+                                        }>Oldest</MDBDropdownItem>
+                                    </MDBDropdownMenu>
+                                </MDBDropdown>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="container-fluid mt-3">
+                    <div className="container-fluid mt-3">
 
-                    {ProductRender}
-
+                        {ProductRender}
 
 
-                </div>
 
-                </div>
+                    </div>
+
             </React.Fragment>
         )
     }
@@ -98,7 +120,8 @@ const mapStateToProps = state => (
 const mapActionsToProps = {
     onLoaddingProduct: load_product,
     apiProducts,
-    apiSearch
+    apiSearch,
+    apiDate,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Products)

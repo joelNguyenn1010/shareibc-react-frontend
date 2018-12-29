@@ -3,8 +3,14 @@ import { connect } from 'react-redux'
 import * as userActions from '../../store/actions/user-action'
 import './Login.css'
 import { NavLink } from 'react-router-dom'
+import { reduxForm, Field } from 'redux-form'
+import { compose } from 'redux';
 
+import Logo from './logoShareibc.png'
 import FacebookLoginButton from './FacebookLogin';
+import * as field from '../../form-validation'
+
+
 
 class Login extends Component {
     constructor(props) {
@@ -63,7 +69,6 @@ class Login extends Component {
     }
     handleSubmit = (event) => {
         this.isAuthenticate(this.login)
-        event.preventDefault();
     }
 
     login = () => {
@@ -101,6 +106,11 @@ class Login extends Component {
         const cardHeight = {
             // height: '35rem'
         }
+        const style={
+            height: '4rem',
+            width: '4rem'
+        }
+        const { handleSubmit } = this.props
 
         return (
             <React.Fragment>
@@ -116,22 +126,28 @@ class Login extends Component {
                                 </div>
                             </div>
 
-                            <form onSubmit={this.handleSubmit} className="form-root needs-validation">
+                            <form onSubmit={handleSubmit(this.handleSubmit)} className="form-root needs-validation">
                                 <div className="form-group">
-                                <label>Email</label>
-                                <input
+                                <Field
+                                    component={field.renderField}
+                                    label="Email"
+                                    name="email"
+                                    hint="Ex: abcdef@gmail.com"
                                     className="w-100 p-4 form-control"
                                     onChange={(event) => this.setState({ username: event.target.value })} />
                                 {/* <label >Password:</label> */}
                                 {/* <input type="password" onChange={(event) => this.setState({ password: event.target.value })} /> */}
                                 </div>
-                                <label>Password</label>
 
-                                <input
+                                <Field
+                                    component={field.renderField}
+                                    label="Password"
                                     className="w-100 p-4 mb-3 form-control"
+                                    name="password" 
                                     type="password"
                                     onChange={(event) => this.setState({ password: event.target.value })}
                                 />
+
                                 <span className="text-danger">{this.props.userReducer.mess}</span>
                                 {/* <div className="container text-center mt-5"> */}
                                     <FacebookLoginButton
@@ -143,7 +159,7 @@ class Login extends Component {
                                     <span>Don't haveve account?&nbsp; </span>
                                     <div>
                                         <span>
-                                            <NavLink to='/register'>Register</NavLink>
+                                            <NavLink to='/register'><strong>Register</strong></NavLink>
                                         </span>
                                     </div>
                                 </div>
@@ -168,4 +184,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, userActions)(Login);
+export default compose(
+    connect(mapStateToProps, userActions),
+    reduxForm({
+        form: 'login',
+        validate: field.validate
+    })
+)(Login);
+
+

@@ -13,8 +13,9 @@ const Details = (props) => {
                 </div>
             </div>
             <div className="p-2">
-                <p className="w-100 h-100">Completion: {props.target}%</p>
+                <p className="w-100 h-100">Completion: {props.target}% </p>
                 <Progress value={Number(props.target)} />
+                <p className="mt-2"><strong>${props.fund} raised</strong> of ${props.target_fund}</p>
             </div>
         </div>
     )

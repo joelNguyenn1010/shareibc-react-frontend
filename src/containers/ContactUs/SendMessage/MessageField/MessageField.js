@@ -85,18 +85,37 @@ const renderTextField = ({
   //---//
 class MessageField extends React.Component {
     state = {
-   
+        mess: '',
+        type: ''
     }
 
     submit = (e) => {
+        const {createRecord, resetForm} = this.props;
+        this.setState({
+            mess: 'Sendingggggg',
+            type: 'text-info'
+        })
         const data = {
             ...e,
             user: null
         }
         console.log(data)
         axios.post('http://127.0.0.1:8000/api/user/support/', data,{headers: this.props.headers})
-        .then(res => console.log(res))
-        .catch(error => console.log(error))
+        .then(res => {
+            console.log(res.status)
+         if(res.status === 201) {
+            this.setState({
+                mess: "Thanks you for your message, we will contact you soon",
+                type: "text-success"
+            })
+        }
+        })
+        .catch(error => {
+            if(error) {
+                this.setState({mess: "Server error, can't send message at the moment, please try again" , type: 'text-danger'})
+            }
+        
+        })
     }
     render() {
         const { handleSubmit } = this.props
@@ -170,6 +189,7 @@ class MessageField extends React.Component {
                 name="message" 
                 label="Your message*"
                 />
+                <span className={this.state.type}>{this.state.mess}</span>
                 <button className='btn btn-primary float-right' type="submit">Send</button>
             </form>
         )

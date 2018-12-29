@@ -1,5 +1,7 @@
 import React from 'react'
 import Jumbotron from './Jumbotron/Jumbotron'
+import Images from '../../containers/Home/Image/Home.jpg'
+import Carousel from '../Carousel/Carousel'
 import ProjectDetails from './ProjectDetails/ProjectDetails'
 import { connect } from 'react-redux'
 import * as projectAction from '../../store/actions/project-action'
@@ -11,8 +13,14 @@ class Project extends React.Component {
     }
   
     render() {
+        const images = [
+            {
+                image: Images
+            }
+        ]
+
+
         const details =  this.props.projects.map((project, index) => {
-            console.log(project)
             return(
                 <NavLink key={project.id} to={`/projects/${project.id}`}>
 
@@ -24,7 +32,11 @@ class Project extends React.Component {
         })
         return (
             <React.Fragment>
-                <Jumbotron />
+                {/* <Jumbotron /> */}
+                <Carousel 
+                images={images}
+                pageTitles="Project"
+                />
                 {details}
             </React.Fragment>
         )

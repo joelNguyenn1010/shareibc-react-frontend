@@ -25,7 +25,7 @@ const ShippingDetail = (props) => {
                     </div>
               
                     <div className="form-group">
-                        <MDBInput className={`${props.phone_numberValidation}`} label="Phone Number*" required onChange={(e) => props.onChangeInput(DETAILS.PHONE, e)} />
+                        <MDBInput className={`${props.phone_numberValidation}`} label="Phone Number" required onChange={(e) => props.onChangeInput(DETAILS.PHONE, e)} />
                         <span className="text-danger">{props.errors.phone_number}</span>
 
                     </div>

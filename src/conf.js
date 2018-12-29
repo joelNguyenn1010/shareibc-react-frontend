@@ -1,4 +1,4 @@
 export default {
-    FACEBOOK_API : "228261734554790",
-    BASE_URL : "http://127.0.0.1:8000"
+    FACEBOOK_API : process.env.REACT_APP_FACEBOOK_API,
+    BASE_URL : process.env.REACT_APP_BACKEND_URL
 }

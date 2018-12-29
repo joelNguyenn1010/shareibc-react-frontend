@@ -21,3 +21,13 @@
         color: #fff;
     }
 } */
+
+.responsive-text-catalogies {
+    font-size: 1.3rem
+}
+
+@media (min-width: 768px) {
+    .responsive-text-catalogies {
+        font-size: 3rem
+    }
+}

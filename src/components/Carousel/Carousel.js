@@ -10,11 +10,13 @@ class Carousels extends React.Component {
         picture: []
     }
     Caption = () => {
-        if( window.location.pathname === '/products') {
+        // if( window.location.pathname === '/products' ||  window.location.pathname === '/projects') {
             return(
-                   <Catalogies />
+                   <Catalogies 
+                   pageTitles={this.props.pageTitles}
+                   />
             )
-        }
+        // }
     }
     render() {
         // need to fix the image with active class

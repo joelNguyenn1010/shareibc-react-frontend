@@ -12,19 +12,19 @@ class Links extends Component {
             <React.Fragment>
                 
                 <li className="nav-item">
-                    <NavLink to="/" exact activeClassName="active" className="nav-link waves-effect waves-light">Home</NavLink>
+                    <NavLink to="/" exact activeClassName="active" className="nav-link waves-effect waves-light link-up-size">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/products" exact className="nav-link waves-effect waves-light">Shop</NavLink>
+                    <NavLink to="/products" exact className="nav-link waves-effect waves-light link-up-size">Shop</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link waves-effect waves-light" to="/contact-us">Contact</NavLink>
+                    <NavLink className="nav-link waves-effect waves-light link-up-size" to="/contact-us">Contact</NavLink>
                 </li>
                 <li className="nav-item" >
-                    <NavLink to="/projects" exact className="nav-link waves-effect waves-light">Projects</NavLink>
+                    <NavLink to="/projects" exact className="nav-link waves-effect waves-light link-up-size">Projects</NavLink>
                 </li>
                 <li className="nav-item" >
-                    <NavLink to="/cart" exact className="nav-link waves-effect waves-light"><i className="fas fa-shopping-cart"></i> {this.props.cart.length}</NavLink>
+                    <NavLink to="/cart" exact className="nav-link waves-effect waves-light link-up-size"><i className="fas fa-shopping-cart"></i> {this.props.cart.length} Items</NavLink>
                 </li>
 
             </React.Fragment>

@@ -76,34 +76,68 @@ class Catalogies extends React.Component {
     //     this.props.on_loader()
     // }
 
+    renderFilterSearch = () => {
+        if (window.location.pathname === '/products') {
 
 
-
-    render() {
-
-        return (
-            <React.Fragment>
-
-                <div className="transform_filter position__catalogies">
+            return (
+                <React.Fragment>
                     <div className="text-center">
-                        <h1>
-                            All profit will go to donation
+                        <h1 className="responsive-text-catalogies">
+                            All right will be donated to social and enviromental projects
                     </h1>
                     </div>
-                    <div className="d-flex bd-highlight">
-                        <div className="w-89 bd-highlight p-2">
+                    <div className="row">
+                        <div className="col-lg-10 ">
                             <Search
                                 onSearch={this.onSearch} />
                         </div>
-                        <div className="flex-shrink-1 bd-highlight">
+                        <div className="col-lg-1">
                             <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
 
                         </div>
-                        <div className="flex-shrink-1">
+                        <div className="col-lg-1">
                             <CitySort
                                 city={this.state.city}
                                 onChangeCity={this.onChangeCity} />
                         </div>
+                    </div>
+                </React.Fragment>
+            )
+        }
+    }
+
+
+
+    render() {
+        console.log(this.props)
+        return (
+            <React.Fragment>
+
+                <div className="transform_filter position__catalogies">
+                    {/* <div className="text-center">
+                        <h1 className="responsive-text-catalogies">
+                        All right will be donated to social and enviromental projects
+                    </h1>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-10 ">
+                            <Search
+                                onSearch={this.onSearch} />
+                        </div>
+                        <div className="col-lg-1">
+                            <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
+
+                        </div>
+                        <div className="col-lg-1">
+                            <CitySort
+                                city={this.state.city}
+                                onChangeCity={this.onChangeCity} />
+                        </div>
+                    </div> */}
+                    {this.renderFilterSearch()}
+                    <div>
+                        <h1 className="font-weight-bold">{this.props.pageTitles}</h1>
                     </div>
                 </div>
 

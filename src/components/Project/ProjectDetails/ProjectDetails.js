@@ -17,6 +17,7 @@ const ProjectDetails =(props) => {
                         target_fund={props.project.target_fund}
                         area={props.project.area}
                         target={Number((props.project.fund*100)/(props.project.target_fund)).toFixed(2)}
+                        fund={props.project.fund}
                         />
                     </div>
                 </div>

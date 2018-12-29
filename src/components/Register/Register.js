@@ -6,10 +6,69 @@ import { register, facebookLogin } from '../../store/actions/user-action'
 import { compose } from 'redux';
 import { NavLink } from 'react-router-dom'
 import FacebookLoginButton from '../Login/FacebookLogin'
+import * as field from '../../form-validation'
 import {
     MDBRow,
     MDBBtn
 } from "mdbreact";
+
+
+
+// //VALIDATION
+// const renderField = ({
+//     input,
+//     label,
+//     type,
+//     meta: { touched, error }
+//   }) => (
+//     <div className="form-group mb-4">
+//       <label>{label}</label>
+//       <div>
+//         <input {...input} type={type} className="w-100 p-4 mb-3 form-control"/>
+//         {touched &&
+//           (error && <span className="text-danger">{error}</span>)}
+//       </div>
+//     </div>
+//   )
+
+
+
+//   const validate = values => {
+//     const errors = {}
+
+//     if (!values.email) {
+//       errors.email = 'This field is required'
+//     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+//       errors.email = 'Invalid email address'
+//     }
+//     // if(!values.first_name) {
+//     //     errors.first_name = 'Required'
+//     // }
+//     // else if(values.first_name.length < 3) {
+//     //     errors.first_name = 'Must have more than 3 characters'
+//     // }
+//     if(!values.password) {
+//         errors.password = 'Required'
+//     }
+//     else if(values.password.length < 5) {
+//         errors.password = 'Must have more than 5 characters'
+//     }
+//     // if(!values.password) {
+//     //     errors.password = 'This field is required'
+//     // }
+ 
+   
+//     return errors
+//   }
+
+
+
+// ////
+
+
+
+
+
 class Register extends Component {
     state = {
         username: "",
@@ -52,61 +111,17 @@ class Register extends Component {
             // password : event.password,
             // password2: event.password2,
             ...event,
-            username: event.email
+            username: event.email,
+            
         }
         this.props.register(newUser, () => {
             this.props.history.push('/');
         })
     }
     render() {
-
         const { handleSubmit } = this.props
         return (
             <div className="margin">
-
-                {/*   
-        {!this.state.displayLogin && 
-        <MDBContainer>
-          <div className="row justify-content-center">
-            <MDBCol md="6">
-              <div className="text-center mt-12">
-                <MDBBtn
-                  className="form__button form__button-facebook"
-                  color="info"
-                  type="submit"
-                >
-                  <MDBIcon
-                    className="button__icon button__icon-facebook"
-                    icon="facebook-square"
-                  />
-                  <p> Continue with Facebook </p>
-                </MDBBtn>
-              </div>
-            </MDBCol>
-          </div>
-          <MDBRow>
-            <MDBCol md="6">
-              <div className="text-center mt-12">
-                <MDBBtn
-                  className="form__button form__button-google"
-                  type="submit"
-                >
-                  <MDBIcon className="button__icon" icon="google-plus-square" />
-                  <p> Continue with Google</p>
-                </MDBBtn>
-              </div>
-            </MDBCol>
-          </MDBRow>
-          <MDBRow>
-            <MDBCol md="6">
-              <div className="text-center mt-12">
-                <MDBBtn className="form__button" color="primary" type="submit">
-                  Sign up
-                </MDBBtn>
-              </div>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>} */}
                 {/* Register form pop-up starts here */}
 
                 <MDBRow className="justify-content-center">
@@ -124,83 +139,74 @@ class Register extends Component {
                                     </div>
                                     {/* <p className="h4 text-center mb-4">Sign up</p> */}
                                     {/* Email  */}
-                                    <div className="form-group">
-                                        <label htmlFor="defaultFormRegisterEmailEx">
-                                            Email
-                                    </label>
+                                  
                                         <Field
                                             name="email"
                                             type="email"
-                                            component="input"
+                                            label="Email *"
+                                            hint="Ex: abcdef@gmail.com"
+                                            component={field.renderField}
                                             id="defaultFormRegisterEmailEx"
                                             className="form-control p-4"
                                         />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="defaultFormRegisterfirstNameEx">
-                                            First Name
-                                    </label>
+
+
+                                   
                                         <Field
                                             name="first_name"
                                             type="text"
-                                            component="input"
+                                            label="First Name *"
+                                            hint="Ex: John"
+                                            component={field.renderField}
                                             id="defaultFormRegisterfirstNameEx"
                                             className="form-control p-4"
                                         />
-                                    </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="last_name">
-                                            Last Name
-                                    </label>
+                                
                                         <Field
                                             name="last_name"
                                             type="text"
-                                            component="input"
+                                            label="Last Name *"
+                                            hint="Ex: Kennedy"
+                                            component={field.renderField}
                                             id="last_name"
                                             className="form-control p-4"
                                         />
-                                    </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="phone">
-                                            Phone Number
-                                    </label>
+                              
                                         <Field
                                             name="userprofile.phone_number"
                                             type="number"
-                                            component="input"
-                                            id="phone"
+                                            label="Phone Number"
+                                            hint="Ex: +61444444444"
+                                            component={field.renderField}
+                                            id="userprofile.phone_number"
                                             className="form-control p-4"
                                         />
-                                    </div>
+                                      
 
                                     {/* Password */}
-                                    <div className="form-group">
-                                        <label htmlFor="defaultFormRegisterPasswordEx">
-                                            Your password
-                                        </label>
+                          
                                         <Field
                                             name="password"
                                             type="password"
-                                            component="input"
+                                            label="Password *"
+
+                                            component={field.renderField}
                                             id="defaultFormRegisterPasswordEx"
                                             className="form-control p-4"
                                         />
-                                    </div>
-                                    <div className="form-group">
-                                        {/* Confirm password */}
-                                        <label htmlFor="defaultFormRegisterConfirmEx">
-                                            Confirm password
-                                            </label>
+                               
                                         <Field
                                             type="password"
-                                            component="input"
+                                            component={field.renderField}
                                             name="password2"
+                                            label="Confirm password *" 
+
                                             id="defaultFormRegisterConfirmEx"
                                             className="form-control p-4"
                                         />
-                                    </div>
+                                        <span className="text-danger">{this.props.errorMesss}</span>
                                     <FacebookLoginButton
                                         responseFacebook={this.responseFacebook}
                                         onClickFacebook={this.onClickFacebook} />
@@ -292,5 +298,8 @@ const mapActionToProps = {
 }
 export default compose(
     connect(mapStateToProps, mapActionToProps),
-    reduxForm({ form: 'register' })
+    reduxForm({ 
+        form: 'register',
+        validate: field.validate
+ })
 )(Register)

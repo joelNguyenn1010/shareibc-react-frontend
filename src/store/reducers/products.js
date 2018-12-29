@@ -1,4 +1,4 @@
-import { CITY, SEARCH, PAGE, TYPE, LOAD_PRODUCTS, ERROR_LOAD_PRODUCTS, LOADER, on_loader } from '../actions/products-action'
+import {DATE, CITY, SEARCH, PAGE, TYPE, LOAD_PRODUCTS, ERROR_LOAD_PRODUCTS, LOADER, on_loader } from '../actions/products-action'
 
 const initialState = {
     products: [],
@@ -12,13 +12,13 @@ const initialState = {
     type: "",
     search: "",
     items_per_page: 1,
-    city: ""
+    city: "",
+    date: "",
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_PRODUCTS:
-        console.log(action.payload.products)
             return {
                 ...state,
                 products: action.payload.products.results,
@@ -53,6 +53,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 search: action.payload.search,
+                page: action.payload.page
+            }
+        case DATE:
+            return {
+                ...state,
+                date: action.payload.date,
                 page: action.payload.page
             }
         case TYPE:
