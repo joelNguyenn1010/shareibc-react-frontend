@@ -6,15 +6,7 @@ class CitySort extends React.Component {
     state = {
         city: []
     }
-    componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/product/city/')
-            .then(res => {
-                if (res.data && res.data.length > 0) {
-                    this.setState({ city: res.data })
-                }
-            })
-            .catch(error => { })
-    }
+ 
     renderDropDownItem = () => {
         if (this.state.city.length > 0) {
 
@@ -22,7 +14,7 @@ class CitySort extends React.Component {
     }
 
     render() {
-        const city = this.state.city.map(city => {
+        const city = this.props.cities.map(city => {
             return (
                 <MDBDropdownItem onClick={() => this.props.onChangeCity(city.name)} key={city.id}>
                 {city.name}

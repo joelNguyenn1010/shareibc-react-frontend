@@ -30,7 +30,7 @@ class Details extends Component {
 
 
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/api/product/${this.props.match.params.id}/`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/product/${this.props.match.params.id}/`)
             .then(res => {
 
                 if(res.data) {

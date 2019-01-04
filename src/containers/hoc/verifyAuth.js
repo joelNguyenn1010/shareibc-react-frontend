@@ -16,7 +16,7 @@ export default (ChildComponent) => {
     }
     shouldNavigateAway() {
       if (this.props.auth && this.props.headers) {
-        axios.get('http://127.0.0.1:8000/api/user/verify/', {headers: this.props.headers})
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/verify/`, {headers: this.props.headers})
         .then(res => console.log(res))
         .catch(error => {
             this.props.logout(() => {

@@ -100,7 +100,7 @@ class MessageField extends React.Component {
             user: null
         }
         console.log(data)
-        axios.post('http://127.0.0.1:8000/api/user/support/', data,{headers: this.props.headers})
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/support/`, data,{headers: this.props.headers})
         .then(res => {
             console.log(res.status)
          if(res.status === 201) {

@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { LOGIN, REGISTER, REGISTER_ERROR ,ERROR, LOGOUT, FACEBOOK_LOGIN } from './types'
+import { LOGIN, REGISTER, REGISTER_ERROR ,ERROR, LOGOUT, FACEBOOK_LOGIN, CLEAR_MESS } from './types'
 
 export const register = (newUser, callback) => async dispatch => {
     try {
-        const res = await axios.post('http://127.0.0.1:8000/api/user/auth/create', newUser)
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/auth/create`, newUser)
         dispatch({ type: REGISTER, payload: res.data })
         callback()
     } catch (e) {
@@ -20,7 +20,7 @@ export const register = (newUser, callback) => async dispatch => {
 
 export const login = (user, callback) => async dispatch => {
     try {
-        const res = await axios.post('http://127.0.0.1:8000/api/user/api-token-auth/', user)
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/api-token-auth/`, user)
         const auth = {
             ...res.data
         }
@@ -28,6 +28,14 @@ export const login = (user, callback) => async dispatch => {
         callback()
     } catch (e) {
         dispatch({ type: ERROR, payload: 'Username or password is incorrect, please try again' })
+    }
+}
+export const dispatchError = () => {
+    return (dispatch) => {
+        dispatch({
+            type: ERROR,
+            payload: "Error occur, please try again"
+        })
     }
 }
 
@@ -53,6 +61,12 @@ export const logout = (callback) => dispatch => {
     callback()
 }
 
+export const clear_mess = () => dispatch => {
+    dispatch({type: ERROR, payload:  ''})
+}
+
+
+
 export const isAuthenticated = (token) => async dispatch => {
     const verify = {
         "token": token
@@ -62,7 +76,7 @@ export const isAuthenticated = (token) => async dispatch => {
         'Authorization': `JWT ${token}`
     }
     if (token) {
-        const res = await axios.post('http://127.0.0.1:8000/api/user/api-token-verify/', verify, { headers: headers })
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/api-token-verify/`, verify, { headers: headers })
             .then(res => {
                 // dispatch({type: LOGOUT, payload: {auth: '', mess: 'You have been logout'}})
             })
@@ -90,14 +104,3 @@ export const isAuthenticated = (token) => async dispatch => {
 //     }
 // }
 
-// export function apiProducts() {
-//     return dispatch => {
-//         axios.get('http://127.0.0.1:8000/api/product/index/')
-//         .then(res => {
-//            dispatch(load_product(res.data))
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         })
-//     }
-// }

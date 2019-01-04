@@ -2,6 +2,8 @@
 .catalogies-position {
     position: relative;
 }
+@media (min-width: 768px) {
+
 .position__catalogies {
     position: absolute;
     right: 15%;
@@ -11,6 +13,8 @@
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
+}
+
 }
 /* 
 @media (min-width: 1200px) {
@@ -23,11 +27,11 @@
 } */
 
 .responsive-text-catalogies {
-    font-size: 1.3rem
+    font-size: 3rem
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .responsive-text-catalogies {
         font-size: 3rem
     }
-}
+} */

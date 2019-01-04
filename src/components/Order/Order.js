@@ -30,7 +30,7 @@ class Order extends React.Component {
 
     console.log(headers);
     axios
-      .get("http://127.0.0.1:8000/api/order/", { headers })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/order/`, { headers })
       .then(res => {
         if (res.data && res.data.length > 0) {
           console.log(res.data);

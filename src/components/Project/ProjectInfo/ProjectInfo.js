@@ -11,7 +11,7 @@ class ProjectInfo extends React.Component {
         status: ''
     }
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/api/project/${this.props.match.params.id}/`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/project/${this.props.match.params.id}/`)
             .then(res => {
                 if(res.data && res.data.length > 0) {
                     this.setState({

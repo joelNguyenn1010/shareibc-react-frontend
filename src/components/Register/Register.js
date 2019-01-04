@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Register.css'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
-import { register, facebookLogin } from '../../store/actions/user-action'
+import { register, facebookLogin, clear_mess } from '../../store/actions/user-action'
 import { compose } from 'redux';
 import { NavLink } from 'react-router-dom'
 import FacebookLoginButton from '../Login/FacebookLogin'
@@ -100,7 +100,9 @@ class Register extends Component {
 
     }
 
-
+    componentWillUnmount() {
+        this.props.clear_mess()
+    }
     onSubmit = (event) => {
         // const newUser = event
           const newUser = {
@@ -214,7 +216,7 @@ class Register extends Component {
 
                                     <div className="text-center mt-12">
                                         <MDBBtn
-                                            className="form__button"
+                                            className="btn-block"
                                             outline
                                             color="info"
                                             type="submit"
@@ -294,7 +296,10 @@ const mapStateToProps = (state) => {
 }
 const mapActionToProps = {
     register,
-    facebookLogin
+    facebookLogin,
+
+   clear_mess
+    
 }
 export default compose(
     connect(mapStateToProps, mapActionToProps),

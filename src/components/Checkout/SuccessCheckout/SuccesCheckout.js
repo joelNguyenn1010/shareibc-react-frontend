@@ -16,10 +16,10 @@ const SuccessCheckout = (props) => {
           </ModalBody>
           <ModalFooter>
             <Button color="primary">
-                <NavLink className="text-white" to="/" exact >Home</NavLink>
+                <NavLink className="text-white" to="/"  >Home</NavLink>
             </Button>
             <Button color="primary">
-             <NavLink className="text-white" to="/products" exact >Continous shopping</NavLink>
+             <NavLink className="text-white" to="/products" >Continous shopping</NavLink>
             </Button>
           </ModalFooter>
         </Modal>

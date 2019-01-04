@@ -39,67 +39,6 @@ class Checkout extends Component {
     processing: false
   }
 
-  // isFormValid = () => {
-  //   let isError = false;
-  //   let errors = {
-  //     addressError: "",
-  //     cityError: "",
-  //     emailError: "",
-  //     first_nameError: "",
-  //     last_nameError: "",
-  //     postCodeError: ""
-  //   };
-  //   console.log(this.state.details.address.length < 5)
-  //   if (this.state.details.address.length < 5) {
-  //     isError = true;
-  //     errors.addressError = "Username needs to be atleast 5 characters long";
-  //   }
-  //   this.setState({
-  //     errors
-  //   });
-  //   console.log(this.state)
-  //   console.log(isError)
-  //   return isError;
-  // }
-
-  // getToken = async (token) => {
-  //   this.setState({ cardStatus: false })
-  //   if (token) {
-  //     var oldState = []
-  //     this.props.cart.map(e => {
-  //       oldState.push({ 'products': e.item.id, 'quantity': e.quantity })
-  //     })
-  //     this.setState({
-  //       products: oldState
-  //     })
-
-  //     let details = {
-  //       ...this.state.details,
-  //       "total_price": 1233,
-  //       "orders": oldState,
-  //       "status": 1,
-  //       "token": token.id
-  //     }
-  //     console.log(details)
-  //     await axios.post("http://127.0.0.1:8000/api/order/create/", details)
-  //       .then(res => {
-  //         console.log(res.data)
-  //         if (res.status === 200) {
-  //           // this.props.clear_all_cart()
-  //           console.log('[success charge]')
-  //         } else {
-  //           this.setState({
-  //             mess: 'Something went wrong, please try again'
-  //           })
-  //         }
-  //       })
-  //       .catch(error => console.log(error.message))
-  //   } else {
-  //     this.setState({
-  //       mess: 'Something went wrong, please try again'
-  //     })
-  //   }
-  // }
 
   onChangeInput = (target, e) => {
     let details = { ...this.state.details }
@@ -174,11 +113,11 @@ class Checkout extends Component {
         //   }
         // }
         console.log(this.props.headers)
-        axios.post("http://127.0.0.1:8000/api/order/create/", details, { headers: this.props.headers })
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/order/create/`, details, { headers: this.props.headers })
           .then(res => {
             console.log(res.data)
             if (res.status === 201) {
-              // this.props.clear_all_cart()
+              this.props.clear_all_cart()
               this.setState({
                 success: true,
                 processing: false

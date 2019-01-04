@@ -10,7 +10,7 @@ const load_project = (projects) => {
 }
 
 export const apiProjectLoad = () => dispatch => {
-    axios.get('http://127.0.0.1:8000/api/project/')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/project/`)
     .then(res => {
         if(res.data && res.data.length > 0) {
             dispatch(load_project(res.data))

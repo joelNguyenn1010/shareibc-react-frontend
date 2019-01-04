@@ -34,15 +34,11 @@ export const renderField = ({
     if(!values.first_name) {
         errors.first_name = 'This field is required'
     }
-    else if(values.first_name.length < 3) {
-        errors.first_name = 'Must have more than 3 characters'
-    }
+
     if(!values.last_name) {
         errors.last_name = 'This field is required'
     }
-    else if(values.last_name.length < 3) {
-        errors.last_name = 'Must have more than 3 characters'
-    }
+
     
     if(values.userprofile) {
         if(values.userprofile.phone_number){

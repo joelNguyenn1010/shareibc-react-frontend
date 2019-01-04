@@ -2,6 +2,8 @@ import React from 'react'
 import Search from './Search/Search'
 import Menu from './Menu/Menu'
 import './Catalogies.css'
+import axios from 'axios'
+
 import CitySort from './CitySort/CitySort'
 import { Type } from './Menu/Type'
 import { connect } from 'react-redux'
@@ -11,24 +13,15 @@ class Catalogies extends React.Component {
         searchKey: '',
         filterType: '',
         sortTitle: 'All',
-        city: 'City'
+        city: 'City',
+        cities: []
     }
     onSearch = async (key) => {
-        // this.setState({
-        //     searchKey: key
-        // }, () => this.onAPISearch()
-        // )
         this.props.on_loader()
-
         this.props.apiSearch(key)
-        // if(key.length > 0) {
-        //     this.props.apiSearch(key);
-        // } else {
-        //     this.props.apiSearchFilter('','', this.props.page)
-
-        // }
-
     }
+
+
 
     onChangeTitle = (type) => {
         switch (type) {
@@ -64,10 +57,7 @@ class Catalogies extends React.Component {
     }
 
     onFilter = (type) => {
-        // this.setState({
-        //     filterType: type
-        // }, () => this.onAPISearch()
-        // )
+
         this.onChangeTitle(type)
         this.props.apiFilter(type)
     }
@@ -75,11 +65,12 @@ class Catalogies extends React.Component {
     // onAPISearch = () => {
     //     this.props.on_loader()
     // }
+    componentDidMount(){
+        this.props.apiFetchCity()
+    }
 
     renderFilterSearch = () => {
         if (window.location.pathname === '/products') {
-
-
             return (
                 <React.Fragment>
                     <div className="text-center">
@@ -88,16 +79,17 @@ class Catalogies extends React.Component {
                     </h1>
                     </div>
                     <div className="row">
-                        <div className="col-lg-10 ">
+                        <div className="col-lg-9 col-12">
                             <Search
                                 onSearch={this.onSearch} />
                         </div>
-                        <div className="col-lg-1">
+                        <div className="col-lg-2 col-12 d-flex justify-content-center">
                             <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
 
                         </div>
-                        <div className="col-lg-1">
+                        <div className="col-lg-1 col-12 d-flex justify-content-center">
                             <CitySort
+                            cities={this.props.cities}
                                 city={this.state.city}
                                 onChangeCity={this.onChangeCity} />
                         </div>
@@ -110,7 +102,6 @@ class Catalogies extends React.Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <React.Fragment>
 
@@ -136,7 +127,7 @@ class Catalogies extends React.Component {
                         </div>
                     </div> */}
                     {this.renderFilterSearch()}
-                    <div>
+                    <div className='text-center'>
                         <h1 className="font-weight-bold">{this.props.pageTitles}</h1>
                     </div>
                 </div>
@@ -167,7 +158,8 @@ const mapStateToProps = state => {
     return {
         page: state.productReducer.page,
         type: state.productReducer.type,
-        search: state.productReducer.search
+        search: state.productReducer.search,
+        cities: state.productReducer.citiesFetch
     }
 }
 export default connect(mapStateToProps, productAction)(Catalogies)

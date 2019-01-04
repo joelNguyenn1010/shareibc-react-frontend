@@ -8,6 +8,7 @@ export const SEARCH = 'search:product'
 export const TYPE = 'type:product'
 export const CITY = 'city:product'
 export const DATE ='date:product'
+export const CITIES_FETCH ='cities:product:fetch'
 
 
 //loading product
@@ -143,6 +144,27 @@ export function apiPage(page) {
 
     }
 }
+
+export const apiFetchCity = () => {
+    return(dispatch) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/product/city/`)
+        .then(res => {
+            console.log(res.data)
+            if (res.data && res.data.length > 0) {
+                dispatch({
+                    type: CITIES_FETCH,
+                    payload: {
+                        citiesFetch: res.data
+                    }
+                })
+            }
+        })
+        .catch(error => { })
+
+    }
+}
+
+
 //api call for all product
 export function apiProducts() {
     return dispatch => {

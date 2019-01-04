@@ -33,19 +33,20 @@ class Main extends Component {
         return (
             <div className="Main">
                 <Navbar styles={style}/>
-                <Flash 
-                
+                <Flash     
                 />
                 <Switch>
                     <Route path="/" exact component={verifyAuth(Home)} />
-                    <Route path="/products" exact component={verifyAuth(Products)} />
-                    <Route path='/projects' exact component={verifyAuth(AsyncProjects)} />
+                    <Route path="/products" exact 
+                    component={verifyAuth(Products)} 
+                    />
+                    <Route path='/projects' exact component={(AsyncProjects)} />
 
                     <Container>
                         <Route path='/login' exact component={alreadyAuth(Login)} />
                         <Route path='/register' exact component={alreadyAuth(Register)} />
                         <Route path='/user/:email' component={requiredAuth(User)} />
-                        <Route path='/projects/:id' component={verifyAuth(ProjectInfo)} />
+                        <Route path='/projects/:id' component={(ProjectInfo)} />
                         <Route path='/logout' exact component={Logout} />
                         <Route path='/cart' exact component={verifyAuth(AsyncCart)} />
                         <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />

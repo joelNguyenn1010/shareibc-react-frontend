@@ -4,3 +4,5 @@ package-lock.json
 README.md
 .gitignore
 conf.json
+.env
+.DS_Store

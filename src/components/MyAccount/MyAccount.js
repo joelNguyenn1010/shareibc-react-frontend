@@ -18,14 +18,41 @@ class MyAccount extends React.Component {
             userprofile: {
                 phone_number: ''
             }
-        }
+        },
+        mess: '',
+        type: ''
     }
 
     handleSubmit = (e) => {
-        console.log(e)
+        this.setState({
+            mess: '',
+            type: ''
+        })
+
+        const data = e
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/user/update/`, data,{ headers: this.props.user.headers })
+        .then(res => {
+            if(res.status === 200) {
+                this.setState({
+                    mess: 'Success updated',
+                    type: 'text-success'
+                })
+            } else {
+                this.setState({
+                    mess: 'Error, please try again',
+                    type: 'text-danger'
+                })
+            }
+        })
+        .catch(error => {
+            this.setState({
+                mess: 'Error, please try again',
+                type: 'text-danger'
+            })
+        })
     }
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/user/retrieve/', { headers: this.props.user.headers })
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/retrieve/`, { headers: this.props.user.headers })
             .then(res => {
                 if (res.data) {
                     this.setState({
@@ -50,7 +77,7 @@ class MyAccount extends React.Component {
                 {this.state.loader === false ?
                 <div className="card" style={{ marginTop: '15px' }}>
                     <div className="card-body">
-
+                    <h1 className={this.state.type}>{this.state.mess}</h1>
                         <form onSubmit={handleSubmit(this.handleSubmit)} className="form-root needs-validation">
                             <div className="form-group">
                                 <Field
