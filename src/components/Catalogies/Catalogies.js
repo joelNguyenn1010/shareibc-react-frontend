@@ -78,7 +78,7 @@ class Catalogies extends React.Component {
                             All right will be donated to social and enviromental projects
                     </h1>
                     </div>
-                    <div className="row">
+                    <div className="row mx-0">
                         <div className="col-lg-9 col-12">
                             <Search
                                 onSearch={this.onSearch} />
@@ -106,50 +106,11 @@ class Catalogies extends React.Component {
             <React.Fragment>
 
                 <div className="transform_filter position__catalogies">
-                    {/* <div className="text-center">
-                        <h1 className="responsive-text-catalogies">
-                        All right will be donated to social and enviromental projects
-                    </h1>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-10 ">
-                            <Search
-                                onSearch={this.onSearch} />
-                        </div>
-                        <div className="col-lg-1">
-                            <Menu onFilter={this.onFilter} sortTitle={this.state.sortTitle} />
-
-                        </div>
-                        <div className="col-lg-1">
-                            <CitySort
-                                city={this.state.city}
-                                onChangeCity={this.onChangeCity} />
-                        </div>
-                    </div> */}
                     {this.renderFilterSearch()}
                     <div className='text-center'>
                         <h1 className="font-weight-bold">{this.props.pageTitles}</h1>
                     </div>
                 </div>
-
-
-
-                {/* <nav className="navbar navbar-expand-lg navbar-dark navbar-blue mb-5">
-                    <div className="container">
-                        <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="navbar-collapse collapse ml-5" id="navbarSupportedContent1">
-
-                            <ul className="navbar-nav mr-auto">
-                         
-                            </ul>
-
-
-                        </div>
-                    </div>
-                </nav> */}
-                {/* </div> */}
             </React.Fragment>
         )
     }

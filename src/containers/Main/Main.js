@@ -31,7 +31,7 @@ class Main extends Component {
         // const style2 = window.location.pathname !== '/products' ? ' navbar-blue ' : ' '
 
         return (
-            <div className="Main">
+            <React.Fragment>
                 <Navbar styles={style}/>
                 <Flash     
                 />
@@ -59,7 +59,7 @@ class Main extends Component {
                 </Switch>
           
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }

@@ -1,3 +1,10 @@
 .position__results{
    transform: translate(8%, 20%)
 }
+@media only screen and (min-width : 1025px) {
+.mx-gt-768{
+   margin-left: 100px;
+   margin-right: 100px;
+}
+
+}

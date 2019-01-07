@@ -67,43 +67,37 @@ class Products extends Component {
                     images={images}
                     pageTitles="Shop"
                 />
-                    <div className="container mt-4">
-                        <div className="d-flex justify-content-between">
-                            <div>
-                                <h1 className="position__results">{this.props.products.length} results</h1>
-                            </div>
-                            <div>
-                                {/* <h1 className="position__results">{this.props.products.length} results</h1> */}
-                                <MDBDropdown>
-                                    <MDBDropdownToggle caret outline color="info">
-                                        {this.state.date}
-                                     </MDBDropdownToggle>
-                                    <MDBDropdownMenu basic>
-                                        <MDBDropdownItem onClick={
-                                            ()=>{
-                                                this.props.apiDate('')
-                                                this.setState({date:'Newest'})
-                                            }
-                                        }>Newest</MDBDropdownItem>
-                                        <MDBDropdownItem onClick={
-                                            ()=>{
-                                                this.props.apiDate('date')
-                                                this.setState({date:'Oldest'})
-                                            }
-                                        }>Oldest</MDBDropdownItem>
-                                    </MDBDropdownMenu>
-                                </MDBDropdown>
-
-                            </div>
+                    <div className="d-flex justify-content-between">
+                        <div className="mx-gt-768">
+                            <h1 className="position__results">{this.props.products.length} results</h1>
+                        </div>
+                        <div className="mx-gt-768">
+                            {/* <h1 className="position__results">{this.props.products.length} results</h1> */}
+                            <MDBDropdown>
+                                <MDBDropdownToggle caret outline color="info">
+                                    {this.state.date}
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu basic>
+                                    <MDBDropdownItem onClick={
+                                        () => {
+                                            this.props.apiDate('')
+                                            this.setState({ date: 'Newest' })
+                                        }
+                                    }>Newest</MDBDropdownItem>
+                                    <MDBDropdownItem onClick={
+                                        () => {
+                                            this.props.apiDate('date')
+                                            this.setState({ date: 'Oldest' })
+                                        }
+                                    }>Oldest</MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
                         </div>
                     </div>
-                    <div className="container-fluid mt-3">
 
-                        {ProductRender}
-
-
-
-                    </div>
+                <div className="container-fluid mt-3">
+                    {ProductRender}
+                </div>
 
             </React.Fragment>
         )

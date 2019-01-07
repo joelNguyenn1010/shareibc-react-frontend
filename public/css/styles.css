@@ -1,13 +1,13 @@
-.z-index-menu{
+/* .z-index-menu{
     z-index: 999999999!important;
-}
+} */
 .mt-overlay {
     margin-top: 100px;
 }
-.low-z-index {
+/* .low-z-index {
     position: relative;
     z-index: -10000!important;
-}
+} */
 .navbar-blue {
     background-color: #54ceff!important
 }
@@ -34,6 +34,7 @@ outline: none;
 
 #root {
    height: 100%;
+   width: 100%;
 }
 
   .top-nav-collapse {
