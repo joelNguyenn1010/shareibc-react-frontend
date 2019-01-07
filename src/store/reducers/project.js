@@ -1,4 +1,4 @@
-import {LOAD_PROJECTS} from '../actions/project-action'
+import {LOAD_PROJECTS, ERROR_PROJECT} from '../actions/project-action'
 const initialState = {
     projects: [
         // {
@@ -16,7 +16,9 @@ const initialState = {
         //         }
         //     ]
         // }
-    ]
+    ],
+    loader: true,
+    mess: ''
 }
 
 
@@ -25,7 +27,14 @@ const reducer = (state = initialState, action) => {
         case LOAD_PROJECTS:
             return {
                 ...state,
-                projects: action.payload
+                projects: action.payload,
+                loader: false
+            }
+        case ERROR_PROJECT:
+            return {
+                ...state,
+                loader: false,
+                mess: action.payload
             }
         default:
             return state;

@@ -96,7 +96,8 @@ class Products extends Component {
                     </div>
 
                 <div className="container-fluid mt-3">
-                    {ProductRender}
+                {this.props.loader === true ? <Loading loader={this.props.loader} /> : ProductRender}
+                    {/* {ProductRender} */}
                 </div>
 
             </React.Fragment>

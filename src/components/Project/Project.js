@@ -1,5 +1,5 @@
 import React from 'react'
-import Jumbotron from './Jumbotron/Jumbotron'
+import Loading from '../Loading/Loading'
 import Images from '../../containers/Home/Image/Home.jpg'
 import Carousel from '../Carousel/Carousel'
 import ProjectDetails from './ProjectDetails/ProjectDetails'
@@ -11,7 +11,7 @@ class Project extends React.Component {
     componentDidMount() {
         this.props.apiProjectLoad()
     }
-  
+    
     render() {
         const images = [
             {
@@ -19,7 +19,12 @@ class Project extends React.Component {
             }
         ]
 
-
+        const mess = () => {return (
+            <div className="w-100 mt-5 mb-5 text-center">
+                <h1>{this.props.mess}</h1>
+            </div>
+        )
+    }
         const details =  this.props.projects.map((project, index) => {
             return(
                 <NavLink key={project.id} to={`/projects/${project.id}`}>
@@ -37,7 +42,10 @@ class Project extends React.Component {
                 images={images}
                 pageTitles="Project"
                 />
-                {details}
+                {this.props.loader === true ? <Loading loader={this.props.loader}/> : details}
+                {mess}
+                {this.props.mess.length > 0 ? mess() : ''}
+                
             </React.Fragment>
         )
     }
@@ -45,7 +53,9 @@ class Project extends React.Component {
 
 const mapStateToProps = state => (
     {
-        projects: state.projectReducer.projects
+        projects: state.projectReducer.projects,
+        loader: state.projectReducer.loader,
+        mess: state.projectReducer.mess
     }
 )
 
