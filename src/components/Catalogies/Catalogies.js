@@ -53,11 +53,12 @@ class Catalogies extends React.Component {
     }
     onChangeCity = (city) => {
         this.setState({ city })
+        this.props.on_loader()
         this.props.apiCity(city)
     }
 
     onFilter = (type) => {
-
+        this.props.on_loader()
         this.onChangeTitle(type)
         this.props.apiFilter(type)
     }

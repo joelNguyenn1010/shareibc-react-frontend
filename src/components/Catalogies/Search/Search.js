@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { apiSearch,on_loader } from '../../../store/actions/products-action'
+import './Search.css'
+import { apiSearch, on_loader } from '../../../store/actions/products-action'
+import { Col, Fa } from "mdbreact";
+
 class Search extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -13,18 +16,36 @@ class Search extends Component {
     handleSubmit(event) {
         // this.props.on_loader()
         // this.props.apiSearch(this.state.key)
-        // this.props.onSearch(this.state.key)
+        this.props.onSearch(this.state.key)
         event.preventDefault();
     }
     render() {
         return (
-            
+
             <React.Fragment>
-                    {/* <form onSubmit={this.handleSubmit} className="search-form" >
-                        <div className="form-group md-form my-0 waves-light waves-effect waves-light"> */}
-                            <input  onChange={event => this.setState({ key:this.props.onSearch(event.target.value) })} type="text" className="border p-4 w-100 h-75" placeholder="Searching" />
-                        {/* </div>
-                    </form> */}
+                <form  className="" >
+                        <div className="input-group-prepend ">
+                            <input  onChange={event => this.setState({ key: event.target.value })} type="text" className="border form-control-sm p-4 w-search-input" placeholder="Searching" />
+                              <span className="input-group-text black p-3 lighten-3"  >
+                                <Fa className="text-white" icon="search"  onClick={this.handleSubmit}/>
+                            </span>
+
+                        </div>
+                    </form>
+                    {/* <div className="input-group form-sm form-1 pl-0">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text black p-2 lighten-3"  >
+                                <Fa className="text-white" icon="search" />
+                            </span>
+                        </div>
+                        <input
+                            className="border"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                        />
+                    </div> */}
+
             </React.Fragment>
         )
     }
