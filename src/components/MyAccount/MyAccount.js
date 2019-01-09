@@ -69,7 +69,6 @@ class MyAccount extends React.Component {
     }
     render() {
         const { handleSubmit } = this.props
-        console.log(this.state)
 
         return (
             <MDBCol size="12" md="8">

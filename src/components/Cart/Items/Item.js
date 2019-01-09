@@ -20,12 +20,10 @@ class Item extends React.Component {
     }
 
     delete_item = () => {
-        console.log("fwefew")
         this.props.delete_from_cart(this.props.id)
     }
 
     onChangeQuantity = (e) => {
-        console.log(this.props)
         if (Number(e.target.value) && Number(e.target.value) > 0 && Number(e.target.value) <= this.props.productQty) {
             this.props.set_quantity(this.props.id, Number(e.target.value))
             this.setState({

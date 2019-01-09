@@ -112,10 +112,8 @@ class Checkout extends Component {
         //     'Authorization': `Bearer facebook ${this.props.user}`
         //   }
         // }
-        console.log(this.props.headers)
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/order/create/`, details, { headers: this.props.headers })
           .then(res => {
-            console.log(res.data)
             if (res.status === 201) {
               this.props.clear_all_cart()
               this.setState({
@@ -129,7 +127,6 @@ class Checkout extends Component {
             }
           })
           .catch(error => {
-            console.log(error)
             if(error.response) {
 
             

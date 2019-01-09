@@ -19,7 +19,6 @@ const Images = (props) => {
 
 
 
-    console.log(images)
     return (
         <React.Fragment>
             <Carousel

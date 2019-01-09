@@ -85,14 +85,12 @@ class Register extends Component {
         this.responseFacebook()
     }
     responseFacebook = (response) => {
-        console.log(response)
         if (response.accessToken && response.email) {
             const user = {
                 token: response.accessToken,
                 name: response.name,
                 email: response.email
             }
-            console.log(user)
             this.props.facebookLogin(user, () => {
                 this.props.history.push('/')
             })

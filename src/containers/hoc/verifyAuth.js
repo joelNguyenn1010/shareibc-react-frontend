@@ -26,7 +26,6 @@ export default (ChildComponent) => {
           }
           )
         .catch(error => {
-          console.log(error)
             this.props.logout(() => {
               this.props.flash_alert_warining("Session has expire, please login again")
             })

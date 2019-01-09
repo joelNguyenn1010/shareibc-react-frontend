@@ -43,7 +43,6 @@ export const renderField = ({
     if(values.userprofile) {
         if(values.userprofile.phone_number){
         if(!/^\+?1?\d{9,15}$/i.test(values.userprofile.phone_number)){
-            console.log(errors)
             errors.userprofile = {
                 phone_number: "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
 

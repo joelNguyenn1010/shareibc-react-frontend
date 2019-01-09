@@ -17,7 +17,7 @@ export default (ChildComponent) => {
         shouldNavigateAway() {
             if (this.props.auth && this.props.headers) {
                 axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/verify/`, { headers: this.props.headers })
-                    .then(res => console.log(res))
+                    .then()
                     .catch(error => {
                         this.props.logout(() => {
                             this.props.flash_alert_warining("Session has expire, please login again")

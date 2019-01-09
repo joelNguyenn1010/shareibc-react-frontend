@@ -18,7 +18,6 @@ class Navbars extends Component {
         navblue: false
     };
     toggleCollapse = () => {
-        console.log('[oncl]')
         this.setState({
             isOpen: !this.state.isOpen,
             navblue: !this.state.navblue
@@ -33,10 +32,8 @@ class Navbars extends Component {
         })
     }
     logo = () => {
-        console.log(this.myRef.current)
     }
     render() {
-        console.log(this.props)
  
         const fontSize = {
             fontSize: '3rem'

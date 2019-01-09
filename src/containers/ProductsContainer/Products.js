@@ -24,7 +24,6 @@ class Products extends Component {
 
     componentDidMount() {
         this.props.apiProducts()
-        console.log(this.props.products)
     }
     onSearch = (key) => {
         this.props.apiSearch(key)

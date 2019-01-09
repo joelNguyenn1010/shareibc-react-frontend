@@ -24,7 +24,7 @@ class Details extends Component {
    
     this.setState({
         modal: !this.state.modal
-    }, () => {console.log(this.state)});
+    }, () => {});
   }
 
 
@@ -34,7 +34,6 @@ class Details extends Component {
             .then(res => {
 
                 if(res.data) {
-                    console.log(res.data)
 
                     this.setState({
                         product: 
@@ -49,7 +48,6 @@ class Details extends Component {
            
             })
             .catch(error => {
-                console.log(error)
             })
     }
     set_quantity = () => {

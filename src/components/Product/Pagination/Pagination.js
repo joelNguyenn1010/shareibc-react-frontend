@@ -17,7 +17,6 @@ class Paginations extends React.Component {
     //     )
     // })
     onClickPage = (page) => {
-        console.log(page)
         if (page > 0 && page <= this.props.page) {
             this.props.apiPage(page)
         }

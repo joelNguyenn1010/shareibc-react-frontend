@@ -21,19 +21,16 @@ class Order extends React.Component {
   };
   componentDidMount() {
     //THIS IS FOR TEST AND CREATE UI
-    // console.log(order.default)
 
     //THIS IS FOR PRODUCTION
     const headers = this.props.user.headers;
     // 'Content-Type': 'application/json',
     // 'Authorization': `Bearer facebook ${this.props.user.token}`
 
-    console.log(headers);
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/order/`, { headers })
       .then(res => {
         if (res.data && res.data.length > 0) {
-          console.log(res.data);
           this.setState({
             orders: res.data
           });

@@ -3,18 +3,7 @@ import { connect } from 'react-redux'
 import { clear_alert } from '../../store/actions/alert-action'
 import Message from './Message'
 class Flash extends React.Component {
-    componentDidCatch() {
-        console.log('didcat')
-    }
-    componentDidMount() {
-        console.log('didmout')
 
-        // setTimeout(function(){
-        //     // After waiting for five seconds, submit the form.
-        //     this.props.clear_alert();
-        // }.bind(this), 5000);
-
-    }
     componentDidUpdate() {
         if (this.props.mess.length > 0 && this.props.mess) {
             setTimeout(function () {
@@ -23,21 +12,6 @@ class Flash extends React.Component {
             }.bind(this), 5000);
         }
 
-    }
-    componentWillMount() {
-        console.log('willmou')
-        //
-    }
-    componentWillReceiveProps() {
-        console.log('willrece')
-
-    }
-    componentWillUnmount() {
-        console.log('willunmou')
-
-    }
-    componentWillUpdate() {
-        console.log('willupdate')
     }
 
 

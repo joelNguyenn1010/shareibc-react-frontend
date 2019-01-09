@@ -7,7 +7,6 @@ import {
 
 
 const Info = (props) => {
-    console.log(props)
     return (
 
         <React.Fragment>

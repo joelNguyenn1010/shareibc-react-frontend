@@ -75,7 +75,6 @@ class Login extends Component {
 
     login = () => {
         if (!this.state.errors.isError) {
-            console.log(this.state.errors)
             const user = {
                 'username': this.state.username,
                 'password': this.state.password
@@ -89,7 +88,6 @@ class Login extends Component {
         this.responseFacebook()
     }
     responseFacebook = (response) => {
-        console.log(response)
         if (response.accessToken && response.email) {
             // const user = {
             //     token: response.accessToken,

@@ -57,7 +57,6 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-console.log(auth)
 const store = createStore(rootReducer, { 
   userReducer: { 
     ...auth

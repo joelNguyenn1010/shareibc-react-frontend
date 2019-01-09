@@ -149,7 +149,6 @@ export const apiFetchCity = () => {
     return(dispatch) => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/product/city/`)
         .then(res => {
-            console.log(res.data)
             if (res.data && res.data.length > 0) {
                 dispatch({
                     type: CITIES_FETCH,

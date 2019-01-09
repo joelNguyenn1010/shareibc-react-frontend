@@ -99,10 +99,8 @@ class MessageField extends React.Component {
             ...e,
             user: null
         }
-        console.log(data)
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/support/`, data,{headers: this.props.headers})
         .then(res => {
-            console.log(res.status)
          if(res.status === 201) {
             this.setState({
                 mess: "Thanks you for your message, we will contact you soon",
