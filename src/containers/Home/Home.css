@@ -48,7 +48,9 @@ body {
     padding-left: 0;
     margin-right: 15%;
     margin-left: 15%;
-    list-style: none;
+}
+.text-footer{
+    font-size: 1.1rem;
 }
 /* 
 .carousel__home {
