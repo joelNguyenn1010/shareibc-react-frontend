@@ -23,6 +23,7 @@ import { Elements } from 'react-stripe-elements'
 import alreadyAuth from '../hoc/alreadyAuth'
 const AsyncCheckout = asyncComponents(() => import('../../components/Checkout/Checkout'));
 const AsyncContactUs = asyncComponents(() => import('../ContactUs/ContactUs'));
+const AsyncAboutUs = asyncComponents(() => import('../../components/AboutUs/AboutUs'));
 const AsyncCart = asyncComponents(() => import('../../components/Cart/Cart'));
 const AsyncProjects = asyncComponents(() => import('../Projects/Projects'));
 class Main extends Component {
@@ -49,7 +50,7 @@ class Main extends Component {
                         <Route path='/logout' exact component={Logout} />
                         <Route path='/cart' exact component={verifyAuth(AsyncCart)} />
                         <Route path='/contact-us' component={verifyAuth(AsyncContactUs)} />
-
+                        <Route path='/about-us' component={verifyAuth(AsyncAboutUs)} />
                         <Route path='/product/:id' exact component={(Details)} />
                         <Elements>
                             <Route path='/checkout' exact component={verifyAuth(AsyncCheckout)} />
