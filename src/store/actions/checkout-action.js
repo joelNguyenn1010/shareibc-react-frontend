@@ -55,11 +55,7 @@ export function isValidate(details) {
 
             //     errors.isError = true
             // }
-            if(details.phone_number === null){
-                errors.phone_number = "Phone number is required"
-                errors.phone_numberValidation = 'invalid'
-                errors.isError = true
-            } else if(details.phone_number) {
+         if(details.phone_number) {
                 let re = /^\+?1?\d{9,15}$/;
                 if(!re.test(details.phone_number)) {
                     errors.phone_number = "Phone number should have at least 10 digits and have international format +99999999"

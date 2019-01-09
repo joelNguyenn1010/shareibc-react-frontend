@@ -14,18 +14,18 @@ const ShippingDetail = (props) => {
                 
                 <div className="card-body step-content w-custom">
                 <div className="form-group">
-                        <MDBInput label="First Name*" required onChange={(e) => props.onChangeInput(DETAILS.FIRSTNAME, e)} />
+                        <MDBInput label="First Name*" hint="Ex: Emily" required onChange={(e) => props.onChangeInput(DETAILS.FIRSTNAME, e)} />
                     </div>
                     <div className="form-group">
-                        <MDBInput label="Last Name*" required onChange={(e) => props.onChangeInput(DETAILS.LASTNAME, e)} />
+                        <MDBInput label="Last Name*" hint="Ex: Clark" required onChange={(e) => props.onChangeInput(DETAILS.LASTNAME, e)} />
                     </div>
                     <div className="form-group">
-                        <MDBInput className={`${props.emailValidation}`} label="Email*" type="email" required onChange={(e) => props.onChangeInput(DETAILS.EMAIL, e)} />
+                        <MDBInput className={`${props.emailValidation}`} label="Email*" hint="Ex: xxxxx@gmail.com" type="email" required onChange={(e) => props.onChangeInput(DETAILS.EMAIL, e)} />
                         <span className="text-danger">{props.errors.email}</span>
                     </div>
               
                     <div className="form-group">
-                        <MDBInput className={`${props.phone_numberValidation}`} label="Phone Number" required onChange={(e) => props.onChangeInput(DETAILS.PHONE, e)} />
+                        <MDBInput className={`${props.phone_numberValidation}`} label="Phone Number" hint="Ex: +61423453534" onChange={(e) => props.onChangeInput(DETAILS.PHONE, e)} />
                         <span className="text-danger">{props.errors.phone_number}</span>
 
                     </div>

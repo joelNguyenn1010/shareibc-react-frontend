@@ -12,7 +12,7 @@ const CartModal = (props) => {
                     <CartTable />
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="info" onClick={() => props.toggle()}>Close</Button>
+                    <Button color="primary" onClick={() => props.toggle()}>Close</Button>
                     <NavLink to='/checkout' className="btn btn-outline-primary" >Checkout</NavLink>
 
                     {/* <Button color="primary">Save changes</Button> */}
