@@ -30,14 +30,7 @@ class MyUser extends React.Component {
             <MDBListGroup style={{ width: "100%", marginTop: "15px" }}>
               <MDBListGroupItem>
                 <MDBRow>
-                  <MDBCol md="6">
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
-                      className="img-fluid rounded-circle z-depth-2"
-                      alt="aligment"
-                    />
-                  </MDBCol>
-                  <MDBCol md="6">Info</MDBCol>
+                  <MDBCol md="6"><h1>Hello {this.props.name}</h1></MDBCol>
                 </MDBRow>
               </MDBListGroupItem>
               <NavLink activeClassName='active' className="list-group-item" to={`/user/${this.props.userEmail}/order`}> My Order</NavLink>

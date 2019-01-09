@@ -12,7 +12,7 @@ class User extends React.Component {
             <MDBRow>
        
 
-            <MyUserMenu userEmail={this.props.email}/>
+            <MyUserMenu userEmail={this.props.email} name={this.props.name}/>
                 <Route  path={`/user/${this.props.email}/order`} component={Order} />
                 <Route path={`/user/${this.props.email}/info`} component={MyAaccount} />
             </MDBRow>
@@ -22,7 +22,8 @@ class User extends React.Component {
 }
 const mapStateToProp = state => {
     return {
-        email: state.userReducer.email
+        email: state.userReducer.email,
+        name: state.userReducer.name
 
     }
 }
