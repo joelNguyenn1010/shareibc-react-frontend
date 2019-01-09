@@ -58,7 +58,7 @@ class Main extends Component {
                     </Container>
                 </Switch>
           
-                <Footer />
+                {window.location.pathname !== '/' ? <Footer /> : ''}
             </React.Fragment>
         )
     }

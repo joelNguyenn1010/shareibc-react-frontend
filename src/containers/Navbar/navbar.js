@@ -3,7 +3,7 @@ import Links from './Links/Links'
 import './Navbar.css'
 import { connect } from 'react-redux'
 import * as userAction from '../../store/actions/user-action'
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
+import { Navbar, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 
 import UserLink from './UserLink/UserLink'
 class Navbars extends Component {
@@ -44,7 +44,7 @@ class Navbars extends Component {
         return (
             // <>
             <React.Fragment>
-                <Navbar className={"navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" + this.props.styles + navBlue }>
+                <Navbar className={"fixed-top navbar-expand-lg navbar-dark scrolling-navbar no-box-shadow" + this.props.styles + navBlue }>
                     <div className="container justify-content-between">
                     <div>
                         <a className="navbar-brand" href="/" >
