@@ -65,7 +65,9 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 date: action.payload.date,
-                page: action.payload.page
+                page: action.payload.page,
+                loader: true
+
             }
         case TYPE:
             return {
