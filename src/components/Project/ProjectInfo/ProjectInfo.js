@@ -19,7 +19,7 @@ class ProjectInfo extends React.Component {
                     })
                 } else {
                     this.setState({
-                        mess: "Can't find project 404",
+                        mess: "Can't find project",
                         status: '404'
                     })
                 }

@@ -31,7 +31,15 @@ class Products extends Component {
     handlePay = () => {
         axios.post()
     }
-
+    noProduct = () => {
+        return(
+            <React.Fragment>
+                <div>
+                    <h1>We are looking the best deal for you, please come back later,</h1>
+                </div>
+            </React.Fragment>
+        )
+    }
     render() {
         const allProduct = this.props.products.map(product => {
             return (<Product
@@ -99,6 +107,7 @@ class Products extends Component {
                     {/* {ProductRender} */}
                 </div>
 
+                {this.props.products.length <= 0 ? <this.noProduct /> : ''}
             </React.Fragment>
         )
     }
