@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import AboutUsImage from "./Image/about-us.jpg";
+import {Link} from 'react-router-dom'
+import AboutUsImage from "./Image/e.psd";
 import {
   MDBContainer,
   MDBRow,
@@ -56,14 +57,12 @@ function AboutUs() {
           backgroundPosition: "center center no-repeat",
           backgroundSize: "cover",
           width: "100%",
-          height: "700px"
+          height: "400px"
         }}
       />
       <MDBContainer>
         <MDBRow
-          style={{
-            paddingTop: "15px"
-          }}
+    
         >
           <MDBCol style={textStyle}>
             Change the world by everyday purcharse
@@ -109,10 +108,10 @@ function AboutUs() {
             alignItems: "flex-end"
           }}
         >
-          <MDBBtn color="primary">Info</MDBBtn>
+          <Link className="btn btn-primary" to='/products'>Shop NOW</Link>
         </MDBRow>
       </MDBContainer>
-      <MDBContainer
+      {/* <MDBContainer
         style={{
           height: "200px",
           backgroundColor: "#80808075",
@@ -250,7 +249,7 @@ function AboutUs() {
             </Carousel>
           </MDBCol>
         </MDBRow>
-      </MDBContainer>
+      </MDBContainer> */}
     </Fragment>
   );
 }

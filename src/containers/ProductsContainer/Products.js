@@ -107,7 +107,7 @@ const mapStateToProps = state => (
     {
         products: state.productReducer.products,
         loader: state.productReducer.loader,
-        error: state.productReducer.error
+        error: state.productReducer.error,
     }
 )
 

@@ -21,7 +21,7 @@ const Info = (props) => {
                     project={props.project}
                 />
                 <div className="m-4 d-flex flex-row-reverse justify-content-between">
-                    <button className="btn btn-primary">Donate</button>
+                    {/* <button className="btn btn-primary">Donate</button> */}
                     <FacebookShareButton 
                     className="btn btn-primary"
                     url={window.location.href}
