@@ -34,8 +34,8 @@ class Products extends Component {
     noProduct = () => {
         return(
             <React.Fragment>
-                <div>
-                    <h1>We are looking the best deal for you, please come back later,</h1>
+                <div className="text-center">
+                    <h1>We are looking the best deal for you, please come back later.</h1>
                 </div>
             </React.Fragment>
         )
