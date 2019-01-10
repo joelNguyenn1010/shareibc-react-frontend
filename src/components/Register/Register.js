@@ -207,10 +207,7 @@ class Register extends Component {
                                             className="form-control p-4"
                                         />
                                         <span className="text-danger">{this.props.errorMesss}</span>
-                                    <FacebookLoginButton
-                                        responseFacebook={this.responseFacebook}
-                                        onClickFacebook={this.onClickFacebook} />
-
+                         
 
                                     <div className="text-center mt-12">
                                         <MDBBtn
@@ -223,6 +220,9 @@ class Register extends Component {
                   </MDBBtn>
                                     </div>
                                 </form>
+                                <FacebookLoginButton
+                                        responseFacebook={this.responseFacebook}
+                                        onClickFacebook={this.onClickFacebook} />
                                 <div className="register-form__login">
                                     <span>Already have an account?&nbsp; </span>
                                     <div>

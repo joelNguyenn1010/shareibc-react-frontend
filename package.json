@@ -12,6 +12,7 @@
     "react-cookies": "^0.1.0",
     "react-dom": "^16.5.2",
     "react-facebook-login": "^4.1.1",
+    "react-facebook-login-component": "^0.9.2",
     "react-flash-message": "^1.0.2",
     "react-form-validator-core": "^0.5.0",
     "react-image-gallery": "^0.8.12",

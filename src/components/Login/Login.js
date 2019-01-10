@@ -88,6 +88,7 @@ class Login extends Component {
         this.responseFacebook()
     }
     responseFacebook = (response) => {
+        console.log(response)
         if (response.accessToken && response.email) {
             // const user = {
             //     token: response.accessToken,
@@ -164,12 +165,18 @@ class Login extends Component {
 
                                     <span className="text-danger">{this.props.userReducer.mess}</span>
                                     {/* <div className="container text-center mt-5"> */}
-                                    <FacebookLoginButton
-                                        responseFacebook={this.responseFacebook}
-                                        onClickFacebook={this.onClickFacebook} />
+                
                                     {/* </div> */}
                                     <button className="btn btn-outline-info waves-effect btn-block">Submit</button>
-                                    <div className="register-form__login">
+                            
+
+                                    {/* <div className="text-center button-transform">
+                                </div> */}
+                                </form>
+                                <FacebookLoginButton
+                                        responseFacebook={this.responseFacebook}
+                                        onClickFacebook={this.onClickFacebook} />
+                                                <div className="register-form__login">
                                         <span>Don't have account?&nbsp; </span>
                                         <div>
                                             <span>
@@ -177,10 +184,6 @@ class Login extends Component {
                                             </span>
                                         </div>
                                     </div>
-
-                                    {/* <div className="text-center button-transform">
-                                </div> */}
-                                </form>
                             </div>
 
                         </div>
