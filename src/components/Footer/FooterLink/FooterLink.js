@@ -25,7 +25,7 @@ const FooterLink = () =>{
 
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a href="https://www.facebook.com/joel.nguyenanh" target="_blank">Facebook</a>
+                <a href="https://www.facebook.com/shareibc/" target="_blank">Facebook</a>
               </li>
               <li>
                 <a href="https://www.facebook.com/joel.nguyenanh" target="_blank">Instagram</a>

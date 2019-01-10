@@ -76,7 +76,7 @@ class Catalogies extends React.Component {
                 <React.Fragment>
                     <div className="text-center">
                         <h1 className="responsive-text-catalogies">
-                            All right will be donated to social and enviromental projects
+                            All right will be donated to social and environmental projects
                     </h1>
                     </div>
                     <div className="row mx-0">
