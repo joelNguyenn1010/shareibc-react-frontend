@@ -30,7 +30,7 @@ class Home extends Component {
                                     <Link to='/projects' className="btn btn-lg btn-elegant mx-project">Projects</Link>
                                 </div>
             <div className="carousel-footer">
-                <p className="text-white">@2018 Shareibc</p>
+                <p className="text-white text-footer">@2018 Shareibc</p>
 
             </div>
 

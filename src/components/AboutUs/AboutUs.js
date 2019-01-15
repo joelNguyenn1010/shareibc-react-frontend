@@ -1,21 +1,13 @@
 import React, { Fragment } from "react";
 import {Link} from 'react-router-dom'
-import AboutUsImage from "./Image/e.psd";
+import AboutUsImage from "./Image/about-us.jpg";
+import Icon1 from './Image/Bàn tay 1.png'
+import Icon2 from './Image/Bàn tay 2.png'
+import Icon3 from './Image/Bàn tay 3.png'
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBSelect,
-  MDBSelectInput,
-  MDBSelectOptions,
-  MDBSelectOption,
-  Carousel,
-  CarouselCaption,
-  CarouselInner,
-  CarouselItem,
-  View,
-  Mask
 } from "mdbreact";
 
 const textStyle = {
@@ -32,15 +24,15 @@ const givingText = {
 
 const listProfit = [
   {
-    image: "https://placeimg.com/300/300/any",
+    image: Icon1,
     text: "Brands offer best deals"
   },
   {
-    image: "https://placeimg.com/300/300/any",
+    image: Icon2,
     text: "Choose a deal from our shop"
   },
   {
-    image: "https://placeimg.com/300/300/any",
+    image: Icon3,
     text: "All profit will be donated to charity"
   }
 ];
@@ -79,9 +71,9 @@ function AboutUs() {
           {listProfit.map((profit, i) => (
             <MDBCol key={i} size="4">
               <MDBRow>
-                <MDBCol size="12">
+                <MDBCol size="12" className="d-flex justify-content-center">
                   <img
-                    src="https://mdbootstrap.com/img/Others/documentation/1.jpg"
+                    src={profit.image}
                     className="img-fluid"
                     alt=""
                   />
