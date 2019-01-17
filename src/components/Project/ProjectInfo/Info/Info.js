@@ -10,9 +10,10 @@ const Info = (props) => {
     return (
 
         <React.Fragment>
-            <Images
+            {props.project.images_project.length > 0 ?   <Images
                 images={props.project.images_project}
-            />
+            /> : ''}
+          
 
 
 

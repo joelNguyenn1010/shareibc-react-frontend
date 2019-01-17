@@ -35,7 +35,7 @@ class Products extends Component {
         return(
             <React.Fragment>
                 <div className="text-center">
-                    <h1>We are looking the best deal for you, please come back later.</h1>
+                    <h1>No product found!!, We are looking the best deal for you.</h1>
                 </div>
             </React.Fragment>
         )
@@ -107,7 +107,7 @@ class Products extends Component {
                     {/* {ProductRender} */}
                 </div>
 
-                {this.props.products.length <= 0 ? <this.noProduct /> : ''}
+                {this.props.products.length <= 0 && this.props.loader === false ? <this.noProduct /> : ''}
             </React.Fragment>
         )
     }
