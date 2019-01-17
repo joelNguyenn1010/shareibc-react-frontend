@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import {Link} from 'react-router-dom'
 import AboutUsImage from "./Image/about-us.jpg";
-import Icon1 from './Image/Bàn tay 1.png'
-import Icon2 from './Image/Bàn tay 2.png'
-import Icon3 from './Image/Bàn tay 3.png'
+import Icon1 from './Image/icon1.png'
+import Icon2 from './Image/icon2.png'
+import Icon3 from "./Image/icon3.png"
 import {
   MDBContainer,
   MDBRow,
@@ -37,7 +37,6 @@ const listProfit = [
   }
 ];
 
-const url = "public/img/background/sydney_5.jpg";
 
 function AboutUs() {
   return (
