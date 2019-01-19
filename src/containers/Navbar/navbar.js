@@ -8,7 +8,7 @@ import { Navbar, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInlin
 import UserLink from './UserLink/UserLink'
 class Navbars extends Component {
     //a function to help verify token to backend
-    constructor(props){
+    constructor(props) {
         super(props)
         this.myRef = React.createRef();
 
@@ -34,22 +34,22 @@ class Navbars extends Component {
     logo = () => {
     }
     render() {
- 
+
         const fontSize = {
             fontSize: '3rem'
         }
 
 
-        let navBlue = this.state.navblue ? "navbar-blue": " "
+        let navBlue = this.state.navblue ? "navbar-blue" : " "
         return (
             // <>
             <React.Fragment>
-                <Navbar className={"fixed-top navbar-expand-lg navbar-dark scrolling-navbar no-box-shadow" + this.props.styles + navBlue }>
+                <Navbar className={"fixed-top navbar-expand-lg navbar-dark scrolling-navbar no-box-shadow" + this.props.styles + navBlue}>
                     <div className="container justify-content-between">
-                    <div>
-                        <a className="navbar-brand" href="/" >
-                            <strong style={fontSize}>Si</strong>
-                        </a>
+                        <div>
+                            <a className="navbar-brand" href="/" >
+                                <strong style={fontSize}>Si</strong>
+                            </a>
                         </div>
                         {/* <button className="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -58,6 +58,7 @@ class Navbars extends Component {
                             onClick={this.toggleCollapse}
                         />
                         <Collapse
+                            className="pre-scrollable"
                             id="navbarSupportedContent"
                             isOpen={this.state.isOpen}
                             navbar
@@ -81,7 +82,7 @@ class Navbars extends Component {
 
                     </div>
                 </Navbar>
-      
+
             </React.Fragment>
         )
     }
