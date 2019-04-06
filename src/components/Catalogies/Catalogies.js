@@ -74,7 +74,7 @@ class Catalogies extends React.Component {
         if (window.location.pathname === '/products') {
             return (
                 <React.Fragment>
-                    <div className="text-center">
+                    <div className="text-center mb-5">
                         <h1 className="responsive-text-catalogies">
                             All right will be donated to social and environmental projects
                     </h1>
