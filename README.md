@@ -21,4 +21,32 @@ npm start
 ```
 
 # Websites
+
+# Project Structure
+## The containers, the components and store
+The main structure of the project is in src folder.
+1. The containers folder is main components of project. For instance, components such as Project, Product, Cart, Order, User, etc.
+2. The components folder is related components for container. For instance, for main containers like Product can have component such as ProductDetails, ProductPagination, etc
+3. The store is the redux store. Shareibc uses redux for state management.
+
+# The containers
+1. Authentication (deprecated): for managing auth user and authorization user.
+2. Contact us: for 'contact us' page containers.
+3. Home: the Homepage of the shareibc.
+4. Main: is the root tree of all component. Shareibc uses react-router-dom to manipulate the Route of the application.
+5. Navbar: the Navigation Bar of the website.
+6. ProductContainer: for managing the Product application.
+7. Project: for managing the Project application.
+8. User: for authication and authorization.
+
+# The related components of container.
+1. Contact us.
+  * Send Message: control the send message form.
+  * ContactUsInfo: the infomation of contact page, a helper memos.
+2. Navbar.
+  * Links: a href link to containers: Project, Product, Contact Us, About Us, etc
+  * UserLink: a href link to: User, Login, Register.
+3. Project
+  *
+
 https://shareibc.com
