@@ -47,6 +47,14 @@ The main structure of the project is in src folder.
   * Links: a href link to containers: Project, Product, Contact Us, About Us, etc
   * UserLink: a href link to: User, Login, Register.
 3. Project
-  *
+  * Project
+  * Jumbotron: Big title picture
+  * ProjectDeatils: fetch api about details of the project
+  * ProjectInfo: fetch API info about the project
+4. ProductContainer
+  * Pagination: Pagination of the product
+5. User
+  * The User page
+  * Order: see all the user order
 
 https://shareibc.com
